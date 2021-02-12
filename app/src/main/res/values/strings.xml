@@ -2,5 +2,10 @@
     <string name="app_name">Clon Reddit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- REGISTER FORM -->
+    <string name="login">Log in</string>
+    <string name="create">Create an account</string>
     <string name="privacyText">By continuing, you agree to our User Agreement and Privacy Policy.</string>
+    <string name="acceptCheckBoxForm">I agree to get emails about cool stuff on Reddit.</string>
 </resources>
