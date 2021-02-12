@@ -12,4 +12,6 @@
     <color name="titleColor">#D4D5D7</color>
     <color name="darkBlue">#016DC5</color>
     <color name="dark_grey">#121212</color>
+
+    <color name="bg">#121212</color>
 </resources>

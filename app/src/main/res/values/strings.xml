@@ -8,4 +8,5 @@
     <string name="create">Create an account</string>
     <string name="privacyText">By continuing, you agree to our User Agreement and Privacy Policy.</string>
     <string name="acceptCheckBoxForm">I agree to get emails about cool stuff on Reddit.</string>
+    <string name="continueGoogle">Continue with Google</string>
 </resources>
