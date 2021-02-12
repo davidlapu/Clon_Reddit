@@ -9,4 +9,5 @@
     <string name="privacyText">By continuing, you agree to our User Agreement and Privacy Policy.</string>
     <string name="acceptCheckBoxForm">I agree to get emails about cool stuff on Reddit.</string>
     <string name="continueGoogle">Continue with Google</string>
+    <string name="continueApple">Continue with Apple</string>
 </resources>
