@@ -115,7 +115,13 @@
     </style>
     <!--//// FINISH FORMA CAMPS \\\\-->
 
-    
+
+    <style name="ContinueButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">30dp</item>
+        <item name="android:background">@drawable/gradient_color</item>
+        <item name="backgroundTint">@null</item>
+
+    </style>
 
 
 
