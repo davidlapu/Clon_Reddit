@@ -40,12 +40,35 @@
     <!--///////////// FINISH Log in y Register font \\\\\\\\\\\\\\\\\\\\-->
 
 
+    <!--//////////// INIT Title theme \\\\\\\\\\\\\-->
     <style name="Theme.ClonReddit.TitulosForm">
         <item name="android:textColor">@color/titleColor</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">30sp</item>
         <item name="android:layout_marginLeft">15dp</item>
     </style>
+    <!--/////////// FINISH Title theme \\\\\\\\\\\\\-->
+
+
+    <!--///// INIT Privacy text \\\\\\\\\-->
+    <style name="Theme.ClonReddit.SimpleText">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+    <!--///// FINISH Privacy text \\\\\\\\\-->
+
+
+    <style name="Theme.ClonReddit.CheckForm">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="buttonTint">@color/grey</item>
+
+    </style>
+
+
 
 
     <style name="Theme.ClonReddit.Launcher">

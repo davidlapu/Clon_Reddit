@@ -30,7 +30,7 @@
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log in"
+        android:text="@string/login"
         android:theme="@style/Theme.ClonReddit.LogReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,16 +50,25 @@
             style="@style/Theme.ClonReddit.TitulosForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create an account" />
+            android:text="@string/create" />
 
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/policyUserTextView"
+            style="@style/Theme.ClonReddit.SimpleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/privacyText"
-            android:layout_alignBottom="@id/titleForm"
             android:textSize="15sp"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            style="@style/Theme.ClonReddit.CheckForm"
+            android:id="@+id/checkBoxRegisterForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acceptCheckBoxForm" />
+
+
 
 
     </LinearLayout>

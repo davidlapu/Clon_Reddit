@@ -29,14 +29,14 @@ public class RegisterFragment extends Fragment {
 
         policyTextView = v.findViewById(R.id.policyUserTextView);
 
-        SpannableStringBuilder spannable = new SpannableStringBuilder("By continuing, you agree to our User Agreement and Privacy Policy.");
+        SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
-                new ForegroundColorSpan(Color.parseColor("#0078EF")),
+                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)),
                 31, // start
                 46, // end
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         spannable.setSpan(
-                new ForegroundColorSpan(Color.parseColor("#0078EF")),
+                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)),
                 50,
                 65,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
