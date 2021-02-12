@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main"
+        android:enabled="true"
+        android:icon="@drawable/reddit_share_circle_32"
+        android:title=""
+        />
+    <item
+        android:id="@+id/subscriptions"
+        android:enabled="true"
+        android:icon="@drawable/reddit_share_circle_32"
+        android:title=""/>
+    <item
+        android:id="@+id/post"
+        android:enabled="true"
+        android:icon="@drawable/reddit_share_circle_32"
+        android:title=""/>
+    <item
+        android:id="@+id/chat"
+        android:enabled="true"
+        android:icon="@drawable/reddit_share_circle_32"
+        android:title=""/>
+    <item
+        android:id="@+id/inbox"
+        android:enabled="true"
+        android:icon="@drawable/reddit_share_circle_32"
+        android:title=""/>
+</menu>
