@@ -69,6 +69,12 @@
             android:text="@string/acceptCheckBoxForm" />
 
 
+        <com.google.android.material.button.MaterialButton
+            style="@style/BlueButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
 
 
     </LinearLayout>
