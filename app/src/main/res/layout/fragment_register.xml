@@ -7,6 +7,7 @@
     android:theme="@style/Theme.ClonReddit"
     tools:context=".fragments.RegisterFragment">
 
+    <!--INIT TOP BAR-->
     <ImageView
         android:id="@+id/closeBTN"
         android:layout_width="wrap_content"
@@ -34,17 +35,22 @@
         android:theme="@style/Theme.ClonReddit.LogReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!--FINISH TOP BAR-->
 
 
+
+    <!--INIT FORM-->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/closeBTN"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/closeBTN">
 
+        <!--TITLE-->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleForm"
             style="@style/Theme.ClonReddit.TitulosForm"
@@ -53,30 +59,32 @@
             android:text="@string/create" />
 
 
+        <!--TEXT PRIVACY-->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/policyUserTextView"
             style="@style/Theme.ClonReddit.SimpleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/privacyText"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
+        <!--CHECK BOX-->
         <com.google.android.material.checkbox.MaterialCheckBox
-            style="@style/Theme.ClonReddit.CheckForm"
             android:id="@+id/checkBoxRegisterForm"
+            style="@style/Theme.ClonReddit.CheckForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/acceptCheckBoxForm" />
 
 
+        <!--INIT BLUE BUTTONS-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/googleRegisterBTN"
             style="@style/BlueButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/continueGoogle"
-            app:icon="@drawable/google_icon"
-            />
+            app:icon="@drawable/google_icon" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/appleRegisterBTN"
@@ -84,13 +92,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/continueApple"
-            app:icon="@drawable/apple_icon"
-            />
+            app:icon="@drawable/apple_icon" />
+        <!--FINISH BLUE BUTTONS-->
 
+
+        <!--INIT OR LINES-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <View
                 android:id="@+id/lineLeft"
@@ -106,14 +115,14 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView"
                 style="@style/Theme.ClonReddit.SimpleText"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30sp"
+                android:layout_marginTop="5dp"
+                android:text="OR"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="OR"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:id="@+id/lineRight"
@@ -125,14 +134,64 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/materialTextView"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--FINISH OR LINES-->
 
 
+        <!--INIT FORM CAMPS-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/FormStyles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameInputLayout"
+            style="@style/FormStyles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/FormStyles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--FINISH FORM CAMPS-->
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!--FINISH FORM-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

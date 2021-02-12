@@ -89,12 +89,33 @@
     <!--///// FINISH Blue Buttons \\\\\-->
 
 
-
+    <!--//// INIT LINES OR \\\\-->
     <style name="LineStyle">
         <item name="android:background">@color/grey</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0.5dp</item>
     </style>
+    <!--//// FINISH LINES OR \\\\-->
+
+
+    <!--//// INIT FORM CAMPS \\\\-->
+    <style name="FormStyles">
+        <item name="boxCornerRadiusBottomEnd">30dp</item>
+        <item name="boxCornerRadiusBottomStart">30dp</item>
+        <item name="boxCornerRadiusTopEnd">30dp</item>
+        <item name="boxCornerRadiusTopStart">30dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:colorPrimary">@color/grey</item>
+        <item name="hintTextColor">@color/grey</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="endIconMode">clear_text</item>
+    </style>
+    <!--//// FINISH FORMA CAMPS \\\\-->
+
+    
 
 
 

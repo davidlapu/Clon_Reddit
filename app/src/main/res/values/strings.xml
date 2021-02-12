@@ -10,4 +10,7 @@
     <string name="acceptCheckBoxForm">I agree to get emails about cool stuff on Reddit.</string>
     <string name="continueGoogle">Continue with Google</string>
     <string name="continueApple">Continue with Apple</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
