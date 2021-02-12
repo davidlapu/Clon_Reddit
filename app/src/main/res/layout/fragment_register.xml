@@ -70,11 +70,62 @@
 
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/googleRegisterBTN"
             style="@style/BlueButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/continueGoogle"
+            app:icon="@drawable/google_icon"
             />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/appleRegisterBTN"
+            style="@style/BlueButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/continueApple"
+            app:icon="@drawable/apple_icon"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <View
+                android:id="@+id/lineLeft"
+                style="@style/LineStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
+                style="@style/Theme.ClonReddit.SimpleText"
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="OJETE"/>
+
+            <View
+                android:id="@+id/lineRight"
+                style="@style/LineStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

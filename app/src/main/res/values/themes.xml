@@ -69,7 +69,8 @@
     </style>
     <!--///// Finish CheckBox \\\\\\\\\-->
     
-    
+
+    <!--///// INIT Blue Buttons \\\\\-->
     <style name="BlueButtons" parent="Widget.MaterialComponents.Button.OutlinedButton">
 <!--        <item name="android:background">@drawable/rounded_shape</item>-->
         <item name="cornerRadius">30dp</item>
@@ -81,16 +82,22 @@
         <item name="android:padding">15dp</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
-        <item name="icon">@drawable/google_icon</item>
         <item name="iconSize">20dp</item>
         <item name="iconTintMode">add</item>
         <item name="iconTint">@null</item>
     </style>
+    <!--///// FINISH Blue Buttons \\\\\-->
 
 
-    <style name="BlueButtonsInside" parent="Widget.MaterialComponents.Button.OutlinedButton">
 
+    <style name="LineStyle">
+        <item name="android:background">@color/grey</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="mal"
     </style>
+
+
 
 
 
