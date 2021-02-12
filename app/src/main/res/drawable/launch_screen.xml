@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-
+<!--TODO change background color -->
+    <item android:drawable="@color/cardview_dark_background"/>
     <item>
-
+        <bitmap
+            android:src="@drawable/reddit_share_circle_128"
+            android:gravity="center"/>
     </item>
 </layer-list>
