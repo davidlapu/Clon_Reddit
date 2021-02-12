@@ -3,7 +3,7 @@
     <item android:drawable="@color/dark_grey"/>
     <item>
         <bitmap
-            android:src="@drawable/reddit_share_circle_128"
+            android:src="@drawable/reddit_share_circle_96"
             android:gravity="center"/>
     </item>
 </layer-list>

@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -17,10 +19,12 @@ import cat.itb.clonreddit.R;
 
 public class RegisterFragment extends Fragment {
     TextView policyTextView;
+    private NavController navController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
     }
 
     @Override
@@ -42,7 +46,13 @@ public class RegisterFragment extends Fragment {
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
 
         policyTextView.setText(spannable);
-        // Inflate the layout for this fragment
+
+        TextView textViewLogin = v.findViewById(R.id.loginTextView);
+        textViewLogin.setOnClickListener(this::loginClicked);
         return v;
+    }
+
+    private void loginClicked(View view) {
+        navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
 }
