@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/main"
+        android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/reddit_share_circle_32"
-        android:title=""
+        android:icon="@drawable/ic_reddit_simple"
+        android:title="@string/home"
         />
     <item
-        android:id="@+id/subscriptions"
+        android:id="@+id/browse"
         android:enabled="true"
-        android:icon="@drawable/reddit_share_circle_32"
-        android:title=""/>
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="@string/browse"/>
     <item
         android:id="@+id/post"
         android:enabled="true"
-        android:icon="@drawable/reddit_share_circle_32"
-        android:title=""/>
+        android:icon="@drawable/ic_baseline_pencil_24"
+        android:title="@string/post"/>
     <item
         android:id="@+id/chat"
         android:enabled="true"
-        android:icon="@drawable/reddit_share_circle_32"
-        android:title=""/>
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/chat"/>
     <item
         android:id="@+id/inbox"
         android:enabled="true"
-        android:icon="@drawable/reddit_share_circle_32"
-        android:title=""/>
+        android:icon="@drawable/ic_baseline_email_24"
+        android:title="@string/inbox"/>
 </menu>

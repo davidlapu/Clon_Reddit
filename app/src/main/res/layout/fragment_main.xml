@@ -6,8 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MainFragment">
 
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable">
+
+    </com.google.android.material.tabs.TabLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        style="@style/BottomMenuIcon"
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

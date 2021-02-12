@@ -1,6 +1,5 @@
 package cat.itb.clonreddit.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 
 import cat.itb.clonreddit.R;
 
@@ -32,6 +33,8 @@ public class RegisterFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
 
         policyTextView = v.findViewById(R.id.policyUserTextView);
+        TextView textViewLogin = v.findViewById(R.id.loginTextView);
+        MaterialButton buttonGoogle = v.findViewById(R.id.googleRegisterBTN);
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
@@ -47,12 +50,16 @@ public class RegisterFragment extends Fragment {
 
         policyTextView.setText(spannable);
 
-        TextView textViewLogin = v.findViewById(R.id.loginTextView);
-        textViewLogin.setOnClickListener(this::loginClicked);
+        textViewLogin.setOnClickListener(this::toLogin);
+        buttonGoogle.setOnClickListener(this::toMainScreen);
         return v;
     }
 
-    private void loginClicked(View view) {
+    private void toMainScreen(View view) {
+        navController.navigate(R.id.action_registerFragment_to_mainFragment);
+    }
+
+    private void toLogin(View view) {
         navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
 }
