@@ -10,9 +10,10 @@
     <color name="grey">#999A9F</color>
     <color name="blue">#0078EF</color>
     <color name="titleColor">#D4D5D7</color>
-    <color name="darkBlue">#016DC5</color>
+    <color name="darkBlue">#0078EF</color>
     <color name="dark_grey">#121212</color>
     <color name="dugong">#F2F6F7</color>
     <color name="bg">#121212</color>
     <color name="orangered">#FF4500</color>
+    <color name="alien">#0078EF</color>
 </resources>
