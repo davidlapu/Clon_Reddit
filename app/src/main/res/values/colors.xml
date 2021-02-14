@@ -14,6 +14,8 @@
     <color name="dark_grey">#121212</color>
     <color name="dugong">#F2F6F7</color>
     <color name="bg">#121212</color>
+    <color name="red">#EA0027</color>
+    <color name="softOrange">#FF8717</color>
     <color name="orangered">#FF4500</color>
     <color name="alien">#0078EF</color>
 </resources>

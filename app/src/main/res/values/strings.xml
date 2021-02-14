@@ -15,4 +15,7 @@
     <string name="post">Post</string>
     <string name="chat">Chat</string>
     <string name="inbox">Inbox</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
