@@ -20,4 +20,7 @@
     <string name="password">Password</string>
     <string name="popular">Popular</string>
     <string name="awarded">Awarded</string>
+    <string name="or">OR</string>
+    <string name="continueButton">Continue</string>
+    <string name="signUp">Sign Up</string>
 </resources>

@@ -117,10 +117,11 @@
 
 
     <style name="ContinueButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="cornerRadius">30dp</item>
-        <item name="android:background">@drawable/gradient_color</item>
         <item name="backgroundTint">@null</item>
-
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/rounded_shape</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:alpha">0.50</item>
     </style>
 
 

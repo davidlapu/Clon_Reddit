@@ -38,7 +38,7 @@ public class RegisterFragment extends Fragment {
         policyTextView = v.findViewById(R.id.policyUserTextView);
         TextView textViewLogin = v.findViewById(R.id.loginTextView);
         MaterialButton buttonGoogle = v.findViewById(R.id.googleRegisterBTN);
-        continueBTN = v.findViewById(R.id.continuBTN);
+        continueBTN = v.findViewById(R.id.continueBTN);
 
 //        continueBTN.setBackground();
 
