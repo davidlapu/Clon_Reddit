@@ -1,20 +1,28 @@
 package cat.itb.clonreddit.fragments;
 
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import cat.itb.clonreddit.R;
 
 public class HomeScreenFragment extends Fragment {
     VideoView videoBg;
+    TextView policyTextView;
 
 
     @Override
@@ -31,7 +39,8 @@ public class HomeScreenFragment extends Fragment {
         String path = "android.resource://cat.itb.clonreddit/" + R.raw.loki;
         Uri uri = Uri.parse(path);
         videoBg.setVideoURI(uri);
-
+        videoBg.setScaleX(1.2f);
+        videoBg.setScaleY(1);
         videoBg.start();
 
         videoBg.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -41,6 +50,15 @@ public class HomeScreenFragment extends Fragment {
                 mp.setLooping(true);
             }
         });
+
+        policyTextView = v.findViewById(R.id.policyHomeScreen);
+        SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        spannable.setSpan(boldSpan, 31, 46, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        StyleSpan boldSpan2 = new StyleSpan(Typeface.BOLD);
+        spannable.setSpan(boldSpan2, 50, 65, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+        policyTextView.setText(spannable);
 
         return v;
     }

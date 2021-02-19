@@ -33,12 +33,12 @@ public class LoginFragment extends Fragment {
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)),
+                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
                 31, // start
                 46, // end
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)),
+                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
                 50,
                 65,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
