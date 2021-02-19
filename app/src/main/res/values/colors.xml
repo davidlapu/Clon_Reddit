@@ -18,4 +18,5 @@
     <color name="softOrange">#FF8717</color>
     <color name="orangered">#FF4500</color>
     <color name="alien">#0078EF</color>
+    <color name="transparentBlack">#6000</color>
 </resources>

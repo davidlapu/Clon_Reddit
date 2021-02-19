@@ -21,8 +21,6 @@
     </FrameLayout>
 
 
-
-
         <TextView
             android:id="@+id/loginTextView"
             android:layout_width="wrap_content"
@@ -36,7 +34,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/reddit_share_circle_64"
+        android:src="@drawable/reddit_share_circle_48"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,31 +44,96 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
             android:id="@+id/titleHomeScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OJETE MORENO"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/diveInto"
+            style="@style/TitlesHomeScreen" />
+
+        <TextView
+            android:id="@+id/subtitleHomeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subredditHomeScreen"
+            style="@style/TitlesHomeScreen"
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/policyHomeScreen"
+            style="@style/Theme.ClonReddit.SimpleTextHomeScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/privacyText"
-            android:textAlignment="center"
-            style="@style/Theme.ClonReddit.SimpleTextHomeScreen"/>
+            android:textAlignment="center" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/googleHomeScreenButton"
+            style="@style/HomeScreenButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/continueGoogle"
+            app:icon="@drawable/google_icon" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/appleHomeScreenButton"
+            style="@style/HomeScreenButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/continueApple"
+            app:icon="@drawable/apple_icon" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/emailHomeScreenButton"
+            style="@style/HomeScreenButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/continueEmail"
+            app:icon="@drawable/ic_baseline_email_24" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkBoxHomeScreen"
+            style="@style/Theme.ClonReddit.CheckFormHomeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acceptCheckBoxForm" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/redditorHomeScreen"
+                style="@style/Theme.ClonReddit.RedditorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/redditor" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/loginHomeScreen"
+                style="@style/Theme.ClonReddit.RedditorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/login"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -125,13 +125,14 @@
     </style>
     <!--//// FINISH GRADIENT BUTTON \\\\-->
 
-
+    <!--/// INIT FORGOT PASS TEXT \\\\-->
     <style name="ForgotPassword">
         <item name="android:textColor">@color/blue</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <!--/// FINISH FORGOT PASS TEXT \\\-->
 
 
     <!--//// INIT SKIP TEXT \\\\-->
@@ -145,12 +146,61 @@
     </style>
     <!--//// INIT SKIP TEXT \\\\-->
 
-
+    <!--//// INIT POLICY HOME SCREEN \\\\-->
     <style name="Theme.ClonReddit.SimpleTextHomeScreen">
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginLeft">60dp</item>
         <item name="android:layout_marginRight">60dp</item>
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!--//// FINISH POLICY HOME SCREEN \\\\-->
+
+
+    <!--///// INIT HOME SCREEN Buttons \\\\\-->
+    <style name="HomeScreenButtons" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <!--        <item name="android:background">@drawable/rounded_shape</item>-->
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">15dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="iconSize">20dp</item>
+        <item name="iconTintMode">add</item>
+        <item name="iconTint">@null</item>
+        <item name="backgroundTint">@color/transparentBlack</item>
+    </style>
+    <!--///// FINISH HOME SCREEN Buttons \\\\\-->
+
+
+
+        <!--///// INIT CehckBox \\\\\\\\\-->
+    <style name="Theme.ClonReddit.CheckFormHomeScreen">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="buttonTint">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <!--TODO stick color-->
+    </style>
+    <!--///// Finish CheckBox \\\\\\\\\\-->
+
+
+    <!--//// INIT REDDITOR HOME SCREEN \\\\-->
+    <style name="Theme.ClonReddit.RedditorText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!--//// FINISH REDDITOR HOME SCREEN \\\\-->
+
+
+    <style name="TitlesHomeScreen">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
 
