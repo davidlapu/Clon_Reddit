@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.ClonReddit"
-    tools:context=".fragments.RegisterFragment">
+    tools:context=".fragments.RegisterFragment"
+    android:background="@color/bg">
 
     <!--INIT TOP BAR-->
     <ImageView

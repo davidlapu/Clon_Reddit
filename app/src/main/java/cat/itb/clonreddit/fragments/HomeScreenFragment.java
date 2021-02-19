@@ -5,26 +5,29 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import cat.itb.clonreddit.R;
 
 public class HomeScreenFragment extends Fragment {
-    VideoView videoBg;
-    TextView policyTextView, loginTextView;
+    private VideoView videoBg;
+    private TextView policyTextView, skipTextView, loginTextView;
+    private Button emailButton;
     private NavController navController;
 
 
@@ -38,9 +41,13 @@ public class HomeScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_screen, container, false);
         videoBg = v.findViewById(R.id.videoBg);
-        loginTextView = v.findViewById(R.id.loginTextView);
+        skipTextView = v.findViewById(R.id.loginTextView);
+        emailButton = v.findViewById(R.id.emailHomeScreenButton);
+        loginTextView = v.findViewById(R.id.loginHomeScreen);
 
-        loginTextView.setOnClickListener(this::toMainScreen);
+        skipTextView.setOnClickListener(this::toMainScreen);
+        emailButton.setOnClickListener(this::toRegisterForm);
+        loginTextView.setOnClickListener(this::toLoginForm);
 
         String path = "android.resource://cat.itb.clonreddit/" + R.raw.loki;
         Uri uri = Uri.parse(path);
@@ -72,6 +79,15 @@ public class HomeScreenFragment extends Fragment {
     private void toMainScreen(View view) {
         navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
     }
+
+    private void toRegisterForm(View view) {
+        navController.navigate(R.id.action_homeScreenFragment_to_registerFragment);
+    }
+
+    private void toLoginForm(View view) {
+        navController.navigate(R.id.action_homeScreenFragment_to_loginFragment);
+    }
+
 
     @Override
     public void onResume() {

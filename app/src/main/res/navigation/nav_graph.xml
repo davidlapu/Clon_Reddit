@@ -52,7 +52,11 @@
             app:destination="@id/mainFragment" />
         <action
             android:id="@+id/action_homeScreenFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/enter_bottom_to_top"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/exit_top_to_bottom" />
         <action
             android:id="@+id/action_homeScreenFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
