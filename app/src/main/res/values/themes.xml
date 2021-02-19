@@ -115,13 +115,22 @@
     </style>
     <!--//// FINISH FORMA CAMPS \\\\-->
 
-
+    <!--//// INIT GRADIENT BUTTON \\\\-->
     <style name="ContinueButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">@null</item>
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/rounded_shape</item>
         <item name="textAllCaps">false</item>
         <item name="android:alpha">0.50</item>
+    </style>
+    <!--//// FINISH GRADIENT BUTTON \\\\-->
+
+
+    <style name="ForgotPassword">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 

@@ -21,4 +21,5 @@
     <string name="or">OR</string>
     <string name="continueButton">Continue</string>
     <string name="signUp">Sign Up</string>
+    <string name="forgotPass">Forgot Password?</string>
 </resources>
