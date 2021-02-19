@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.MainFragment">
 
-<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-<!--        android:layout_width=""-->
-<!--        android:layout_height=""-->
+    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+    <!--        android:layout_width=""-->
+    <!--        android:layout_height=""-->
 
     <com.google.android.material.tabs.TabLayout
         style="@style/TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabGravity="center"
         app:tabMode="scrollable">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home"
-            />
+            android:text="@string/home" />
+
+        <com.google.android.material.tabs.TabItem
+            android:text="@string/popular" />
+
+        <com.google.android.material.tabs.TabItem
+            android:text="@string/awarded" />
 
     </com.google.android.material.tabs.TabLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        style="@style/BottomMenuIcon"
         android:id="@+id/bottomNavigation"
+        style="@style/BottomMenuIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navigation_menu"
-        app:itemRippleColor="@color/white"/>
-</FrameLayout>
+        app:itemRippleColor="@color/white"
+        app:menu="@menu/bottom_navigation_menu" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
