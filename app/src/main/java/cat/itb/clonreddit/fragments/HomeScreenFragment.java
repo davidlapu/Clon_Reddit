@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -22,19 +24,23 @@ import cat.itb.clonreddit.R;
 
 public class HomeScreenFragment extends Fragment {
     VideoView videoBg;
-    TextView policyTextView;
+    TextView policyTextView, loginTextView;
+    private NavController navController;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        navController = NavHostFragment.findNavController(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_screen, container, false);
         videoBg = v.findViewById(R.id.videoBg);
+        loginTextView = v.findViewById(R.id.loginTextView);
+
+        loginTextView.setOnClickListener(this::toMainScreen);
 
         String path = "android.resource://cat.itb.clonreddit/" + R.raw.loki;
         Uri uri = Uri.parse(path);
@@ -61,6 +67,10 @@ public class HomeScreenFragment extends Fragment {
         policyTextView.setText(spannable);
 
         return v;
+    }
+
+    private void toMainScreen(View view) {
+        navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
     }
 
     @Override
