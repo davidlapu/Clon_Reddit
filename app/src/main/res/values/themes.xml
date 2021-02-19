@@ -113,15 +113,44 @@
         <item name="boxStrokeWidth">0dp</item>
         <item name="endIconMode">clear_text</item>
     </style>
-    <!--//// FINISH FORMA CAMPS \\\\-->
+    <!--//// FINISH FORM CAMPS \\\\-->
 
-
+    <!--//// INIT GRADIENT BUTTON \\\\-->
     <style name="ContinueButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">@null</item>
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/rounded_shape</item>
         <item name="textAllCaps">false</item>
         <item name="android:alpha">0.50</item>
+    </style>
+    <!--//// FINISH GRADIENT BUTTON \\\\-->
+
+
+    <style name="ForgotPassword">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <!--//// INIT SKIP TEXT \\\\-->
+    <style name="Theme.ClonReddit.Skip">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+    </style>
+    <!--//// INIT SKIP TEXT \\\\-->
+
+
+    <style name="Theme.ClonReddit.SimpleTextHomeScreen">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">60dp</item>
+        <item name="android:layout_marginRight">60dp</item>
+        <item name="android:layout_marginTop">15dp</item>
     </style>
 
 
