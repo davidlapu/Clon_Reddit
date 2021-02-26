@@ -33,4 +33,6 @@
     <string name="subredditHomeScreen">r/Subredditlicious</string>
     <string name="search">Search</string>
 
+    <string name="awards">%1$d Awards</string>
+
 </resources>

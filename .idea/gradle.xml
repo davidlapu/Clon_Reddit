@@ -10,8 +10,8 @@
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="/dades/dades/CarlosBenjumea/M8/AndroidProjects/Clon_Reddit" />
+            <option value="/dades/dades/CarlosBenjumea/M8/AndroidProjects/Clon_Reddit/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
