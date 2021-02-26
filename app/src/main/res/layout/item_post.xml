@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewSubredditPost"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/reddit_share_circle_32"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewSubredditNamePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="r/something" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewSubtitlePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSubredditNamePost"
+        tools:text="adsfasdf asdfasd " />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewAwardsPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSubredditPost"
+        tools:text="12 Awards" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewTitlePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAwardsPost"
+        tools:text="An interesting title" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost"
+        tools:src="@drawable/post1" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewUpVotePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        tools:text="4,2k"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewCommentCountPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewUpVotePost"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        tools:text="44" />
+
 
 
 
