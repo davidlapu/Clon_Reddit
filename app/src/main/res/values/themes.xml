@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>"
         <!-- Customize your theme here. -->
     </style>
 
@@ -204,16 +204,25 @@
     </style>
 
 
+    <style name="SearchViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/searchview_style</item>
+    </style>
+
+
 
     <style name="TabLayout">
-        <item name="tabTextColor">@color/white</item>
         <item name="tabGravity">center</item>
         <item name="tabIndicatorColor">@color/alien</item>
+        <item name="android:background">@color/itemsBg</item>
+
     </style>
 
     <style name="BottomMenuIcon">
         <item name="labelVisibilityMode">unlabeled</item>
         <item name="colorPrimary">@color/dugong</item>
+        <item name="android:background">@color/itemsBg</item>
     </style>
 
     <style name="Theme.ClonReddit.Launcher">

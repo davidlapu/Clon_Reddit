@@ -12,9 +12,6 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -23,8 +20,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/itemsBg"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/shapeableImageView"
@@ -37,19 +38,21 @@
                     tools:src="@drawable/reddit_share_circle_32" />
 
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/searchview_style"
-                    android:elevation="5dp"
-                    android:gravity="center"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="Search..."
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
-                    app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <SearchView
+                        android:id="@+id/searchView"
+                        style="@style/SearchViewStyle"
+                        android:elevation="5dp"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="50dp"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="Search..."
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
+                        app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:queryBackground="@color/searchview"
+                        />
+
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/shapeableImageView2"
@@ -59,24 +62,25 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/reddit_share_circle_32" />
+                    tools:src="@drawable/reddit_share_circle_32"
+                    android:layout_marginRight="10dp"
+                    />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </com.google.android.material.appbar.MaterialToolbar>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolBarContainer">
+        android:layout_below="@id/toolBarContainer"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -87,12 +91,14 @@
                     android:id="@+id/tabLayout"
                     style="@style/TabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    >
 
                     <com.google.android.material.tabs.TabItem
                         android:text="@string/home"
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content" />
+                        android:layout_width="wrap_content"
+                        />
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_height="wrap_content"
