@@ -50,7 +50,6 @@ public class MainFragment extends Fragment {
         //tabLayout.setupWithViewPager(viewPager);
         setUpRecycler(recyclerView);
 
-
         return v;
     }
 
