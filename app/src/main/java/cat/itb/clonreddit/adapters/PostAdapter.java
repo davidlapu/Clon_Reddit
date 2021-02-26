@@ -1,5 +1,6 @@
 package cat.itb.clonreddit.adapters;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,11 @@ import cat.itb.clonreddit.models.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     private final List<Post> postList;
+    private final Context context;
 
-    public PostAdapter(List<Post> postList) {
+    public PostAdapter(List<Post> postList, Context context) {
         this.postList = postList;
+        this.context = context;
     }
 
     @NonNull
@@ -62,9 +65,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
         public void bind(Post post) {
-            textViewSubreddit.setText(post.getSubReddit().getTitle());
-            textViewSubtitle.setText(String.format("u/%s • %s • i.redd.it", post.getUser(), post.getTime()));
-            textViewAwards.setText(Resources.getSystem().getText(R.string.awards, String.valueOf(post.getNumAwards())));
+            textViewSubreddit.setText(String.format("r/%s", post.getSubReddit().getTitle()));
+            textViewSubtitle.setText(context.getString(R.string.subtitle, post.getUser(), post.getTime()));
+            textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(String.valueOf(post.getUpVotes()));
             textViewComments.setText(String.valueOf(post.getCommentsNum()));

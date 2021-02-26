@@ -33,6 +33,8 @@
     <string name="subredditHomeScreen">r/Subredditlicious</string>
     <string name="search">Search</string>
 
+    <!-- Post adapter -->
     <string name="awards">%1$d Awards</string>
+    <string name="subtitle">Posted by u/%1$s • %2$s • i.redd.it</string>
 
 </resources>
