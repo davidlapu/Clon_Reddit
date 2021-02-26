@@ -204,6 +204,7 @@
     </style>
 
 
+
     <style name="TabLayout">
         <item name="tabTextColor">@color/white</item>
         <item name="tabGravity">center</item>
