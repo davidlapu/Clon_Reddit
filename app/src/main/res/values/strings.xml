@@ -31,5 +31,6 @@
     <string name="redditor">Already a redditor?</string>
     <string name="diveInto">Dive into</string>
     <string name="subredditHomeScreen">r/Subredditlicious</string>
-    
+    <string name="search">Search</string>
+
 </resources>
