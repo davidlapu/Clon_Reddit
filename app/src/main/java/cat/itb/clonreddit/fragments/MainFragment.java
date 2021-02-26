@@ -9,6 +9,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -38,12 +40,15 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         toolbar = v.findViewById(R.id.toolbar);
+        RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
         // viewPager = v.findViewById(R.id.viewPager);
         // tabLayout = v.findViewById(R.id.tabLayout);
 
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
 
         //tabLayout.setupWithViewPager(viewPager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        //recyclerView.setAdapter(new );
 
         return v;
     }
