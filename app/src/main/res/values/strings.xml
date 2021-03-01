@@ -36,5 +36,11 @@
     <!-- Post adapter -->
     <string name="awards">%1$d Awards</string>
     <string name="subtitle">Posted by u/%1$s • %2$s • i.redd.it</string>
+    <string name="my_profile">My profile</string>
+    <string name="reddit_coins">Reddit Coins</string>
+    <string name="reddit_premium">Reddit Premium</string>
+    <string name="saved">Saved</string>
+    <string name="history">History</string>
+    <string name="create_a_community">Create a community</string>
 
 </resources>

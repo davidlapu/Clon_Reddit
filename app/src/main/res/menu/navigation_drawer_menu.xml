@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group1">
+        <item
+            android:id="@+id/drawerMyProfile"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="@string/my_profile"/>
+        <item
+            android:id="@+id/drawerCoins"
+            android:icon="@drawable/ic_baseline_monetization_on_24"
+            android:title="@string/reddit_coins"/>
+        <item
+            android:id="@+id/drawerPremium"
+            android:icon="@drawable/ic_baseline_add_moderator_24"
+            android:title="@string/reddit_premium" />
+        <item
+            android:id="@+id/drawerSaved"
+            android:icon="@drawable/ic_baseline_bookmark_added_24"
+            android:title="@string/saved" />
+        <item
+            android:id="@+id/drawerHistory"
+            android:icon="@drawable/ic_baseline_access_time_24"
+            android:title="@string/history" />
+        <item
+            android:id="@+id/drawerCommunity"
+            android:icon="@drawable/ic_baseline_add_circle_24"
+            android:title="@string/create_a_community" />
+    </group>
+
+</menu>

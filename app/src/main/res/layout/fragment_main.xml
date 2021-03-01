@@ -115,6 +115,19 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+<!--        <LinearLayout
+            android:id="@+id/postMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="test"/>
+
+        </LinearLayout>-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMain"
             android:layout_width="match_parent"
