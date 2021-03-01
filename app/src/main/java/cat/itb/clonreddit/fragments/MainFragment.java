@@ -2,8 +2,10 @@ package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -11,8 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +47,8 @@ public class MainFragment extends Fragment {
 
         toolbar = v.findViewById(R.id.toolbar);
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
+        DrawerLayout drawerLayout = v.findViewById(R.id.drawerLayout);
+        NavigationView navigationView= v.findViewById(R.id.navigationView);
         // viewPager = v.findViewById(R.id.viewPager);
         // tabLayout = v.findViewById(R.id.tabLayout);
 
@@ -49,6 +56,22 @@ public class MainFragment extends Fragment {
 
         //tabLayout.setupWithViewPager(viewPager);
         setUpRecycler(recyclerView);
+
+        toolbar.setNavigationOnClickListener(v1 -> {
+            drawerLayout.open();
+        });
+
+/*        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return false;
+            }
+        }) { menuItem ->
+                // Handle menu item selected
+                menuItem.isChecked = true
+            drawerLayout.close()
+            true
+        }*/
 
         return v;
     }
