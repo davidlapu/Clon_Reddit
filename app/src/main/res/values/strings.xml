@@ -43,4 +43,8 @@
     <string name="history">History</string>
     <string name="create_a_community">Create a community</string>
 
+
+    <!-- NAVIGATION DRAWER -->
+    <string name="createAvatar">Creare Avatar</string>
+
 </resources>
