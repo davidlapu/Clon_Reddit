@@ -35,4 +35,8 @@
 
     <string name="awards">%1$d Awards</string>
 
+
+    <!-- NAVIGATION DRAWER -->
+    <string name="createAvatar">Creare Avatar</string>
+
 </resources>
