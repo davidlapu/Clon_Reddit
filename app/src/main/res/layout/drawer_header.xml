@@ -4,17 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/bg"
     android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_width="77dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/reddir_mascot"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,28 +22,24 @@
         android:id="@+id/materialTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="u/Dapal897"
-        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/continueBTN"
         style="@style/ContinueButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="20dp"
         android:alpha="100"
+        android:padding="-5dp"
         android:text="@string/createAvatar"
-        android:textSize="26sp"
         android:textStyle="bold"
         app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
         app:iconGravity="end"
@@ -58,7 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/continueBTN">
@@ -73,7 +67,7 @@
                 android:id="@+id/karmaImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/ic_baseline_filter_vintage_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="43"
                 android:textColor="@color/white"
-                android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/karmaImageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -100,7 +93,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="Karma"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/karmaImageView"
                 app:layout_constraintTop_toBottomOf="@+id/karmaNum" />
@@ -132,8 +125,8 @@
                 android:id="@+id/ageImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:src="@drawable/ic_baseline_storage_48"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_baseline_storage_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -143,10 +136,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="3y 2m"
                 android:textColor="@color/white"
-                android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/ageImageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -159,7 +151,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="Reddit age"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ageImageView"
                 app:layout_constraintTop_toBottomOf="@+id/ageNum" />
