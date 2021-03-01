@@ -25,15 +25,15 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
-                    app:navigationIcon="@drawable/reddit_share_circle_32"
-                    app:menu="@menu/drawer_menu"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:background="@color/itemsBg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:menu="@menu/drawer_menu"
+                    app:navigationIcon="@drawable/reddit_share_circle_32">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -166,6 +166,7 @@
                         </androidx.core.widget.NestedScrollView>-->
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigation"
                 style="@style/BottomMenuIcon"
@@ -180,10 +181,10 @@
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
-            app:headerLayout="@layout/drawer_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"
+            app:headerLayout="@layout/drawer_header" />
 
 
     </androidx.drawerlayout.widget.DrawerLayout>
