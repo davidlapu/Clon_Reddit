@@ -1,6 +1,6 @@
 package cat.itb.clonreddit.fragments;
 
-import android.graphics.Color;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
@@ -21,8 +22,8 @@ import com.google.android.material.button.MaterialButton;
 import cat.itb.clonreddit.R;
 
 public class RegisterFragment extends Fragment {
-    TextView policyTextView;
-    Button continueBTN;
+    private TextView policyTextView;
+    private Button continueBTN;
     private NavController navController;
 
     @Override
@@ -39,6 +40,7 @@ public class RegisterFragment extends Fragment {
         TextView textViewLogin = v.findViewById(R.id.loginTextView);
         MaterialButton buttonGoogle = v.findViewById(R.id.googleRegisterBTN);
         continueBTN = v.findViewById(R.id.continueBTN);
+        ImageView closeForm = v.findViewById(R.id.closeBTN);
 
 //        continueBTN.setBackground();
 
@@ -56,6 +58,7 @@ public class RegisterFragment extends Fragment {
 
         policyTextView.setText(spannable);
 
+        closeForm.setOnClickListener(this::toHomeScreen);
         textViewLogin.setOnClickListener(this::toLogin);
         buttonGoogle.setOnClickListener(this::toMainScreen);
         return v;
@@ -68,4 +71,16 @@ public class RegisterFragment extends Fragment {
     private void toLogin(View view) {
         navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
+
+    private void toHomeScreen(View view){
+//        navController.navigate(R.id.action_registerFragment_to_homeScreenFragment);
+
+        navController.popBackStack();
+
+
+    }
+
+
+
+
 }
