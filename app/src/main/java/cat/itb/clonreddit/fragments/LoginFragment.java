@@ -12,7 +12,10 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 
 import cat.itb.clonreddit.R;
 
@@ -30,6 +33,11 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
         policyTextView = v.findViewById(R.id.policyUserTextView);
+        ImageView closeForm = v.findViewById(R.id.closeBTN);
+        TextView singUpTextView = v.findViewById(R.id.singUpTextView);
+        MaterialButton buttonGoogle = v.findViewById(R.id.googleLoginBTN);
+        MaterialButton continueBTN = v.findViewById(R.id.continueBTN);
+        MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
@@ -45,6 +53,25 @@ public class LoginFragment extends Fragment {
 
         policyTextView.setText(spannable);
 
+        closeForm.setOnClickListener(this::toBackScreen);
+        singUpTextView.setOnClickListener(this::toRegisterScreen);
+        buttonGoogle.setOnClickListener(this::toMainScreen);
+        continueBTN.setOnClickListener(this::toMainScreen);
+        appleButton.setOnClickListener(this::toMainScreen);
+        //loginTextView
+
         return v;
+    }
+
+    private void toMainScreen(View view) {
+        navController.navigate(R.id.action_loginFragment_to_mainFragment);
+    }
+
+    private void toBackScreen(View view) {
+        navController.popBackStack();
+    }
+
+    private void toRegisterScreen(View view) {
+        navController.navigate(R.id.action_loginFragment_to_registerFragment);
     }
 }

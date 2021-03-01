@@ -13,7 +13,6 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +22,7 @@ import cat.itb.clonreddit.R;
 
 public class RegisterFragment extends Fragment {
     private TextView policyTextView;
-    private Button continueBTN;
+    private MaterialButton continueBTN;
     private NavController navController;
 
     @Override
@@ -37,8 +36,9 @@ public class RegisterFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
 
         policyTextView = v.findViewById(R.id.policyUserTextView);
-        TextView textViewLogin = v.findViewById(R.id.loginTextView);
-        MaterialButton buttonGoogle = v.findViewById(R.id.googleRegisterBTN);
+        TextView textViewLogin = v.findViewById(R.id.singUpTextView);
+        MaterialButton buttonGoogle = v.findViewById(R.id.googleLoginBTN);
+        MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
         continueBTN = v.findViewById(R.id.continueBTN);
         ImageView closeForm = v.findViewById(R.id.closeBTN);
 
@@ -58,9 +58,11 @@ public class RegisterFragment extends Fragment {
 
         policyTextView.setText(spannable);
 
-        closeForm.setOnClickListener(this::toHomeScreen);
+        closeForm.setOnClickListener(this::toBackScreen);
         textViewLogin.setOnClickListener(this::toLogin);
         buttonGoogle.setOnClickListener(this::toMainScreen);
+        continueBTN.setOnClickListener(this::toMainScreen);
+        appleButton.setOnClickListener(this::toMainScreen);
         return v;
     }
 
@@ -72,12 +74,8 @@ public class RegisterFragment extends Fragment {
         navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
 
-    private void toHomeScreen(View view){
-//        navController.navigate(R.id.action_registerFragment_to_homeScreenFragment);
-
+    private void toBackScreen(View view){
         navController.popBackStack();
-
-
     }
 
 

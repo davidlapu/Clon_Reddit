@@ -23,7 +23,7 @@
 
 
         <TextView
-            android:id="@+id/loginTextView"
+            android:id="@+id/singUpTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/skip"

@@ -5,10 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -22,12 +19,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.material.button.MaterialButton;
+
 import cat.itb.clonreddit.R;
 
 public class HomeScreenFragment extends Fragment {
     private VideoView videoBg;
     private TextView policyTextView, skipTextView, loginTextView;
     private Button emailButton;
+    private MaterialButton gButton, appleButton;
     private NavController navController;
 
 
@@ -41,12 +41,16 @@ public class HomeScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_screen, container, false);
         videoBg = v.findViewById(R.id.videoBg);
-        skipTextView = v.findViewById(R.id.loginTextView);
+        skipTextView = v.findViewById(R.id.singUpTextView);
         emailButton = v.findViewById(R.id.emailHomeScreenButton);
+        gButton = v.findViewById(R.id.googleHomeScreenButton);
+        appleButton = v.findViewById(R.id.appleHomeScreenButton);
         loginTextView = v.findViewById(R.id.loginHomeScreen);
 
         skipTextView.setOnClickListener(this::toMainScreen);
         emailButton.setOnClickListener(this::toRegisterForm);
+        gButton.setOnClickListener(this::toMainScreen);
+        appleButton.setOnClickListener(this::toMainScreen);
         loginTextView.setOnClickListener(this::toLoginForm);
 
         String path = "android.resource://cat.itb.clonreddit/" + R.raw.loki;

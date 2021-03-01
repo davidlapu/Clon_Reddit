@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/loginTextView"
+        android:id="@+id/singUpTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/signUp"
@@ -79,7 +79,7 @@
 
         <!--INIT BLUE BUTTONS-->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/googleRegisterBTN"
+            android:id="@+id/googleLoginBTN"
             style="@style/BlueButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
             android:layout_marginTop="20dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/appleRegisterBTN"
+            android:id="@+id/appleLoginBTN"
             style="@style/BlueButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
