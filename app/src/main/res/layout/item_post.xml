@@ -64,25 +64,49 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
+        android:backgroundTint="null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost"
         tools:src="@drawable/post2" />
 
+    <ImageButton
+        android:id="@+id/upVoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_arrow_upward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewUpVotePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/upVoteButton"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
-        tools:text="4,2k"/>
+        tools:text="4,2k" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/downVoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_arrow_downward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textViewUpVotePost"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewCommentCountPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="300dp"
         app:layout_constraintStart_toEndOf="@+id/textViewUpVotePost"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         tools:text="44" />
