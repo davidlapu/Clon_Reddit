@@ -64,7 +64,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost"
@@ -72,13 +71,12 @@
 
     <ImageButton
         android:id="@+id/upVoteButton"
-        android:layout_width="wrap_content"
+        style="@style/postButton"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_baseline_arrow_upward_24"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewUpVotePost"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
 
@@ -86,27 +84,37 @@
         android:id="@+id/textViewUpVotePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/upVoteButton"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         tools:text="4,2k" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageButton
         android:id="@+id/downVoteButton"
+        style="@style/postButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_baseline_arrow_downward_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textViewUpVotePost"
+        app:layout_constraintStart_toEndOf="@+id/textViewUpVotePost"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/postMaterialButton"
+        android:id="@+id/commentButton"
+        app:icon="@drawable/ic_baseline_chat_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downVoteButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        tools:text="23"
+        android:textColor="@color/white"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewCommentCountPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
+        android:layout_marginStart="200dp"
         app:layout_constraintStart_toEndOf="@+id/textViewUpVotePost"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         tools:text="44" />

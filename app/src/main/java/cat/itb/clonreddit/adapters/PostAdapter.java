@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -47,8 +48,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     class PostViewHolder extends RecyclerView.ViewHolder {
         private final MaterialTextView textViewSubreddit, textViewSubtitle, textViewAwards, textViewTitle,
-            textViewUpVotes, textViewComments;
-
+            textViewUpVotes;
+        private final MaterialButton commentButton;
         private final ShapeableImageView imageViewPost, imageViewSubreddit;
 
         public PostViewHolder(@NonNull View itemView) {
@@ -59,9 +60,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             textViewAwards = itemView.findViewById(R.id.textViewAwardsPost);
             textViewTitle = itemView.findViewById(R.id.textViewTitlePost);
             textViewUpVotes = itemView.findViewById(R.id.textViewUpVotePost);
-            textViewComments = itemView.findViewById(R.id.textViewCommentCountPost);
             imageViewPost = itemView.findViewById(R.id.imageViewPost);
             imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
+            commentButton = itemView.findViewById(R.id.commentButton);
         }
 
         public void bind(Post post) {
@@ -70,7 +71,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(String.valueOf(post.getUpVotes()));
-            textViewComments.setText(String.valueOf(post.getCommentsNum()));
+            commentButton.setText(String.valueOf(post.getCommentsNum()));
             imageViewPost.setImageResource(post.getImageId());
         }
 
