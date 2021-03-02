@@ -45,7 +45,7 @@
 
 
     <!-- NAVIGATION DRAWER -->
-    <string name="createAvatar">Creare Avatar</string>
+    <string name="createAvatar">Create Avatar</string>
     <string name="userDrawer">u/Dapal897</string>
     <string name="karmaNumDrawer">43</string>
     <string name="karmaTextDrawer">Karma</string>

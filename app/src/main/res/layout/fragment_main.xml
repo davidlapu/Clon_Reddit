@@ -6,7 +6,9 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment">
+    tools:context=".fragments.MainFragment"
+    tools:openDrawer="start"
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -34,8 +36,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:menu="@menu/drawer_menu"
-                    app:navigationIcon="@drawable/reddit_share_circle_32">
+                    app:navigationIcon="@drawable/reddit_share_circle_32"
+                    >
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -45,7 +47,7 @@
                         <SearchView
                             android:id="@+id/searchView"
                             style="@style/SearchViewStyle"
-                            android:layout_marginHorizontal="50dp"
+                            android:layout_marginEnd="50dp"
                             android:elevation="5dp"
                             android:gravity="center"
                             android:iconifiedByDefault="false"
@@ -159,7 +161,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/navigation_drawer_menu" />
+        app:menu="@menu/navigation_drawer_menu"
+        android:background="@color/itemDrawerBG"
+        />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
