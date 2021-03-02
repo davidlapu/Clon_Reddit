@@ -135,7 +135,7 @@
                     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+            <!--Todo bug, sube cuando habres el search-->
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigation"
                 style="@style/BottomMenuIcon"
