@@ -21,4 +21,5 @@
     <color name="searchview">#2a2a2a</color>
     <color name="itemsBg">#1f1f1f</color>
     <color name="launchBG">#383c3f</color>
+    <color name="itemDrawerBG">#111</color>
 </resources>

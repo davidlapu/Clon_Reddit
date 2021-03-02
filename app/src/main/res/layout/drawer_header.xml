@@ -4,117 +4,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg">
+    android:layout_height="wrap_content"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:src="@drawable/reddir_mascot"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/redditMascotDrawer"
+        style="@style/MascotDrawer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="u/Dapal897"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:id="@+id/nameUserDrawer"
+        style="@style/UserNameDrawer"
+        android:text="@string/userDrawer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/redditMascotDrawer" />
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/continueBTN"
-        style="@style/ContinueButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:alpha="100"
+        android:id="@+id/createAvatarButtonDrawer"
+        style="@style/CreateAvatarButtonDrawer"
         android:text="@string/createAvatar"
-        android:textSize="26sp"
-        android:textStyle="bold"
         app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
         app:iconGravity="end"
+        app:iconPadding="-20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/nameUserDrawer" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayoutDrawe"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/continueBTN">
+        app:layout_constraintTop_toBottomOf="@+id/createAvatarButtonDrawer">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/karmaImageView"
+                android:id="@+id/karmaImageViewDrawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_baseline_filter_vintage_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/karmaNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="43"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/karmaImageView"
+                android:id="@+id/karmaNumDrawer"
+                style="@style/NumDataDrawer"
+                android:text="@string/karmaNumDrawer"
+                app:layout_constraintStart_toEndOf="@+id/karmaImageViewDrawer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/karmatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="Karma"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:id="@+id/karmatTitleDrawer"
+                style="@style/TextDataDrawer"
+                android:text="@string/karmaTextDrawer"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/karmaImageView"
-                app:layout_constraintTop_toBottomOf="@+id/karmaNum" />
+                app:layout_constraintStart_toEndOf="@+id/karmaImageViewDrawer"
+                app:layout_constraintTop_toBottomOf="@+id/karmaNumDrawer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:id="@+id/lineVertical"
-            style="@style/LineStyle"
-            android:layout_width="0.5dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
+            android:id="@+id/lineVerticalDrawer"
+            style="@style/VerticalLineSeparatorDrawer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/materialTextView"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,60 +89,44 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@id/lineVertical">
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/lineVerticalDrawer">
 
 
             <ImageView
-                android:id="@+id/ageImageView"
+                android:id="@+id/ageImageViewDrawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:src="@drawable/ic_baseline_storage_48"
+                android:src="@drawable/ic_baseline_storage_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/ageNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="3y 2m"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/ageImageView"
+                android:id="@+id/ageNumDrawer"
+                style="@style/NumDataDrawer"
+                android:text="@string/redditAgeDrawer"
+
+                app:layout_constraintStart_toEndOf="@+id/ageImageViewDrawer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/ageTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="Reddit age"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:id="@+id/ageTitleDrawer"
+                style="@style/TextDataDrawer"
+                android:text="@string/reddit_ageDrawer"
+
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ageImageView"
-                app:layout_constraintTop_toBottomOf="@+id/ageNum" />
+                app:layout_constraintStart_toEndOf="@+id/ageImageViewDrawer"
+                app:layout_constraintTop_toBottomOf="@+id/ageNumDrawer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
     <View
-        android:id="@+id/lineHorizontal"
-        style="@style/LineStyle"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:id="@+id/lineHorizontalDrawer"
+        style="@style/HorizontalLineSeparatorDrawer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutDrawe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
