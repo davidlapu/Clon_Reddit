@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ import cat.itb.clonreddit.models.SubReddit;
 public class MainFragment extends Fragment {
     private NavController navController;
     private Toolbar toolbar;
+    private StorageReference mStorageRef;
     //private ViewPager viewPager;
     //private TabLayout tabLayout;
 
@@ -37,6 +40,7 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
     }
 
     @Override
