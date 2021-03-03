@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "251596693062",
+    "firebase_url": "https://reddit-cd836-default-rtdb.firebaseio.com",
+    "project_id": "reddit-cd836",
+    "storage_bucket": "reddit-cd836.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251596693062:android:d4195c5ea0d4679ebe7447",
+        "android_client_info": {
+          "package_name": "cat.itb.clonreddit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251596693062-tq71gp8ag0tpmcjdb3iis5e9knnuvo19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcmrJ8BFBEx7jghJEnAL2X9aARh_NLns8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251596693062-tq71gp8ag0tpmcjdb3iis5e9knnuvo19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

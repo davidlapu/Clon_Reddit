@@ -17,7 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,8 @@ import cat.itb.clonreddit.models.SubReddit;
 public class MainFragment extends Fragment {
     private NavController navController;
     private Toolbar toolbar;
+    private StorageReference mStorageRef;
+    private BottomNavigationView bottomNavigationView;
     //private ViewPager viewPager;
     //private TabLayout tabLayout;
 
@@ -37,28 +42,40 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         toolbar = v.findViewById(R.id.toolbar);
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
         DrawerLayout drawerLayout = v.findViewById(R.id.drawerLayout);
         NavigationView navigationView= v.findViewById(R.id.navigationView);
-        // viewPager = v.findViewById(R.id.viewPager);
-        // tabLayout = v.findViewById(R.id.tabLayout);
+        bottomNavigationView = v.findViewById(R.id.bottomNavigation);
+
 
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
 
-        //tabLayout.setupWithViewPager(viewPager);
         setUpRecycler(recyclerView);
 
         toolbar.setNavigationOnClickListener(v1 -> {
             drawerLayout.open();
+        });
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.post:
+                        BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                        bottomSheetFragment.show(getParentFragmentManager(), "asddgf");
+                        break;
+                }
+                return false;
+            }
         });
 
 /*        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
