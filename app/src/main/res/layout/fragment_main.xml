@@ -6,6 +6,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
     tools:context=".fragments.MainFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -163,21 +164,33 @@
         app:itemTextColor="@color/grey"
         android:background="@color/itemDrawerBG">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="match_parent"
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/drawerSettingsButton"
+                style="@style/postMaterialButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Log out" />
+                android:text="@string/settings"
+                app:icon="@drawable/ic_baseline_settings_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/drawerNightModeButton"
+                style="@style/postButton"
+                android:src="@drawable/ic_baseline_nightlight_round_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.navigation.NavigationView>
 

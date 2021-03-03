@@ -52,5 +52,6 @@
     <string name="redditAgeDrawer">3y 2m</string>
     <string name="reddit_ageDrawer">Reddit age</string>
     <string name="share">Share</string>
+    <string name="settings">Settings</string>
 
 </resources>
