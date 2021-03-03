@@ -35,8 +35,6 @@ public class MainFragment extends Fragment {
     private Toolbar toolbar;
     private StorageReference mStorageRef;
     private BottomNavigationView bottomNavigationView;
-    //private ViewPager viewPager;
-    //private TabLayout tabLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,10 +94,8 @@ public class MainFragment extends Fragment {
     private void setUpRecycler(RecyclerView recyclerView) {
         List<Post> postList = new ArrayList<>();
 
-        SubReddit catsAreLiquid = new SubReddit();
-        catsAreLiquid.setTitle("catsareliquid");
-        SubReddit programmerHumor = new SubReddit();
-        programmerHumor.setTitle("ProgrammerHumor");
+        SubReddit catsAreLiquid = new SubReddit("catsareliquid", R.drawable.communityiconcatsareliquid);
+        SubReddit programmerHumor = new SubReddit("ProgrammerHumor", R.drawable.communityiconprogrammerhumor);
 
         postList.add(new Post(programmerHumor, "jevoy6737", "8h", "It hurts", 20, R.drawable.post2, 113, 435));
         postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));

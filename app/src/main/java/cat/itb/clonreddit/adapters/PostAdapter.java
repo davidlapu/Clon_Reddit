@@ -73,6 +73,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             textViewUpVotes.setText(String.valueOf(post.getUpVotes()));
             commentButton.setText(String.valueOf(post.getCommentsNum()));
             imageViewPost.setImageResource(post.getImageId());
+            imageViewSubreddit.setImageResource(post.getSubReddit().getImageId());
         }
 
 

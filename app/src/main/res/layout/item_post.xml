@@ -8,6 +8,7 @@
     android:background="@color/itemsBg">
 
     <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/circleImageView"
         android:id="@+id/imageViewSubredditPost"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -42,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewSubredditPost"
         tools:text="12 Awards" />
