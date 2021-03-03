@@ -14,7 +14,9 @@
         app:startDestination="@id/action_loginFragment_to_registerFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/enter_right_to_screen"
+            app:exitAnim="@anim/exit_screen_to_left" />
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -32,7 +34,9 @@
             app:destination="@id/mainFragment" />
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/enter_right_to_screen"
+            app:exitAnim="@anim/exit_screen_to_left" />
         <action
             android:id="@+id/action_registerFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />

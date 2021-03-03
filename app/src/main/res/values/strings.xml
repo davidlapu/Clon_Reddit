@@ -53,5 +53,11 @@
     <string name="reddit_ageDrawer">Reddit age</string>
     <string name="share">Share</string>
     <string name="settings">Settings</string>
+    <string name="post_to_reddit">Post to Reddit</string>
+    <string name="link">LINK</string>
+    <string name="image">IMAGE</string>
+    <string name="video">VIDEO</string>
+    <string name="text">TEXT</string>
+    <string name="poll">POLL</string>
 
 </resources>
