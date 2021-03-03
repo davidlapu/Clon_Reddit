@@ -25,7 +25,7 @@
                 android:fitsSystemWindows="true"
                 app:layout_constraintTop_toTopOf="parent">
 
-
+                <!--TODO Icons-->
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
