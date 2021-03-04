@@ -1,8 +1,10 @@
 package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,11 +13,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -63,17 +60,14 @@ public class MainFragment extends Fragment {
             drawerLayout.open();
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.post:
-                        BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-                        bottomSheetFragment.show(getParentFragmentManager(), "asddgf");
-                        break;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.post:
+                    BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                    bottomSheetFragment.show(getParentFragmentManager(), "asddgf");
+                    break;
             }
+            return false;
         });
 
 /*        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -96,9 +90,11 @@ public class MainFragment extends Fragment {
 
         SubReddit catsAreLiquid = new SubReddit("catsareliquid", R.drawable.communityiconcatsareliquid);
         SubReddit programmerHumor = new SubReddit("ProgrammerHumor", R.drawable.communityiconprogrammerhumor);
+        SubReddit hentaimemes = new SubReddit("Hentaimemes", R.drawable.communityicon_hentaimemes);
 
         postList.add(new Post(programmerHumor, "jevoy6737", "8h", "It hurts", 20, R.drawable.post2, 113, 435));
         postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));
+        postList.add(new Post(hentaimemes, "namx2u", "4h", "tbh I hate that too..", 4, R.drawable.post4, 4800, 59));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(new PostAdapter(postList, requireContext()));
