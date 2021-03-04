@@ -22,4 +22,5 @@
     <color name="itemsBg">#1f1f1f</color>
     <color name="launchBG">#383c3f</color>
     <color name="itemDrawerBG">#111</color>
+    <color name="yellow">#FFD200</color>
 </resources>
