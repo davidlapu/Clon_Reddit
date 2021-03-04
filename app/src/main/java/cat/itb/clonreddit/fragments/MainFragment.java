@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,11 +28,14 @@ import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
 
+
 public class MainFragment extends Fragment {
     private NavController navController;
     private Toolbar toolbar;
     private StorageReference mStorageRef;
     private BottomNavigationView bottomNavigationView;
+    private SearchView searchView;
+    private DrawerLayout drawerLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +51,10 @@ public class MainFragment extends Fragment {
 
         toolbar = v.findViewById(R.id.toolbar);
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
-        DrawerLayout drawerLayout = v.findViewById(R.id.drawerLayout);
+        drawerLayout = v.findViewById(R.id.drawerLayout);
         NavigationView navigationView= v.findViewById(R.id.navigationView);
         bottomNavigationView = v.findViewById(R.id.bottomNavigation);
+        searchView = v.findViewById(R.id.searchView);
 
 
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
@@ -63,6 +68,7 @@ public class MainFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.post:
+                    searchView.clearFocus();
                     BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
                     bottomSheetFragment.show(getParentFragmentManager(), "asddgf");
                     break;
@@ -81,9 +87,9 @@ public class MainFragment extends Fragment {
             drawerLayout.close()
             true
         }*/
-
         return v;
     }
+
 
     private void setUpRecycler(RecyclerView recyclerView) {
         List<Post> postList = new ArrayList<>();
