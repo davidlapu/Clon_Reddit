@@ -4,19 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BottomSheetFragment"
-    android:orientation="vertical"
     android:background="@drawable/blue_bg"
-   >
+    android:orientation="vertical"
+    tools:context=".fragments.BottomSheetFragment">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        style="@style/TitleBottomSheet"
         android:text="@string/post_to_reddit"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +20,7 @@
 
     <ImageView
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/cicrcle_buttons"
-        android:gravity="center"
-        android:padding="10dp"
+        style="@style/ButtonsBottomSheet"
         android:src="@drawable/ic_baseline_link_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
@@ -39,15 +28,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/cicrcle_buttons"
-        android:padding="10dp"
+        style="@style/ButtonsBottomSheet"
         android:src="@drawable/ic_baseline_image_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
@@ -55,16 +38,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/cicrcle_buttons"
-        android:padding="10dp"
+        style="@style/ButtonsBottomSheet"
         android:src="@drawable/ic_baseline_smart_display_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
@@ -74,12 +50,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/cicrcle_buttons"
-        android:padding="10dp"
+        style="@style/ButtonsBottomSheet"
         android:src="@drawable/ic_baseline_receipt_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
@@ -89,12 +60,7 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/cicrcle_buttons"
-        android:padding="10dp"
+        style="@style/ButtonsBottomSheet"
         android:src="@drawable/ic_baseline_format_list_numbered_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,15 +68,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
     <TextView
         android:id="@+id/linkTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleButtonBottomSheet"
         android:text="@string/link"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -118,11 +80,9 @@
 
     <TextView
         android:id="@+id/imageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleButtonBottomSheet"
         android:text="@string/image"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -130,22 +90,19 @@
 
     <TextView
         android:id="@+id/videoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleButtonBottomSheet"
+
         android:text="@string/video"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/textTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleButtonBottomSheet"
         android:text="@string/text"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -153,11 +110,9 @@
 
     <TextView
         android:id="@+id/pollTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleButtonBottomSheet"
         android:text="@string/poll"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -171,8 +126,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/white"
-        />
+        app:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
