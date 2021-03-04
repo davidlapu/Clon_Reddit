@@ -96,9 +96,11 @@ public class MainFragment extends Fragment {
 
         SubReddit catsAreLiquid = new SubReddit("catsareliquid", R.drawable.communityiconcatsareliquid);
         SubReddit programmerHumor = new SubReddit("ProgrammerHumor", R.drawable.communityiconprogrammerhumor);
+        SubReddit hentaimemes = new SubReddit("Hentaimemes", R.drawable.communityicon_hentaimemes);
 
         postList.add(new Post(programmerHumor, "jevoy6737", "8h", "It hurts", 20, R.drawable.post2, 113, 435));
         postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));
+        postList.add(new Post(hentaimemes, "namx2u", "4h", "tbh I hate that too..", 4, R.drawable.post4, 4800, 59));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(new PostAdapter(postList, requireContext()));
