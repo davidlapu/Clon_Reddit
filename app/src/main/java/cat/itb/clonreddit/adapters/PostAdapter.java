@@ -17,6 +17,7 @@ import java.util.List;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.utils.Formater;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     private final List<Post> postList;
@@ -70,7 +71,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             textViewSubtitle.setText(context.getString(R.string.subtitle, post.getUser(), post.getTime()));
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
-            textViewUpVotes.setText(String.valueOf(post.getUpVotes()));
+            textViewUpVotes.setText(Formater.format(post.getUpVotes()));
             commentButton.setText(String.valueOf(post.getCommentsNum()));
             imageViewPost.setImageResource(post.getImageId());
             imageViewSubreddit.setImageResource(post.getSubReddit().getImageId());
