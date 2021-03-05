@@ -231,6 +231,11 @@
         <item name="android:background">@color/itemsBg</item>
     </style>
 
+    <style name="TabText" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <!-- /////////////// NAVIGATION DRAWER STYLES INIT \\\\\\\\\\\\\ -->
     <style name="MascotDrawer">
         <item name="android:layout_width">77dp</item>
