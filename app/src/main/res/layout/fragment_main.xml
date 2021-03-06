@@ -6,188 +6,41 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment"
     android:background="@color/bg"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    tools:context=".fragments.MainFragment">
     <!--tools:openDrawer="start"-->
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/toolBarContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:background="@color/itemsBg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:navigationIcon="@drawable/ic_baseline_person_24">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-                        <SearchView
-                            android:id="@+id/searchView"
-                            style="@style/SearchViewStyle"
-                            android:layout_marginEnd="50dp"
-                            android:elevation="5dp"
-                            android:gravity="center"
-                            android:iconifiedByDefault="false"
-                            android:queryBackground="@color/searchview"
-                            android:queryHint="Search..."
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:focusable="false"
-                            android:clickable="false"
-                            android:focusableInTouchMode="false"
-                            android:focusedByDefault="false"
-                            />
-
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/shapeableImageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_baseline_monetization_on_24"
-                            android:tint="@color/yellow"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </com.google.android.material.appbar.MaterialToolbar>
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:id="@+id/coordinatorLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_above="@id/bottomNavigation"
-                android:layout_below="@id/toolBarContainer"
-                app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-                app:layout_constraintTop_toBottomOf="@+id/toolBarContainer">
-
-                <com.google.android.material.appbar.AppBarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.appbar.CollapsingToolbarLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_scrollFlags="scroll|enterAlways">
-
-                        <com.google.android.material.tabs.TabLayout
-                            android:id="@+id/tabLayout"
-                            style="@style/TabLayout"
-                            app:tabTextColor="@color/white"
-                            app:tabTextAppearance="@style/TabText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/home" />
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/popular" />
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/awarded" />
-
-                        </com.google.android.material.tabs.TabLayout>
-                    </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-                </com.google.android.material.appbar.AppBarLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewMain"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_anchorGravity="bottom"
-                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigation"
-                style="@style/BottomMenuIcon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                app:itemRippleColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:menu="@menu/bottom_navigation_menu" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/navigation_drawer_menu"
-        app:itemIconTint="@color/grey"
-        app:itemTextColor="@color/grey"
-        android:background="@color/itemDrawerBG">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/toolBarContainer"
+            layout="@layout/top_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:padding="8dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <include
+            layout="@layout/main_fragment_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/bottomNavigationInclude"
+            android:layout_below="@id/toolBarContainer"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationInclude"
+            app:layout_constraintTop_toBottomOf="@+id/toolBarContainer" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/drawerSettingsButton"
-                style="@style/postMaterialButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settings"
-                app:icon="@drawable/ic_baseline_settings_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/bottomNavigationInclude"
+            layout="@layout/bottom_navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/drawerNightModeButton"
-                style="@style/postButton"
-                android:src="@drawable/ic_baseline_nightlight_round_24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.navigation.NavigationView>
-
-
+    <include layout="@layout/navigation_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>
