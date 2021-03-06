@@ -30,7 +30,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_post, parent, false);
 
         return new PostViewHolder(view);
@@ -47,8 +47,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        private final MaterialTextView textViewSubreddit, textViewSubtitle, textViewAwards, textViewTitle,
-            textViewUpVotes;
+        private final MaterialTextView textViewSubreddit, textViewSubtitle, textViewAwards,
+                textViewTitle, textViewUpVotes;
         private final MaterialButton commentButton;
         private final ShapeableImageView imageViewPost, imageViewSubreddit;
 

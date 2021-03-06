@@ -2,11 +2,6 @@ package cat.itb.clonreddit.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -16,13 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.google.android.material.button.MaterialButton;
 
 import cat.itb.clonreddit.R;
 
 public class RegisterFragment extends Fragment {
     private TextView policyTextView;
-    private MaterialButton continueBTN;
+    private MaterialButton continueBTN, buttonGoogle, appleButton;
     private NavController navController;
 
     @Override
@@ -37,8 +36,8 @@ public class RegisterFragment extends Fragment {
 
         policyTextView = v.findViewById(R.id.policyUserTextView);
         TextView textViewLogin = v.findViewById(R.id.singUpTextView);
-        MaterialButton buttonGoogle = v.findViewById(R.id.googleLoginBTN);
-        MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
+        buttonGoogle = v.findViewById(R.id.googleLoginBTN);
+        appleButton = v.findViewById(R.id.appleLoginBTN);
         continueBTN = v.findViewById(R.id.continueBTN);
         ImageView closeForm = v.findViewById(R.id.closeBTN);
 
@@ -74,11 +73,9 @@ public class RegisterFragment extends Fragment {
         navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
 
-    private void toBackScreen(View view){
+    private void toBackScreen(View view) {
         navController.popBackStack();
     }
-
-
 
 
 }
