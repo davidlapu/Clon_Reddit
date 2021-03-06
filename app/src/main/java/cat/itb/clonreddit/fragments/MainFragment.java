@@ -66,14 +66,28 @@ public class MainFragment extends Fragment {
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.post:
-                    searchView.clearFocus();
-                    BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-                    bottomSheetFragment.show(getParentFragmentManager(), "asddgf");
-                    break;
+            final int itemId = item.getItemId();
+
+            if (itemId == R.id.post) {
+                searchView.clearFocus();
+                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                bottomSheetFragment.show(getParentFragmentManager(), "bottomSheet");
+                return true;
+            } else if (itemId == R.id.browse) {
+
+                return true;
+            } else if (itemId == R.id.home) {
+
+                return true;
+            } else if (itemId == R.id.chat) {
+
+                return true;
+            } else if (itemId == R.id.inbox) {
+
+                return true;
+            } else {
+                return false;
             }
-            return false;
         });
 
 /*        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
