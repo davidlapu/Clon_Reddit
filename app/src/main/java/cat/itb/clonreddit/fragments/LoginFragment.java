@@ -2,6 +2,7 @@ package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -15,18 +16,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import cat.itb.clonreddit.R;
 
 public class LoginFragment extends Fragment {
-    TextView policyTextView;
+    private TextView policyTextView;
+    private FirebaseAuth mAuth;
+    private TextInputEditText editTextEmail, editTextPass;
+
 
     private NavController navController;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -38,6 +48,8 @@ public class LoginFragment extends Fragment {
         MaterialButton buttonGoogle = v.findViewById(R.id.googleLoginBTN);
         MaterialButton continueBTN = v.findViewById(R.id.continueBTN);
         MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
+        editTextEmail = v.findViewById(R.id.usernameEditText);
+        editTextPass = v.findViewById(R.id.passwordEditText);
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
