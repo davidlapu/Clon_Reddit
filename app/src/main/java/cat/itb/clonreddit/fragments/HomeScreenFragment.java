@@ -1,5 +1,6 @@
 package cat.itb.clonreddit.fragments;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +20,16 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.utils.ConexionBBDD;
 
 public class HomeScreenFragment extends Fragment {
     private VideoView videoBg;
@@ -34,6 +43,15 @@ public class HomeScreenFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+
+        Object mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
     }
 
     @Override
@@ -45,6 +63,8 @@ public class HomeScreenFragment extends Fragment {
         gButton = v.findViewById(R.id.googleHomeScreenButton);
         appleButton = v.findViewById(R.id.appleHomeScreenButton);
         loginTextView = v.findViewById(R.id.loginHomeScreen);
+
+        ConexionBBDD.getReferenceUser();
 
         skipTextView.setOnClickListener(this::toMainScreen);
         emailButton.setOnClickListener(this::toRegisterForm);
@@ -92,6 +112,8 @@ public class HomeScreenFragment extends Fragment {
     }
 
 
+
+
     @Override
     public void onResume() {
         videoBg.resume();
@@ -109,4 +131,9 @@ public class HomeScreenFragment extends Fragment {
         videoBg.stopPlayback();
         super.onDestroy();
     }
+
+
+
+
+
 }
