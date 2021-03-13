@@ -57,5 +57,18 @@
     <string name="video">VIDEO</string>
     <string name="text">TEXT</string>
     <string name="poll">POLL</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string-array name="spinner_test">
+        <item>Choose a community</item>
+        <item>Genshin Impact</item>
+        <item>David Lambda</item>
+        <item>Lambdas sexys</item>
+        <item>Lambdeando voy, lambdeando vengo</item>
+        <item>Lambda for you?</item>
+    </string-array>
 
 </resources>
