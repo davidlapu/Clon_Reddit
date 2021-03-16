@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -68,14 +69,31 @@ public class LoginFragment extends Fragment {
         closeForm.setOnClickListener(this::toBackScreen);
         singUpTextView.setOnClickListener(this::toRegisterScreen);
         buttonGoogle.setOnClickListener(this::toMainScreen);
-        continueBTN.setOnClickListener(this::toMainScreen);
+        continueBTN.setOnClickListener(this::login);
         appleButton.setOnClickListener(this::toMainScreen);
         //loginTextView
 
         return v;
     }
 
+    private void login(View view) {
+        mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(),
+                editTextPass.getText().toString()).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        toMainScreen();
+                    } else {
+                        Toast.makeText(getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
     private void toMainScreen(View view) {
+        navController.navigate(R.id.action_loginFragment_to_mainFragment);
+    }
+
+    private void toMainScreen() {
         navController.navigate(R.id.action_loginFragment_to_mainFragment);
     }
 

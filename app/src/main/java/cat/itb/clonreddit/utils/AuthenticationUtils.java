@@ -13,20 +13,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import cat.itb.clonreddit.R;
 
 public class AuthenticationUtils {
-/*    public boolean signInWithEmailAndPassword(Activity act, FirebaseAuth mAuth, String email, String password, ) {
-        boolean correctLogin;
+/*    public boolean signInWithEmailAndPassword(FirebaseAuth mAuth, String email,
+                                              String password, OnCompleteListener<AuthResult> onCompleteListener) {
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this::completeListener);
-
-    }
-
-    private void completeListener(Task<AuthResult> authResultTask) {
-        if (authResultTask.isSuccessful()) {
-
-        } else {
-
-
-        }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(onCompleteListener);
 
     }*/
 }
