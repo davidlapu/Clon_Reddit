@@ -1,22 +1,47 @@
 package cat.itb.clonreddit.models;
 
 public class Post {
+    private String id;
     private SubReddit subReddit;
-    private String user, time, title;
+    private User user;
+    private String time, title, imgUrl, userLocal;
     private int numAwards, imageId, upVotes, commentsNum;
 
     public Post() {
     }
 
-    public Post(SubReddit subReddit, String user, String time, String title, int numAwards, int imageId, int upVotes, int commentsNum) {
+    public Post(String id, SubReddit subReddit, User user, String time, String title, String imgUrl, int numAwards, int upVotes, int commentsNum) {
+        this.id = id;
         this.subReddit = subReddit;
         this.user = user;
+        this.time = time;
+        this.title = title;
+        this.imgUrl = imgUrl;
+        this.numAwards = numAwards;
+        this.upVotes = upVotes;
+        this.commentsNum = commentsNum;
+    }
+
+
+    /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
+    public Post( SubReddit subReddit, String user, String time, String title,  int numAwards, int imageId, int upVotes, int commentsNum) {
+        this.subReddit = subReddit;
+        this.userLocal = user;
         this.time = time;
         this.title = title;
         this.numAwards = numAwards;
         this.imageId = imageId;
         this.upVotes = upVotes;
         this.commentsNum = commentsNum;
+    }
+    /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public SubReddit getSubReddit() {
@@ -27,11 +52,11 @@ public class Post {
         this.subReddit = subReddit;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -49,6 +74,14 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public int getNumAwards() {
@@ -82,6 +115,4 @@ public class Post {
     public void setCommentsNum(int commentsNum) {
         this.commentsNum = commentsNum;
     }
-
-
 }

@@ -33,6 +33,7 @@ public class LoginFragment extends Fragment {
 
 
     private NavController navController;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +55,12 @@ public class LoginFragment extends Fragment {
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
+                new ForegroundColorSpan(getResources().getColor(R.color.alien, null)),
                 31, // start
                 46, // end
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
+                new ForegroundColorSpan(getResources().getColor(R.color.alien, null)),
                 50,
                 65,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);

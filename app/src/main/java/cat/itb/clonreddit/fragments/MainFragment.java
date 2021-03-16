@@ -2,8 +2,10 @@ package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,8 @@ public class MainFragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
     private SearchView searchView;
     private DrawerLayout drawerLayout;
+    private View contents;
+    private ImageView imageContents;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,56 +56,52 @@ public class MainFragment extends Fragment {
         toolbar = v.findViewById(R.id.toolbar);
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
         drawerLayout = v.findViewById(R.id.drawerLayout);
-        NavigationView navigationView= v.findViewById(R.id.navigationView);
         bottomNavigationView = v.findViewById(R.id.bottomNavigation);
         searchView = v.findViewById(R.id.searchView);
+        contents = v.findViewById(R.id.mainFragmentContents);
+        imageContents = v.findViewById(R.id.imageContent);
 
 
-        ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
 
         setUpRecycler(recyclerView);
 
-        toolbar.setNavigationOnClickListener(v1 -> {
-            drawerLayout.open();
-        });
+        toolbar.setNavigationOnClickListener(v1 -> drawerLayout.open());
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            final int itemId = item.getItemId();
+        bottomNavigationView.setOnNavigationItemSelectedListener(this::bottomMenu);
 
-            if (itemId == R.id.post) {
-                searchView.clearFocus();
-                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-                bottomSheetFragment.show(getParentFragmentManager(), "bottomSheet");
-                return true;
-            } else if (itemId == R.id.browse) {
-
-                return true;
-            } else if (itemId == R.id.home) {
-
-                return true;
-            } else if (itemId == R.id.chat) {
-
-                return true;
-            } else if (itemId == R.id.inbox) {
-
-                return true;
-            } else {
-                return false;
-            }
-        });
-
-/*        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
-            }
-        }) { menuItem ->
-                // Handle menu item selected
-                menuItem.isChecked = true
-            drawerLayout.close()
-            true
-        }*/
         return v;
+    }
+
+    private boolean bottomMenu(MenuItem menuItem) {
+        final int itemId = menuItem.getItemId();
+        if (itemId == R.id.post) {
+            searchView.clearFocus();
+            BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+            bottomSheetFragment.show(getParentFragmentManager(), "bottomSheet");
+            return true;
+        } else if (itemId == R.id.browse) {
+            pocheador(R.drawable.suscriptions);
+            return true;
+        } else if (itemId == R.id.home) {
+            contents.setVisibility(View.VISIBLE);
+            imageContents.setVisibility(View.GONE);
+            return true;
+        } else if (itemId == R.id.chat) {
+            pocheador(R.drawable.chat);
+            return true;
+        } else if (itemId == R.id.inbox) {
+            pocheador(R.drawable.notifications);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void pocheador(int imageId) {
+        contents.setVisibility(View.GONE);
+        imageContents.setImageResource(imageId);
+        imageContents.setVisibility(View.VISIBLE);
     }
 
 

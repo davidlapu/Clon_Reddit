@@ -20,6 +20,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -30,7 +34,7 @@ import cat.itb.clonreddit.R;
 public class RegisterFragment extends Fragment {
     private TextView policyTextView;
     private TextInputEditText editTextEmail, editTextPass;
-    private MaterialButton continueBTN;
+    private MaterialButton continueBTN, buttonGoogle, appleButton;
     private NavController navController;
     private FirebaseAuth mAuth;
 
@@ -47,8 +51,8 @@ public class RegisterFragment extends Fragment {
 
         policyTextView = v.findViewById(R.id.policyUserTextView);
         TextView textViewLogin = v.findViewById(R.id.singUpTextView);
-        MaterialButton buttonGoogle = v.findViewById(R.id.googleLoginBTN);
-        MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
+        buttonGoogle = v.findViewById(R.id.googleLoginBTN);
+        appleButton = v.findViewById(R.id.appleLoginBTN);
         continueBTN = v.findViewById(R.id.continueBTN);
         ImageView closeForm = v.findViewById(R.id.closeBTN);
         editTextEmail = v.findViewById(R.id.emailEditText);
@@ -58,12 +62,12 @@ public class RegisterFragment extends Fragment {
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
+                new ForegroundColorSpan(getResources().getColor(R.color.alien, null)),
                 31, // start
                 46, // end
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         spannable.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.darkBlue, null)),
+                new ForegroundColorSpan(getResources().getColor(R.color.alien, null)),
                 50,
                 65,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
@@ -90,7 +94,7 @@ public class RegisterFragment extends Fragment {
         navController.navigate(R.id.action_registerFragment_to_loginFragment);
     }
 
-    private void toBackScreen(View view){
+    private void toBackScreen(View view) {
         navController.popBackStack();
     }
 
