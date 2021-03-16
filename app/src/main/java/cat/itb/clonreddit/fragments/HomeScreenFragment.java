@@ -46,12 +46,15 @@ public class HomeScreenFragment extends Fragment {
 
 
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
 
 
-        Object mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+//
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//
+//
+//        Object mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
     }
 
     @Override
