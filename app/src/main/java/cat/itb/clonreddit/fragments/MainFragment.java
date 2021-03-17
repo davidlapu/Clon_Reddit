@@ -137,4 +137,10 @@ public class MainFragment extends Fragment {
         super.onStart();
         adapter.startListening();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.startListening();
+    }
 }
