@@ -92,9 +92,25 @@
         android:id="@+id/textPostFragment"
         android:name="cat.itb.clonreddit.fragments.TextPostFragment"
         android:label="fragment_text_post"
-        tools:layout="@layout/fragment_text_post" />
+        tools:layout="@layout/fragment_text_post" >
+        <action
+            android:id="@+id/action_textPostFragment_to_subRedditListFragment"
+            app:destination="@id/subRedditListFragment"
+            app:enterAnim="@anim/enter_right_to_screen"
+            app:exitAnim="@anim/exit_screen_to_left" />
+    </fragment>
     <fragment
         android:id="@+id/imagePostFragment"
         android:name="cat.itb.clonreddit.fragments.ImagePostFragment"
-        android:label="ImagePostFragment" />
+        android:label="ImagePostFragment" >
+        <action
+            android:id="@+id/action_imagePostFragment_to_subRedditListFragment"
+            app:destination="@id/subRedditListFragment"
+            app:enterAnim="@anim/enter_right_to_screen"
+            app:exitAnim="@anim/exit_screen_to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/subRedditListFragment"
+        android:name="cat.itb.clonreddit.fragments.SubRedditListFragment"
+        android:label="SubRedditListFragment" />
 </navigation>
