@@ -49,8 +49,8 @@ public class SubredditAdapter extends FirebaseRecyclerAdapter<SubReddit, Subredd
 
         public SubredditViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.imageViewSubredditPost);
-            imageViewSubreddit = itemView.findViewById(R.id.textViewNameSubreddit);
+            textViewName = itemView.findViewById(R.id.textViewNameSubreddit);
+            imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
         }
 
         private void bind(SubReddit subReddit) {

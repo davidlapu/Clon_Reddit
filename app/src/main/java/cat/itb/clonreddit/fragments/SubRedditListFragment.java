@@ -1,24 +1,21 @@
 package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import cat.itb.clonreddit.R;
-import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.adapters.SubredditAdapter;
-import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
 import cat.itb.clonreddit.utils.ConexionBBDD;
 
