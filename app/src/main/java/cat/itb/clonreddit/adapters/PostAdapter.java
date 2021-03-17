@@ -23,7 +23,6 @@ import cat.itb.clonreddit.utils.ConexionBBDD;
 import cat.itb.clonreddit.utils.Formater;
 
 public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostViewHolder> {
-    //private final List<Post> postList;
     private final Context context;
 
 
@@ -65,7 +64,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             commentButton = itemView.findViewById(R.id.commentButton);
         }
 
-        public void bind(Post post) {
+        private void bind(Post post) {
             Task<com.google.firebase.database.DataSnapshot> taskPost = ConexionBBDD.getSubreddit(post.getSubRedditID());
             taskPost.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
