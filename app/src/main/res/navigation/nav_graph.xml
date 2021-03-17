@@ -97,7 +97,9 @@
             android:id="@+id/action_textPostFragment_to_subRedditListFragment"
             app:destination="@id/subRedditListFragment"
             app:enterAnim="@anim/enter_right_to_screen"
-            app:exitAnim="@anim/exit_screen_to_left" />
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/exit_screen_to_right" />
     </fragment>
     <fragment
         android:id="@+id/imagePostFragment"
@@ -107,7 +109,9 @@
             android:id="@+id/action_imagePostFragment_to_subRedditListFragment"
             app:destination="@id/subRedditListFragment"
             app:enterAnim="@anim/enter_right_to_screen"
-            app:exitAnim="@anim/exit_screen_to_left" />
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/exit_screen_to_right" />
     </fragment>
     <fragment
         android:id="@+id/subRedditListFragment"

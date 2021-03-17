@@ -1,6 +1,8 @@
 package cat.itb.clonreddit.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -16,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,10 +28,16 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.utils.ConexionBBDD;
@@ -38,14 +49,13 @@ public class HomeScreenFragment extends Fragment {
     private MaterialButton gButton, appleButton;
     private NavController navController;
 
+    private int GOOGLE_SIGN_IN = 100;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
-
-
-
 
 
 //
@@ -90,6 +100,24 @@ public class HomeScreenFragment extends Fragment {
             }
         });
 
+        gButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+
+                GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(getContext(), googleSignInOptions);
+                googleSignInClient.signOut();
+
+                startActivityForResult(googleSignInClient.getSignInIntent(), GOOGLE_SIGN_IN);
+            }
+        });
+
+
+        session();
+
+
         policyTextView = v.findViewById(R.id.policyHomeScreen);
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
@@ -115,6 +143,20 @@ public class HomeScreenFragment extends Fragment {
     }
 
 
+    private void session() {
+        SharedPreferences sp = getActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
+        String email = sp.getString("email",null);
+
+        if (email != null) {
+            View l = getActivity().getWindow().getDecorView().findViewById(R.id.homeScreenFragment);
+            l.setVisibility(View.INVISIBLE);
+
+            navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
+        }
+    }
+
+
+
 
 
     @Override
@@ -135,8 +177,43 @@ public class HomeScreenFragment extends Fragment {
         super.onDestroy();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GOOGLE_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount g = null;
+            try {
+                g = task.getResult(ApiException.class);
+
+                if (g != null) {
+                    AuthCredential credential = GoogleAuthProvider.getCredential(g.getIdToken(),null);
+                    GoogleSignInAccount finalG = g;
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
+                            } else {
+                                showAlert("Esta cuenta de usuario no existe");
+                            }
+                        }
+                    });
+                }
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
 
-
-
+    public void showAlert(String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Error");
+        builder.setMessage(text);
+        builder.setPositiveButton("Aceptar",null);
+        AlertDialog al = builder.create();
+        al.show();
+    }
 }

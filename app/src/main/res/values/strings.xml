@@ -70,4 +70,7 @@
         <item>Lambda for you?</item>
     </string-array>
 
+
+
+    <string name="prefs_file">cat.itb.clonreddit.PREFERENCE.KEY.FILE</string>
 </resources>
