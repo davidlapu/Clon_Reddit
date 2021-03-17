@@ -5,10 +5,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -21,17 +24,23 @@ import cat.itb.clonreddit.utils.ConexionBBDD;
 
 
 public class SubRedditListFragment extends Fragment {
+    private ImageView closeBTN;
+    private NavController navController;
 
     private SubredditAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sub_reddit_list, container, false);
+        closeBTN = v.findViewById(R.id.closeBTN);
+
+        closeBTN.setOnClickListener(this::toBackScreen);
         // Inflate the layout for this fragment
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewSubrredit);
 
@@ -53,5 +62,9 @@ public class SubRedditListFragment extends Fragment {
     public void onStop() {
         super.onStop();
         adapter.startListening();
+    }
+
+    private void toBackScreen(View view) {
+        navController.popBackStack();
     }
 }
