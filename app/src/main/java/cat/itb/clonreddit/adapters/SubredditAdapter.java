@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.SubReddit;
@@ -28,7 +31,7 @@ public class SubredditAdapter extends FirebaseRecyclerAdapter<SubReddit, Subredd
     @Override
     public SubredditViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_bottom_sheet, parent, false); // TODO: cambiar id: fragment_sub_reddit_list
+                .inflate(R.layout.subreddit_item, parent, false);
 
         return new SubredditViewHolder(view);
     }
@@ -40,14 +43,19 @@ public class SubredditAdapter extends FirebaseRecyclerAdapter<SubReddit, Subredd
 
 
     class SubredditViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textViewName;
+        private final ShapeableImageView imageViewSubreddit;
 
 
         public SubredditViewHolder(@NonNull View itemView) {
             super(itemView);
+            textViewName = itemView.findViewById(R.id.imageViewSubredditPost);
+            imageViewSubreddit = itemView.findViewById(R.id.textViewNameSubreddit);
         }
 
         private void bind(SubReddit subReddit) {
-
+            textViewName.setText(subReddit.getTitle());
+            Picasso.with(context).load(subReddit.getImgUrl()).into(imageViewSubreddit);
         }
     }
 }
