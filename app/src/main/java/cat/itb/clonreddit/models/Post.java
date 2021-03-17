@@ -24,16 +24,16 @@ public class Post {
 
 
     /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
-    public Post( SubReddit subReddit, String user, String time, String title,  int numAwards, int imageId, int upVotes, int commentsNum) {
-        this.subReddit = subReddit;
-        this.userLocal = user;
-        this.time = time;
-        this.title = title;
-        this.numAwards = numAwards;
-        this.imageId = imageId;
-        this.upVotes = upVotes;
-        this.commentsNum = commentsNum;
-    }
+//    public Post( SubReddit subReddit, String user, String time, String title,  int numAwards, int imageId, int upVotes, int commentsNum) {
+//        this.subReddit = subReddit;
+//        this.userLocal = user;
+//        this.time = time;
+//        this.title = title;
+//        this.numAwards = numAwards;
+//        this.imageId = imageId;
+//        this.upVotes = upVotes;
+//        this.commentsNum = commentsNum;
+//    }
     /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
 
     public String getId() {

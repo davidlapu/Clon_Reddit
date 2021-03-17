@@ -13,8 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import cat.itb.clonreddit.models.Post;
+
 public class ConexionBBDD {
     private static final DatabaseReference myRef = getDatabse().getReference();
+    public static String urlFoto;
+    public static String id;
+
 
 
     public static StorageReference getStorage(){
@@ -42,6 +47,13 @@ public class ConexionBBDD {
     }
 
 
+    public static void  insertPost(Post post){
+        String id = getReferencePost().push().getKey();
+        post.setId(id);
+        getReferencePost().setValue(post);
+    }
+
+
 
 
     public static Task<Uri> subirImagen(byte[] img) {
@@ -56,6 +68,12 @@ public class ConexionBBDD {
                 throw Objects.requireNonNull(task.getException());
             }
             return ref.getDownloadUrl();
+//        }).addOnCompleteListener(task -> {
+//            Uri downloadUri = task.getResult();
+////                bbdd.getReference().push().child("urlfoto").setValue(downloadUri.toString());
+//            urlFoto = downloadUri.toString();
+//            id = getReferencePost().push().getKey();
+
         });
 
 

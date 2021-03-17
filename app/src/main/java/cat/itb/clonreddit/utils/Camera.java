@@ -2,6 +2,12 @@ package cat.itb.clonreddit.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
+
+import androidx.fragment.app.Fragment;
+
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -25,5 +31,10 @@ public class Camera {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         thumbBitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
+    }
+
+    public void recortarImagen(Uri imageUri, Context context, Fragment fragment) {
+        CropImage.activity(imageUri).setGuidelines(CropImageView.Guidelines.ON).setRequestedSize(640, 480)
+                .setAspectRatio(2, 2).start(context, fragment);
     }
 }
