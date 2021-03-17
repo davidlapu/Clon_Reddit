@@ -73,7 +73,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
                 if (task.isSuccessful()) {
                     SubReddit s = task.getResult().getValue(SubReddit.class);
 
-                    imageViewSubreddit.setImageResource(s.getImageId());
+                    //imageViewSubreddit.setImageResource(s.getImageId());
                     textViewSubreddit.setText(String.format("r/%s", s.getTitle()));
                 }
             });
