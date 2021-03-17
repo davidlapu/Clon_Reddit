@@ -95,6 +95,6 @@
         tools:layout="@layout/fragment_text_post" />
     <fragment
         android:id="@+id/imagePostFragment"
-        android:name="cat.itb.clonreddit.fragments.imagePostFragment"
-        android:label="imagePostFragment" />
+        android:name="cat.itb.clonreddit.fragments.ImagePostFragment"
+        android:label="ImagePostFragment" />
 </navigation>
