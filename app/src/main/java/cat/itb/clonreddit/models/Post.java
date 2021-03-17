@@ -2,17 +2,14 @@ package cat.itb.clonreddit.models;
 
 public class Post {
     private String id;
-    private SubReddit subReddit;
     private User user;
-    private String time, title, imgUrl, userLocal;
+    private String subRedditID ,time, title, imgUrl, userLocal;
     private int numAwards, imageId, upVotes, commentsNum;
 
     public Post() {
     }
 
-    public Post(String id, SubReddit subReddit, User user, String time, String title, String imgUrl, int numAwards, int upVotes, int commentsNum) {
-        this.id = id;
-        this.subReddit = subReddit;
+    public Post(String subRedditId, User user, String time, String title, String imgUrl, int numAwards, int upVotes, int commentsNum) {
         this.user = user;
         this.time = time;
         this.title = title;
@@ -20,12 +17,12 @@ public class Post {
         this.numAwards = numAwards;
         this.upVotes = upVotes;
         this.commentsNum = commentsNum;
+        this.subRedditID = subRedditId;
     }
 
 
     /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
     public Post( SubReddit subReddit, String user, String time, String title,  int numAwards, int imageId, int upVotes, int commentsNum) {
-        this.subReddit = subReddit;
         this.userLocal = user;
         this.time = time;
         this.title = title;
@@ -42,14 +39,6 @@ public class Post {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public SubReddit getSubReddit() {
-        return subReddit;
-    }
-
-    public void setSubReddit(SubReddit subReddit) {
-        this.subReddit = subReddit;
     }
 
     public User getUser() {
@@ -114,5 +103,13 @@ public class Post {
 
     public void setCommentsNum(int commentsNum) {
         this.commentsNum = commentsNum;
+    }
+
+    public String getSubRedditID() {
+        return subRedditID;
+    }
+
+    public void setSubRedditID(String subRedditID) {
+        this.subRedditID = subRedditID;
     }
 }

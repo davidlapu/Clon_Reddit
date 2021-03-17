@@ -2,7 +2,11 @@ package cat.itb.clonreddit.utils;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -13,8 +17,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.SubReddit;
+
 public class ConexionBBDD {
     private static final DatabaseReference myRef = getDatabse().getReference();
+    private static final DatabaseReference postReference = myRef.child("Post");
+    private static final DatabaseReference subRedditReference = myRef.child("SubReddit");
 
 
     public static StorageReference getStorage(){
@@ -30,7 +39,7 @@ public class ConexionBBDD {
     }
 
     public static DatabaseReference getReferencePost(){
-        return myRef.child("Post");
+        return postReference;
     }
 
     public static DatabaseReference getReferenceSubReddit(){
@@ -41,7 +50,11 @@ public class ConexionBBDD {
         return myRef.child("Comment");
     }
 
+/*    public static Post getPosts() {
+        DatabaseReference reference = getReferencePost();
 
+        reference.get
+    }*/
 
 
     public static Task<Uri> subirImagen(byte[] img) {
@@ -60,5 +73,22 @@ public class ConexionBBDD {
 
 
         return uriTask;
+    }
+
+    public static void uploadPost(Post post) {
+        String key = postReference.getKey();
+        post.setId(key);
+        postReference.child(key).setValue(post);
+    }
+
+    public static String uploadSubreddit(SubReddit subReddit) {
+        String key = subRedditReference.getKey();
+        subReddit.setId(key);
+        subRedditReference.child(key).setValue(subReddit);
+        return key;
+    }
+
+    public static Task<com.google.firebase.database.DataSnapshot> getSubreddit(String id) {
+        return subRedditReference.child(id).get();
     }
 }

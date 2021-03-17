@@ -8,22 +8,29 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-
-import java.util.List;
+import com.google.firebase.database.DataSnapshot;
+import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.SubReddit;
+import cat.itb.clonreddit.utils.ConexionBBDD;
 import cat.itb.clonreddit.utils.Formater;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
-    private final List<Post> postList;
+public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostViewHolder> {
+    //private final List<Post> postList;
     private final Context context;
 
-    public PostAdapter(List<Post> postList, Context context) {
-        this.postList = postList;
+
+    public PostAdapter(@NonNull FirebaseRecyclerOptions<Post> options, Context context) {
+        super(options);
         this.context = context;
     }
 
@@ -37,13 +44,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        holder.bind(postList.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return postList.size();
+    protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
+        holder.bind(model);
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
@@ -66,14 +68,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
         public void bind(Post post) {
-            textViewSubreddit.setText(String.format("r/%s", post.getSubReddit().getTitle()));
-            textViewSubtitle.setText(context.getString(R.string.subtitle, post.getUser(), post.getTime()));
+            Task<com.google.firebase.database.DataSnapshot> taskPost = ConexionBBDD.getSubreddit(post.getSubRedditID());
+            taskPost.addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    SubReddit s = task.getResult().getValue(SubReddit.class);
+
+                    imageViewSubreddit.setImageResource(s.getImageId());
+                    textViewSubreddit.setText(String.format("r/%s", s.getTitle()));
+                }
+            });
+
+            Picasso.with(context).load(post.getImgUrl()).into(imageViewPost);
+
+            //textViewSubreddit.setText(String.format("r/%s", post.getSubReddit().getTitle()));
+            textViewSubtitle.setText(context.getString(R.string.subtitle, post.getUser().getUserName(), post.getTime()));
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(Formater.format(post.getUpVotes()));
             commentButton.setText(String.valueOf(post.getCommentsNum()));
-            imageViewPost.setImageResource(post.getImageId());
-            imageViewSubreddit.setImageResource(post.getSubReddit().getImageId());
+            //imageViewPost.setImageResource(post.getImageId());
+           // imageViewSubreddit.setImageResource(post.getSubReddit().getImageId());
         }
 
 
