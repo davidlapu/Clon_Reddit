@@ -10,12 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.database.DataSnapshot;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
@@ -73,7 +71,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
                 if (task.isSuccessful()) {
                     SubReddit s = task.getResult().getValue(SubReddit.class);
 
-                    imageViewSubreddit.setImageResource(s.getImageId());
+                    Picasso.with(context).load(s.getImgUrl()).into(imageViewSubreddit);
                     textViewSubreddit.setText(String.format("r/%s", s.getTitle()));
                 }
             });

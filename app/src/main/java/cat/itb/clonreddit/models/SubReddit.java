@@ -2,26 +2,17 @@ package cat.itb.clonreddit.models;
 
 public class SubReddit {
     private String id, title, imgUrl;
-    private int imageId;
 
     public SubReddit() {
     }
 
-    public SubReddit(String id, String title, String imgUrl) {
-        this.id = id;
+    public SubReddit(String title, String imgUrl) {
         this.title = title;
         this.imgUrl = imgUrl;;
     }
 
 
     /*+++++ CONSTRUCTOR LOCAL +++++++*/
-    public SubReddit(String title,int imageId) {
-        this.title = title;
-        this.imageId = imageId;
-    }
-    /*+++++ CONSTRUCTOR LOCAL +++++++*/
-
-
 
 
 
@@ -47,13 +38,5 @@ public class SubReddit {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
-    }
-
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 }
