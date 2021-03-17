@@ -44,7 +44,7 @@ public class SubRedditListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
                 .setQuery(ConexionBBDD.getReferenceSubReddit(), SubReddit.class).build();
-        adapter = new SubredditAdapter(options, requireContext());
+        adapter = new SubredditAdapter(options, requireContext(), null);
         recyclerView.setAdapter(adapter);
         return v;
     }

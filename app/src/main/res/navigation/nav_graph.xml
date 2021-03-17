@@ -112,5 +112,12 @@
     <fragment
         android:id="@+id/subRedditListFragment"
         android:name="cat.itb.clonreddit.fragments.SubRedditListFragment"
-        android:label="SubRedditListFragment" />
+        android:label="SubRedditListFragment" >
+        <action
+            android:id="@+id/action_subRedditListFragment_to_textPostFragment"
+            app:destination="@id/textPostFragment" />
+        <action
+            android:id="@+id/action_subRedditListFragment_to_imagePostFragment"
+            app:destination="@id/imagePostFragment" />
+    </fragment>
 </navigation>

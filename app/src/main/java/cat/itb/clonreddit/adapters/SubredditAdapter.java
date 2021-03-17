@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -20,11 +21,13 @@ import cat.itb.clonreddit.models.SubReddit;
 
 public class SubredditAdapter extends FirebaseRecyclerAdapter<SubReddit, SubredditAdapter.SubredditViewHolder> {
     private final Context context;
+    private final NavController navController;
 
 
-    public SubredditAdapter(@NonNull FirebaseRecyclerOptions<SubReddit> options, Context context) {
+    public SubredditAdapter(@NonNull FirebaseRecyclerOptions<SubReddit> options, Context context, NavController navController) {
         super(options);
         this.context = context;
+        this.navController = navController;
     }
 
     @NonNull
@@ -51,6 +54,13 @@ public class SubredditAdapter extends FirebaseRecyclerAdapter<SubReddit, Subredd
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewNameSubreddit);
             imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
+
+/*            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(R.id.action_subRedditListFragment_to_imagePostFragment);
+                }
+            });*/
         }
 
         private void bind(SubReddit subReddit) {
