@@ -3,8 +3,8 @@ package cat.itb.clonreddit.models;
 public class Post {
     private String id;
     private User user;
-    private String subRedditID ,time, title, imgUrl, userLocal;
-    private int numAwards, imageId, upVotes, commentsNum;
+    private String subRedditID ,time, title, imgUrl;
+    private int numAwards, upVotes, commentsNum;
 
     public Post() {
     }
@@ -21,17 +21,6 @@ public class Post {
     }
 
 
-    /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
-    public Post( SubReddit subReddit, String user, String time, String title,  int numAwards, int imageId, int upVotes, int commentsNum) {
-        this.userLocal = user;
-        this.time = time;
-        this.title = title;
-        this.numAwards = numAwards;
-        this.imageId = imageId;
-        this.upVotes = upVotes;
-        this.commentsNum = commentsNum;
-    }
-    /*+++++++++++++++++++ CONSTRUCTOR POST LOCAL ++++++++++++++++++++++++++++*/
 
     public String getId() {
         return id;
@@ -79,14 +68,6 @@ public class Post {
 
     public void setNumAwards(int numAwards) {
         this.numAwards = numAwards;
-    }
-
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 
     public int getUpVotes() {

@@ -72,13 +72,13 @@ public class ConexionBBDD {
     }
 
     public static void uploadPost(Post post) {
-        String key = postReference.getKey();
+        String key = postReference.push().getKey();
         post.setId(key);
         postReference.child(key).setValue(post);
     }
 
     public static String uploadSubreddit(SubReddit subReddit) {
-        String key = subRedditReference.getKey();
+        String key = subRedditReference.push().getKey();
         subReddit.setId(key);
         subRedditReference.child(key).setValue(subReddit);
         return key;
