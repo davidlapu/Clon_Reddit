@@ -24,6 +24,7 @@ import java.io.File;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.Camera;
 import cat.itb.clonreddit.utils.ConexionBBDD;
 
@@ -32,7 +33,7 @@ import static android.app.Activity.RESULT_OK;
 public class ImagePostFragment extends Fragment {
     private ImageView addBTN, imageViewPost, chooseCommunityArrowImageView, closeBTN;
     private TextView postBTN, chooseCommunityTextView;
-    private EditText titlePostEditText, captionPostEditText;
+    private EditText titlePostEditText;
     private Camera camera;
     static final int REQUEST_IMAGE_CAPTURE = 100;
     private byte[] thumb_byte;
@@ -55,7 +56,6 @@ public class ImagePostFragment extends Fragment {
         chooseCommunityTextView = v.findViewById(R.id.chooseSubredditTextView);
         chooseCommunityArrowImageView = v.findViewById(R.id.chooseSubredditArrow);
         titlePostEditText = v.findViewById(R.id.titlePostEditText);
-        captionPostEditText = v.findViewById(R.id.captionsPostEditText);
         closeBTN = v.findViewById(R.id.closeBTN);
 
 
@@ -77,7 +77,10 @@ public class ImagePostFragment extends Fragment {
                 Uri downloadUri = task1.getResult();
                 urlFoto = downloadUri.toString();
 
-                Post post = new Post();
+                ConexionBBDD.uploadPost(new Post("SubReddit", new User("LambdaMan69"), "2h", "In the morning", urlFoto,
+                        520, 913, 35));
+
+                Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
 
             });
         }catch (Exception e){

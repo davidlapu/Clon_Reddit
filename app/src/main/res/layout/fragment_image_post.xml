@@ -163,10 +163,10 @@
         android:layout_marginEnd="12dp"
         android:backgroundTint="@color/itemsBg"
         app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/lineGreyBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineGrey2"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/lineGrey2">
 
         <ImageView
             android:id="@+id/addBTN"
@@ -176,31 +176,18 @@
             android:src="@drawable/ic_baseline_add_circle_24" />
 
         <ImageView
-            android:background="@drawable/cardview_border"
             android:id="@+id/imageViewPost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/cardview_border"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lineGrey2"
-            android:scaleType="fitXY"/>
+            app:layout_constraintTop_toBottomOf="@+id/lineGrey2" />
 
     </androidx.cardview.widget.CardView>
 
 
-    <EditText
-        android:id="@+id/captionsPostEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/itemsBg"
-        android:hint="Add Captions &amp; Links"
-        android:padding="12dp"
-        android:textColorHint="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
     <View

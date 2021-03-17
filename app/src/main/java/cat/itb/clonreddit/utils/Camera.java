@@ -35,6 +35,6 @@ public class Camera {
 
     public void recortarImagen(Uri imageUri, Context context, Fragment fragment) {
         CropImage.activity(imageUri).setGuidelines(CropImageView.Guidelines.ON).setRequestedSize(640, 480)
-                .setAspectRatio(2, 2).start(context, fragment);
+                .start(context, fragment);
     }
 }
