@@ -17,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.storage.FirebaseStorage;
@@ -24,11 +25,14 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
+import cat.itb.clonreddit.models.User;
+import cat.itb.clonreddit.utils.ConexionBBDD;
 
 
 public class MainFragment extends Fragment {
@@ -40,6 +44,7 @@ public class MainFragment extends Fragment {
     private DrawerLayout drawerLayout;
     private View contents;
     private ImageView imageContents;
+    private PostAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,17 +111,28 @@ public class MainFragment extends Fragment {
 
 
     private void setUpRecycler(RecyclerView recyclerView) {
-        List<Post> postList = new ArrayList<>();
+        //List<Post> postList = new ArrayList<>();
 
-        SubReddit catsAreLiquid = new SubReddit("catsareliquid", R.drawable.communityiconcatsareliquid);
-        SubReddit programmerHumor = new SubReddit("ProgrammerHumor", R.drawable.communityiconprogrammerhumor);
-        SubReddit hentaimemes = new SubReddit("Hentaimemes", R.drawable.communityicon_hentaimemes);
-//
-//        postList.add(new Post(programmerHumor, "jevoy6737", "8h", "It hurts", 20, R.drawable.post2, 113, 435));
-//        postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));
-//        postList.add(new Post(hentaimemes, "namx2u", "4h", "tbh I hate that too..", 4, R.drawable.post4, 4800, 59));
+/*        String catsAreLiquid = ConexionBBDD.uploadSubreddit(new SubReddit("catsareliquid", R.drawable.communityiconcatsareliquid));
+        String programmerHumor = ConexionBBDD.uploadSubreddit(new SubReddit("ProgrammerHumor", R.drawable.communityiconprogrammerhumor));
+        String hentaimemes = ConexionBBDD.uploadSubreddit(new SubReddit("Hentaimemes", R.drawable.communityicon_hentaimemes));
+        ConexionBBDD.uploadPost(new Post(programmerHumor, new User("jevoy6737"), "8h", "It hurts", "https://static.boredpanda.com/blog/wp-content/uploads/2019/03/image-5c90517716638__700.jpg",
+                20, 113, 435));*/
+
+        //postList.add();
+        //postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));
+        //postList.add(new Post(hentaimemes, "namx2u", "4h", "tbh I hate that too..", 4, R.drawable.post4, 4800, 59));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerView.setAdapter(new PostAdapter(postList, requireContext()));
+        FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
+                .setQuery(ConexionBBDD.getReferencePost(), Post.class).build();
+        adapter = new PostAdapter(options, requireContext());
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
     }
 }

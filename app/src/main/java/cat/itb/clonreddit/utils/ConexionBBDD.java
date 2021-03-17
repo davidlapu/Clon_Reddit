@@ -2,7 +2,11 @@ package cat.itb.clonreddit.utils;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -14,12 +18,12 @@ import java.util.Date;
 import java.util.Objects;
 
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.SubReddit;
 
 public class ConexionBBDD {
     private static final DatabaseReference myRef = getDatabse().getReference();
-    public static String urlFoto;
-    public static String id;
-
+    private static final DatabaseReference postReference = myRef.child("Post");
+    private static final DatabaseReference subRedditReference = myRef.child("SubReddit");
 
 
     public static StorageReference getStorage(){
@@ -35,7 +39,7 @@ public class ConexionBBDD {
     }
 
     public static DatabaseReference getReferencePost(){
-        return myRef.child("Post");
+        return postReference;
     }
 
     public static DatabaseReference getReferenceSubReddit(){
@@ -44,13 +48,6 @@ public class ConexionBBDD {
 
     public static DatabaseReference getReferenceComment(){
         return myRef.child("Comment");
-    }
-
-
-    public static void  insertPost(Post post){
-        String id = getReferencePost().push().getKey();
-        post.setId(id);
-        getReferencePost().setValue(post);
     }
 
 
@@ -68,15 +65,26 @@ public class ConexionBBDD {
                 throw Objects.requireNonNull(task.getException());
             }
             return ref.getDownloadUrl();
-//        }).addOnCompleteListener(task -> {
-//            Uri downloadUri = task.getResult();
-////                bbdd.getReference().push().child("urlfoto").setValue(downloadUri.toString());
-//            urlFoto = downloadUri.toString();
-//            id = getReferencePost().push().getKey();
-
         });
 
 
         return uriTask;
+    }
+
+    public static void uploadPost(Post post) {
+        String key = postReference.getKey();
+        post.setId(key);
+        postReference.child(key).setValue(post);
+    }
+
+    public static String uploadSubreddit(SubReddit subReddit) {
+        String key = subRedditReference.getKey();
+        subReddit.setId(key);
+        subRedditReference.child(key).setValue(subReddit);
+        return key;
+    }
+
+    public static Task<com.google.firebase.database.DataSnapshot> getSubreddit(String id) {
+        return subRedditReference.child(id).get();
     }
 }
