@@ -1,6 +1,9 @@
 package cat.itb.clonreddit.models;
 
-public class SubReddit {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SubReddit implements Parcelable {
     private String id, title, imgUrl;
 
     public SubReddit() {
@@ -15,6 +18,23 @@ public class SubReddit {
     /*+++++ CONSTRUCTOR LOCAL +++++++*/
 
 
+    protected SubReddit(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        imgUrl = in.readString();
+    }
+
+    public static final Creator<SubReddit> CREATOR = new Creator<SubReddit>() {
+        @Override
+        public SubReddit createFromParcel(Parcel in) {
+            return new SubReddit(in);
+        }
+
+        @Override
+        public SubReddit[] newArray(int size) {
+            return new SubReddit[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -38,5 +58,17 @@ public class SubReddit {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(title);
+        dest.writeString(imgUrl);
     }
 }

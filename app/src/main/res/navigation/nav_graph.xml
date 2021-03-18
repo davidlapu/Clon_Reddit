@@ -100,6 +100,9 @@
             app:exitAnim="@anim/no_animation"
             app:popEnterAnim="@anim/no_animation"
             app:popExitAnim="@anim/exit_screen_to_right" />
+        <argument
+            android:name="subreddit"
+            app:argType="cat.itb.clonreddit.models.SubReddit" />
     </fragment>
     <fragment
         android:id="@+id/imagePostFragment"
@@ -112,9 +115,22 @@
             app:exitAnim="@anim/no_animation"
             app:popEnterAnim="@anim/no_animation"
             app:popExitAnim="@anim/exit_screen_to_right" />
+        <argument
+            android:name="subreddit"
+            app:argType="cat.itb.clonreddit.models.SubReddit" />
     </fragment>
     <fragment
         android:id="@+id/subRedditListFragment"
         android:name="cat.itb.clonreddit.fragments.SubRedditListFragment"
-        android:label="SubRedditListFragment" />
+        android:label="SubRedditListFragment" >
+        <action
+            android:id="@+id/action_subRedditListFragment_to_textPostFragment"
+            app:destination="@id/textPostFragment" />
+        <action
+            android:id="@+id/action_subRedditListFragment_to_imagePostFragment"
+            app:destination="@id/imagePostFragment" />
+        <argument
+            android:name="origin"
+            app:argType="string" />
+    </fragment>
 </navigation>

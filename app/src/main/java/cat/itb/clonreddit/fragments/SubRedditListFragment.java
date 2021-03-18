@@ -7,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,10 +51,7 @@ public class SubRedditListFragment extends Fragment {
         recyclerView = v.findViewById(R.id.recyclerViewSubrredit);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
-                .setQuery(ConexionBBDD.getReferenceSubReddit(), SubReddit.class).build();
-        adapter = new SubredditAdapter(options, requireContext());
-        recyclerView.setAdapter(adapter);
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -66,7 +66,21 @@ public class SubRedditListFragment extends Fragment {
                 return false;
             }
         });
+
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        String dest = SubRedditListFragmentArgs.fromBundle(getArguments()).getOrigin();
+
+        FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
+                .setQuery(ConexionBBDD.getReferenceSubReddit(), SubReddit.class).build();
+
+        adapter = new SubredditAdapter(options, requireContext(), dest);
+        recyclerView.setAdapter(adapter);
     }
 
     public void filtrarRecycler(String query) {
