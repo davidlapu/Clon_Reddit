@@ -103,15 +103,13 @@ public class ImagePostFragment extends Fragment {
 
     public void pushPost(View view) {
         try {
-            thumb_byte = camera.comprimirImagen(url);
-
-            Task<Uri> task = ConexionBBDD.subirImagen(thumb_byte);
+            Task<Uri> task = ConexionBBDD.subirImagen(camera.comprimirImagen(url));
 
             task.addOnCompleteListener(task1 -> {
                 Uri downloadUri = task1.getResult();
                 urlFoto = downloadUri.toString();
 
-                ConexionBBDD.uploadPost(new Post("SubReddit", new User("LambdaMan69"), "2h", "In the morning", urlFoto,
+                ConexionBBDD.uploadPost(new Post(subReddit.getId(), new User("LambdaMan69"), "2h", "In the morning", urlFoto,
                         520, 913, 35));
 
                 Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
