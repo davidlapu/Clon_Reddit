@@ -145,7 +145,8 @@
             style="@style/FormStyles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email">
+            android:hint="@string/email"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEditText"
@@ -160,12 +161,13 @@
             style="@style/FormStyles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/username">
+            android:hint="@string/username"
+            app:errorEnabled="true"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/usernameEditText"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -176,15 +178,16 @@
             style="@style/FormStyles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="@string/password"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                />
         </com.google.android.material.textfield.TextInputLayout>
         <!--FINISH FORM CAMPS-->
     </LinearLayout>

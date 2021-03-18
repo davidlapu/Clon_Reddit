@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Text post"
+                android:text="@string/text_post"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/closeBTN"
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Choose a community"
+            android:text="@string/choose_a_community"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
             app:layout_constraintTop_toTopOf="parent"
@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:background="@color/itemsBg"
-            android:hint="An interesting title"
+            android:hint="@string/an_interesting_title"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lineGrey2"
         android:background="@color/itemsBg"
         android:padding="12dp"
-        android:hint="Your text post (optional)"
+        android:hint="@string/your_text_post_optional"
         android:textSize="14sp"/>
 
 

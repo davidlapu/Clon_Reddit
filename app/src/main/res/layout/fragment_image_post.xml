@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Image post"
+            android:text="@string/image_post"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/closeBTN"
@@ -51,7 +51,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingRight="15dp"/>
+            android:paddingEnd="15dp"
+            tools:ignore="RtlSymmetry" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -61,7 +62,8 @@
         app:layout_constraintEnd_toStartOf="@+id/materialTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        android:layout_height="1.5dp"/>
+        android:layout_height="1.5dp"
+        tools:ignore="UnknownIdInLayout" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -92,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Choose a community"
+            android:text="@string/choose_a_community"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
             app:layout_constraintTop_toTopOf="parent"
@@ -135,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:background="@color/itemsBg"
-            android:hint="An interesting title"
+            android:hint="@string/an_interesting_title"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

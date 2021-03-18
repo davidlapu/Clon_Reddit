@@ -376,6 +376,24 @@
     </style>
     <!-- ///////// BOTTOM SHEET FINISH \\\\\\\-->
 
+    <style name="SearchViewSubReditRecycler">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/searchview_style</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:focusable">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:queryBackground">@color/searchview</item>
+        <item name="android:queryHint">@string/search</item>
+
+    </style>
+
 
 
 </resources>

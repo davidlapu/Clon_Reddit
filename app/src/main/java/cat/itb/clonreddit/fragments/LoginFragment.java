@@ -17,14 +17,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.utils.AddListenerOnTextChange;
 
 public class LoginFragment extends Fragment {
     private TextView policyTextView;
     private FirebaseAuth mAuth;
     private TextInputEditText editTextEmail, editTextPass;
+    private TextInputLayout emailInputLayout, passwordInputLayout;
 
 
     private NavController navController;
@@ -47,6 +50,12 @@ public class LoginFragment extends Fragment {
         MaterialButton appleButton = v.findViewById(R.id.appleLoginBTN);
         editTextEmail = v.findViewById(R.id.usernameEditText);
         editTextPass = v.findViewById(R.id.passwordEditText);
+        emailInputLayout = v.findViewById(R.id.usernameInputLayout);
+        passwordInputLayout = v.findViewById(R.id.passwordInputLayout);
+
+
+        editTextEmail.addTextChangedListener(new AddListenerOnTextChange(getContext(), emailInputLayout));
+        editTextPass.addTextChangedListener(new AddListenerOnTextChange(getContext(), passwordInputLayout));
 
         SpannableStringBuilder spannable = new SpannableStringBuilder(getText(R.string.privacyText));
         spannable.setSpan(
@@ -73,15 +82,27 @@ public class LoginFragment extends Fragment {
     }
 
     private void login(View view) {
-        mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(),
-                editTextPass.getText().toString()).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        toMainScreen();
-                    } else {
-                        Toast.makeText(getContext(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (editTextEmail.getText().toString().isEmpty() || editTextPass.getText().toString().isEmpty()){
+            if (editTextEmail.getText().toString().isEmpty()){
+                isEmpty(emailInputLayout);
+            }else{
+                isEmpty(passwordInputLayout);
+            }
+
+        }else{
+            mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(),
+                    editTextPass.getText().toString()).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    toMainScreen();
+                } else {
+//                    Toast.makeText(getContext(), "Authentication failed.",
+//                            Toast.LENGTH_SHORT).show();
+                    notMatchFields(emailInputLayout);
+                    notMatchFields(passwordInputLayout);
+                }
+            });
+        }
+
 
     }
 
@@ -99,5 +120,22 @@ public class LoginFragment extends Fragment {
 
     private void toRegisterScreen(View view) {
         navController.navigate(R.id.action_loginFragment_to_registerFragment);
+    }
+
+
+
+    public void isEmpty(TextInputLayout t){
+        String msg = getString(R.string.required);
+        t.setError(msg);
+    }
+
+    public void notMatchFields(TextInputLayout t){
+        String msg;
+        if (t == emailInputLayout){
+            msg = getString(R.string.notMatchEmail);
+        }else{
+            msg = getString(R.string.notMatchPass);
+        }
+        t.setError(msg);
     }
 }

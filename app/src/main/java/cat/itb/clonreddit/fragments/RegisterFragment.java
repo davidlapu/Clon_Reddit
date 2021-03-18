@@ -18,16 +18,19 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.utils.AddListenerOnTextChange;
 
 public class RegisterFragment extends Fragment {
     private TextView policyTextView;
-    private TextInputEditText editTextEmail, editTextPass;
+    private TextInputEditText editTextEmail, editTextPass, editTextUserName;
     private MaterialButton continueBTN, buttonGoogle, appleButton;
     private NavController navController;
     private FirebaseAuth mAuth;
+    private TextInputLayout emailInputLayout, passwordInputLayout, userNameInputLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,15 @@ public class RegisterFragment extends Fragment {
         ImageView closeForm = v.findViewById(R.id.closeBTN);
         editTextEmail = v.findViewById(R.id.emailEditText);
         editTextPass = v.findViewById(R.id.passwordEditText);
+        editTextUserName = v.findViewById(R.id.usernameEditText);
+        emailInputLayout = v.findViewById(R.id.emailInputLayout);
+        passwordInputLayout = v.findViewById(R.id.passwordInputLayout);
+        userNameInputLayout = v.findViewById(R.id.usernameInputLayout);
+
+
+        editTextEmail.addTextChangedListener(new AddListenerOnTextChange(getContext(), emailInputLayout));
+        editTextPass.addTextChangedListener(new AddListenerOnTextChange(getContext(), passwordInputLayout));
+        editTextUserName.addTextChangedListener(new AddListenerOnTextChange(getContext(), userNameInputLayout));
 
 //        continueBTN.setBackground();
 
@@ -91,15 +103,45 @@ public class RegisterFragment extends Fragment {
 
 
     private void createUser(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(requireActivity(), task -> {
-                    if (task.isSuccessful()) {
-                        navController.navigate(R.id.action_registerFragment_to_mainFragment);
-                    } else {
-                        Toast.makeText(getContext(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (editTextEmail.getText().toString().isEmpty() || editTextPass.getText().toString().isEmpty()
+        || editTextUserName.getText().toString().isEmpty()){
+            if (editTextEmail.getText().toString().isEmpty()){
+                isEmpty(emailInputLayout);
+            }else if (editTextUserName.getText().toString().isEmpty()){
+                isEmpty(userNameInputLayout);
+            }else{
+                isEmpty(passwordInputLayout);
+            }
+        }else {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity(), task -> {
+                        if (task.isSuccessful()) {
+                            navController.navigate(R.id.action_registerFragment_to_mainFragment);
+                        } else {
+//                            Toast.makeText(getContext(), "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+
+                            notMatchFields(emailInputLayout);
+                            notMatchFields(passwordInputLayout);
+                        }
+                    });
+        }
+    }
+
+    public void isEmpty(TextInputLayout t){
+        String msg = getString(R.string.required);
+        t.setError(msg);
+    }
+
+    public void notMatchFields(TextInputLayout t){
+        String msg;
+        if (t == emailInputLayout){
+            msg = getString(R.string.notMatchEmail);
+        }else{
+            msg = getString(R.string.notMatchPass);
+        }
+        t.setError(msg);
+
     }
 
 

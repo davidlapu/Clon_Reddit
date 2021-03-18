@@ -45,6 +45,7 @@ public class MainFragment extends Fragment {
     private View contents;
     private ImageView imageContents;
     private PostAdapter adapter;
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,12 +60,14 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         toolbar = v.findViewById(R.id.toolbar);
-        RecyclerView recyclerView = v.findViewById(R.id.recyclerViewMain);
+        recyclerView = v.findViewById(R.id.recyclerViewMain);
         drawerLayout = v.findViewById(R.id.drawerLayout);
         bottomNavigationView = v.findViewById(R.id.bottomNavigation);
         searchView = v.findViewById(R.id.searchView);
         contents = v.findViewById(R.id.mainFragmentContents);
         imageContents = v.findViewById(R.id.imageContent);
+
+
 
 
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
@@ -75,7 +78,31 @@ public class MainFragment extends Fragment {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this::bottomMenu);
 
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filtrarRecycler(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtrarRecycler(newText);
+                return false;
+            }
+        });
+
         return v;
+    }
+
+    public void filtrarRecycler(String query) {
+        FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
+                .setQuery(ConexionBBDD.getReferencePost().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), Post.class).build();
+        adapter = new PostAdapter(options, requireContext());
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
     }
 
     private boolean bottomMenu(MenuItem menuItem) {

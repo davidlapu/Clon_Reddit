@@ -61,16 +61,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string-array name="spinner_test">
-        <item>Choose a community</item>
-        <item>Genshin Impact</item>
-        <item>David Lambda</item>
-        <item>Lambdas sexys</item>
-        <item>Lambdeando voy, lambdeando vengo</item>
-        <item>Lambda for you?</item>
-    </string-array>
 
 
 
     <string name="prefs_file">cat.itb.clonreddit.PREFERENCE.KEY.FILE</string>
+
+
+
+    <string name="choose_a_community">Choose a community</string>
+    <string name="communities">Communities</string>
+    <string name="image_post">Image post</string>
+    <string name="an_interesting_title">An interesting title</string>
+    <string name="text_post">Text post</string>
+    <string name="your_text_post_optional">Your text post (optional)</string>
+
+
+    <string name="required">Required field</string>
+    <string name="notMatchEmail">Wrong email</string>
+    <string name="notMatchPass">Wrong password</string>
 </resources>
