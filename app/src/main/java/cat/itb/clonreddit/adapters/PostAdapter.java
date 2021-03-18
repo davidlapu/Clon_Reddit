@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
-import cat.itb.clonreddit.utils.ConexionBBDD;
+import cat.itb.clonreddit.utils.DBUtils;
 import cat.itb.clonreddit.utils.Formater;
 
 public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostViewHolder> {
@@ -65,7 +65,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
         }
 
         private void bind(Post post) {
-            Task<com.google.firebase.database.DataSnapshot> taskPost = ConexionBBDD.getSubreddit(post.getSubRedditID());
+            Task<com.google.firebase.database.DataSnapshot> taskPost = DBUtils.getSubreddit(post.getSubRedditID());
             taskPost.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     SubReddit s = task.getResult().getValue(SubReddit.class);

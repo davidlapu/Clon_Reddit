@@ -31,7 +31,7 @@ import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
 import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.Camera;
-import cat.itb.clonreddit.utils.ConexionBBDD;
+import cat.itb.clonreddit.utils.DBUtils;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -103,13 +103,13 @@ public class ImagePostFragment extends Fragment {
 
     public void pushPost(View view) {
         try {
-            Task<Uri> task = ConexionBBDD.subirImagen(camera.comprimirImagen(url));
+            Task<Uri> task = DBUtils.subirImagen(camera.comprimirImagen(url));
 
             task.addOnCompleteListener(task1 -> {
                 Uri downloadUri = task1.getResult();
                 urlFoto = downloadUri.toString();
 
-                ConexionBBDD.uploadPost(new Post(subReddit.getId(), new User("LambdaMan69"), "2h", "In the morning", urlFoto,
+                DBUtils.uploadPost(new Post(subReddit.getId(), new User("LambdaMan69"), "2h", "In the morning", urlFoto,
                         520, 913, 35));
 
                 Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();

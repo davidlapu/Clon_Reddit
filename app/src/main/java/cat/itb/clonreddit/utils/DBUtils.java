@@ -20,7 +20,7 @@ import java.util.Objects;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
 
-public class ConexionBBDD {
+public class DBUtils {
     private static final DatabaseReference myRef = getDatabse().getReference();
     private static final DatabaseReference postReference = myRef.child("Post");
     private static final DatabaseReference subRedditReference = myRef.child("SubReddit");

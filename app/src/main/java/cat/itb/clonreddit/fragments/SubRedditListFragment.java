@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import cat.itb.clonreddit.R;
-import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.adapters.SubredditAdapter;
-import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
-import cat.itb.clonreddit.utils.ConexionBBDD;
+import cat.itb.clonreddit.utils.DBUtils;
 
 
 public class SubRedditListFragment extends Fragment {
@@ -78,7 +75,7 @@ public class SubRedditListFragment extends Fragment {
         String dest = SubRedditListFragmentArgs.fromBundle(getArguments()).getOrigin();
 
         FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
-                .setQuery(ConexionBBDD.getReferenceSubReddit(), SubReddit.class).build();
+                .setQuery(DBUtils.getReferenceSubReddit(), SubReddit.class).build();
 
         adapter = new SubredditAdapter(options, requireContext(), dest);
         recyclerView.setAdapter(adapter);
@@ -88,7 +85,7 @@ public class SubRedditListFragment extends Fragment {
 
     public void filtrarRecycler(String query) {
         FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
-                .setQuery(ConexionBBDD.getReferenceSubReddit().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), SubReddit.class).build();
+                .setQuery(DBUtils.getReferenceSubReddit().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), SubReddit.class).build();
         adapter = new SubredditAdapter(options, requireContext(), dest);
         adapter.startListening();
         recyclerView.setAdapter(adapter);

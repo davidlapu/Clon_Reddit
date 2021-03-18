@@ -19,20 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.models.Post;
-import cat.itb.clonreddit.models.SubReddit;
-import cat.itb.clonreddit.models.User;
-import cat.itb.clonreddit.utils.ConexionBBDD;
+import cat.itb.clonreddit.utils.DBUtils;
 
 
 public class MainFragment extends Fragment {
@@ -99,7 +92,7 @@ public class MainFragment extends Fragment {
 
     public void filtrarRecycler(String query) {
         FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
-                .setQuery(ConexionBBDD.getReferencePost().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), Post.class).build();
+                .setQuery(DBUtils.getReferencePost().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), Post.class).build();
         adapter = new PostAdapter(options, requireContext());
         adapter.startListening();
         recyclerView.setAdapter(adapter);
@@ -154,7 +147,7 @@ public class MainFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
-                .setQuery(ConexionBBDD.getReferencePost(), Post.class).build();
+                .setQuery(DBUtils.getReferencePost(), Post.class).build();
         adapter = new PostAdapter(options, requireContext());
         recyclerView.setAdapter(adapter);
     }

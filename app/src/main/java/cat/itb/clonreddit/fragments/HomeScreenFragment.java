@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,7 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import cat.itb.clonreddit.R;
-import cat.itb.clonreddit.utils.ConexionBBDD;
+import cat.itb.clonreddit.utils.DBUtils;
 
 public class HomeScreenFragment extends Fragment {
     private VideoView videoBg;
@@ -77,7 +75,7 @@ public class HomeScreenFragment extends Fragment {
         appleButton = v.findViewById(R.id.appleHomeScreenButton);
         loginTextView = v.findViewById(R.id.loginHomeScreen);
 
-        ConexionBBDD.getReferenceUser();
+        DBUtils.getReferenceUser();
 
         skipTextView.setOnClickListener(this::toMainScreen);
         emailButton.setOnClickListener(this::toRegisterForm);
