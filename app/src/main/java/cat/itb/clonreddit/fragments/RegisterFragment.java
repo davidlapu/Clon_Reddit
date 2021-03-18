@@ -20,6 +20,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.utils.AddListenerOnTextChange;
@@ -117,6 +118,10 @@ public class RegisterFragment extends Fragment {
                     .addOnCompleteListener(requireActivity(), task -> {
                         if (task.isSuccessful()) {
                             navController.navigate(R.id.action_registerFragment_to_mainFragment);
+
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest
+                                    .Builder().setDisplayName(editTextUserName.getText().toString()).build();
+                            mAuth.getCurrentUser().updateProfile(profileUpdates);
                         } else {
 //                            Toast.makeText(getContext(), "Authentication failed.",
 //                                    Toast.LENGTH_SHORT).show();

@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -109,8 +110,11 @@ public class ImagePostFragment extends Fragment {
                 Uri downloadUri = task1.getResult();
                 urlFoto = downloadUri.toString();
 
-                DBUtils.uploadPost(new Post(subReddit.getId(), new User("LambdaMan69"), "2h", "In the morning", urlFoto,
-                        520, 913, 35));
+                String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                String title = titlePostEditText.getText().toString();
+
+                DBUtils.uploadPost(new Post(subReddit.getId(), new User(username), "0m", title, urlFoto,
+                        0, 0, 0));
 
                 Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
 
