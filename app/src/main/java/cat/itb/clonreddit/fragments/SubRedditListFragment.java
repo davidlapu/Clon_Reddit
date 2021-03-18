@@ -31,6 +31,7 @@ public class SubRedditListFragment extends Fragment {
     private NavController navController;
     private SearchView searchView;
     private RecyclerView recyclerView;
+    private String dest;
 
     private SubredditAdapter adapter;
     @Override
@@ -81,12 +82,14 @@ public class SubRedditListFragment extends Fragment {
 
         adapter = new SubredditAdapter(options, requireContext(), dest);
         recyclerView.setAdapter(adapter);
+
+        this.dest = dest;
     }
 
     public void filtrarRecycler(String query) {
         FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
                 .setQuery(ConexionBBDD.getReferenceSubReddit().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), SubReddit.class).build();
-        adapter = new SubredditAdapter(options, requireContext());
+        adapter = new SubredditAdapter(options, requireContext(), dest);
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
