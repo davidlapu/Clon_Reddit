@@ -10,8 +10,7 @@ public class Comment {
     private int upVotes;
 
 
-    public Comment(String id, String idPost, User user, Date date, int upVotes) {
-        this.id = id;
+    public Comment(String idPost, User user, Date date, int upVotes) {
         this.idPost = idPost;
         this.user = user;
         this.date = date;
