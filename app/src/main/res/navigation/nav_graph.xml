@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_mainFragment_to_imagePostFragment"
             app:destination="@id/imagePostFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_commentPostFragment"
+            app:destination="@id/commentPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -133,4 +136,8 @@
             android:name="origin"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/commentPostFragment"
+        android:name="cat.itb.clonreddit.fragments.CommentPostFragment"
+        android:label="CommentPostFragment" />
 </navigation>
