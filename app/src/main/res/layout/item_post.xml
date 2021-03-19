@@ -60,16 +60,32 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewAwardsPost"
         tools:text="An interesting title" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewPost"
+    <FrameLayout
+        android:id="@+id/frameTextOrImg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost"
-        tools:src="@drawable/post2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            tools:src="@null" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewTextPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost"
+            tools:text="fads asd asdf asdf  dsa fads asd asdf asdf  dsa "/>
+
+
+    </FrameLayout>
 
     <ImageButton
         android:id="@+id/upVoteButton"
@@ -80,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewUpVotePost"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewUpVotePost"
@@ -89,7 +105,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/upVoteButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg"
         tools:text="4,2k" />
 
     <ImageButton
@@ -99,7 +115,7 @@
         android:src="@drawable/ic_baseline_arrow_downward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewUpVotePost"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -109,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/postShareButton"
         app:layout_constraintStart_toEndOf="@+id/downVoteButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg"
         tools:text="23" />
 
     <com.google.android.material.button.MaterialButton
@@ -120,7 +136,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/PostGiftButton"
         app:layout_constraintStart_toEndOf="@+id/commentButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg" />
 
     <ImageButton
         android:id="@+id/PostGiftButton"
@@ -131,7 +147,7 @@
         android:src="@drawable/ic_baseline_card_giftcard_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"/>
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg"/>
 
 
 

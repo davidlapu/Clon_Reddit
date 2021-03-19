@@ -43,7 +43,6 @@ public class ImagePostFragment extends Fragment {
     private ShapeableImageView imageViewSubredditPost;
     private Camera camera;
     static final int REQUEST_IMAGE_CAPTURE = 100;
-    private byte[] thumb_byte;
     private File url;
     private String urlFoto;
     private NavController navController;
