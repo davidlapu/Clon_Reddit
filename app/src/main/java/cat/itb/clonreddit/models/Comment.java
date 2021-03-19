@@ -4,13 +4,15 @@ import java.util.Date;
 
 public class Comment {
     private String id;
+    private String idPost;
     private User user;
     private Date date;
     private int upVotes;
 
 
-    public Comment(String id, User user, Date date, int upVotes) {
+    public Comment(String id, String idPost, User user, Date date, int upVotes) {
         this.id = id;
+        this.idPost = idPost;
         this.user = user;
         this.date = date;
         this.upVotes = upVotes;
@@ -49,5 +51,13 @@ public class Comment {
 
     public void setUpVotes(int upVotes) {
         this.upVotes = upVotes;
+    }
+
+    public String getIdPost() {
+        return idPost;
+    }
+
+    public void setIdPost(String idPost) {
+        this.idPost = idPost;
     }
 }
