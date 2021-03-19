@@ -17,8 +17,10 @@ import com.google.android.material.textview.MaterialTextView;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
+import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.DBUtils;
 import cat.itb.clonreddit.utils.Formater;
 
@@ -87,6 +89,11 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(Formater.format(post.getUpVotes()));
             commentButton.setText(String.valueOf(post.getCommentsNum()));
+
+/*            for (int i = 0; i < 5; i++) {
+                DBUtils.uploadComment(post.getId(), new Comment("commenting on " + post.getTitle(), new User("Redditor" + String.valueOf(i))));
+            }*/
+
         }
 
 
