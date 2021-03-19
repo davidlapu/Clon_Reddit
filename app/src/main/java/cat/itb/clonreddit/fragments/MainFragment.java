@@ -19,6 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -60,7 +64,22 @@ public class MainFragment extends Fragment {
         contents = v.findViewById(R.id.mainFragmentContents);
         imageContents = v.findViewById(R.id.imageContent);
 
+        //TODO bug no se muestra cuando se habre por primera vez
+        NavigationView navigationView = v.findViewById(R.id.navigationView);
+        View headerView = navigationView.getHeaderView(0);
+        MaterialTextView navUsername = headerView.findViewById(R.id.nameUserDrawer);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String username = user.getDisplayName();
+            if (username == null || username.isEmpty()) {
+                navUsername.setText("No username bru"); //TODO Cambiar
+            } else {
+                navUsername.setText(username);
+            }
+        } else {
+            navUsername.setText("No username bru");
+        }
 
 
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);

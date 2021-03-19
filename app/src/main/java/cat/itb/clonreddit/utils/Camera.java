@@ -23,8 +23,6 @@ public class Camera {
 
     public byte[] comprimirImagen(File file) throws IOException {
         Bitmap thumbBitmap = new Compressor(context)
-                .setMaxHeight(125)
-                .setMaxWidth(125)
                 .setQuality(90)
                 .compressToBitmap(file);
 
