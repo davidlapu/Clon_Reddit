@@ -3,18 +3,17 @@ package cat.itb.clonreddit.models;
 import java.util.Date;
 
 public class Comment {
-    private String id;
-    private String idPost;
+    private String id, text;
     private User user;
     private Date date;
     private int upVotes;
 
 
-    public Comment(String idPost, User user, Date date, int upVotes) {
-        this.idPost = idPost;
+    public Comment(String text, User user) {
+        this.text = text;
         this.user = user;
-        this.date = date;
-        this.upVotes = upVotes;
+        this.date = new Date();
+        this.upVotes = 0;
     }
 
     public Comment() {
@@ -52,11 +51,11 @@ public class Comment {
         this.upVotes = upVotes;
     }
 
-    public String getIdPost() {
-        return idPost;
+    public String getText() {
+        return text;
     }
 
-    public void setIdPost(String idPost) {
-        this.idPost = idPost;
+    public void setText(String text) {
+        this.text = text;
     }
 }

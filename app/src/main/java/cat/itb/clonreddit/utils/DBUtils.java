@@ -2,11 +2,7 @@ package cat.itb.clonreddit.utils;
 
 import android.net.Uri;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -17,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
 
@@ -24,6 +21,7 @@ public class DBUtils {
     private static final DatabaseReference myRef = getDatabse().getReference();
     private static final DatabaseReference postReference = myRef.child("Post");
     private static final DatabaseReference subRedditReference = myRef.child("SubReddit");
+    private static final DatabaseReference commentReference = myRef.child("Comment");
 
 
     public static StorageReference getStorage(){
@@ -43,14 +41,12 @@ public class DBUtils {
     }
 
     public static DatabaseReference getReferenceSubReddit(){
-        return myRef.child("SubReddit");
+        return subRedditReference;
     }
 
     public static DatabaseReference getReferenceComment(){
-        return myRef.child("Comment");
+        return commentReference;
     }
-
-
 
 
     public static Task<Uri> subirImagen(byte[] img) {
@@ -86,5 +82,13 @@ public class DBUtils {
 
     public static Task<com.google.firebase.database.DataSnapshot> getSubreddit(String id) {
         return subRedditReference.child(id).get();
+    }
+
+    public static void uploadComment(String postId, Comment comment) {
+        DatabaseReference currentRef = commentReference.child(postId);
+
+        String key = currentRef.push().getKey();
+        comment.setId(key);
+        currentRef.child(key).setValue(comment);
     }
 }
