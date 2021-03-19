@@ -1,6 +1,13 @@
 package cat.itb.clonreddit.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,27 +15,24 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-
-
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
+import cat.itb.clonreddit.models.User;
+import cat.itb.clonreddit.utils.DBUtils;
 
 public class TextPostFragment extends Fragment {
     private NavController navController;
     private ImageView chooseCommunityArrowImageView, closeBTN;
     private ShapeableImageView imageViewSubredditPost;
+    private EditText editTextTitle, editTextText;
     private TextView chooseCommunityTextView;
+    private MaterialTextView textViewPost;
     private SubReddit subReddit;
 
 
@@ -47,10 +51,15 @@ public class TextPostFragment extends Fragment {
         chooseCommunityArrowImageView = v.findViewById(R.id.chooseSubredditArrow);
         imageViewSubredditPost = v.findViewById(R.id.imageViewSubredditPost);
         closeBTN = v.findViewById(R.id.closeBTN);
+        editTextTitle = v.findViewById(R.id.editTextTitleTextPost);
+        editTextText = v.findViewById(R.id.editTextTextPost);
+        textViewPost = v.findViewById(R.id.buttonPostText);
 
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
         closeBTN.setOnClickListener(this::goBack);
+        textViewPost.setOnClickListener(this::pushPost);
+
         return v;
     }
 
@@ -77,5 +86,22 @@ public class TextPostFragment extends Fragment {
 
     public void goBack(View view) {
         navController.navigate(R.id.action_textPostFragment_to_mainFragment);
+    }
+
+    public void pushPost(View view) {
+        try {
+            String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+            String title = editTextTitle.getText().toString();
+            String text = editTextText.getText().toString();
+
+            Post p = new Post(subReddit.getId(), new User(username), "0m", title,
+                    0, text , 0, 0);
+
+            DBUtils.uploadPost(p);
+
+        }catch (Exception e){
+            Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

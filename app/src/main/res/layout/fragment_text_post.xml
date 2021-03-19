@@ -41,6 +41,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/buttonPostText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/post"
@@ -128,6 +129,7 @@
 
 
         <EditText
+            android:id="@+id/editTextTitleTextPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -152,6 +154,7 @@
 
 
     <EditText
+        android:id="@+id/editTextTextPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
