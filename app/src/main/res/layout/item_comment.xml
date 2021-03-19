@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@color/itemsBg">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewUser"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/communityiconprogrammerhumor"
+        app:layout_constraintStart_toEndOf="@+id/closeBTN"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circleImageView" />
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Comunidad del ojete"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/commentTextView"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="9dp"
+        android:text="."
+        app:layout_constraintBottom_toTopOf="@+id/commentTextView"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="53m"
+        app:layout_constraintBottom_toTopOf="@+id/commentTextView"
+        app:layout_constraintStart_toEndOf="@+id/textViewDot"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/commentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="12dp"
+        android:text="David lambda y sus fantasias lambdosas contraatacan de nuevo segunda parte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUser" />
+
+    <ImageButton
+        android:id="@+id/upVoteButton"
+        style="@style/postButton"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_arrow_upward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewUpVotePost"
+        app:layout_constraintTop_toBottomOf="@+id/frameTextOrImg" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewUpVotePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/downVoteButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView"
+        tools:text="4" />
+
+
+    <ImageButton
+        android:id="@+id/downVoteButton"
+        style="@style/postButton"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_arrow_downward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="Reply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/upVoteButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView" />
+
+    <ImageButton
+        android:id="@+id/replyButton"
+        style="@style/postButton"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:src="@drawable/ic_baseline_reply_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView" />
+
+
+    <ImageButton
+        android:id="@+id/giftButton"
+        style="@style/postButton"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_card_giftcard_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/replyButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView" />
+
+
+    <ImageButton
+        android:id="@+id/tresPuntitosButton"
+        style="@style/postButton"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/giftButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView" />
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
