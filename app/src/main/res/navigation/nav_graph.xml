@@ -56,10 +56,21 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_textPostFragment"
-            app:destination="@id/textPostFragment" />
+            app:destination="@id/textPostFragment"
+            app:enterAnim="@anim/enter_bottom_to_top"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/exit_top_to_bottom" />
         <action
             android:id="@+id/action_mainFragment_to_imagePostFragment"
-            app:destination="@id/imagePostFragment" />
+            app:destination="@id/imagePostFragment"
+            app:enterAnim="@anim/enter_bottom_to_top"
+            app:exitAnim="@anim/no_animation"
+            app:popEnterAnim="@anim/no_animation"
+            app:popExitAnim="@anim/exit_top_to_bottom" />
+        <action
+            android:id="@+id/action_mainFragment_to_commentPostFragment"
+            app:destination="@id/commentPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -103,6 +114,9 @@
         <argument
             android:name="subreddit"
             app:argType="cat.itb.clonreddit.models.SubReddit" />
+        <action
+            android:id="@+id/action_textPostFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/imagePostFragment"
@@ -118,6 +132,9 @@
         <argument
             android:name="subreddit"
             app:argType="cat.itb.clonreddit.models.SubReddit" />
+        <action
+            android:id="@+id/action_imagePostFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/subRedditListFragment"
@@ -133,4 +150,8 @@
             android:name="origin"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/commentPostFragment"
+        android:name="cat.itb.clonreddit.fragments.CommentPostFragment"
+        android:label="CommentPostFragment" />
 </navigation>

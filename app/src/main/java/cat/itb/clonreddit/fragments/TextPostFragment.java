@@ -28,7 +28,7 @@ import cat.itb.clonreddit.utils.DBUtils;
 
 public class TextPostFragment extends Fragment {
     private NavController navController;
-    private ImageView chooseCommunityArrowImageView;
+    private ImageView chooseCommunityArrowImageView, closeBTN;
     private ShapeableImageView imageViewSubredditPost;
     private EditText editTextTitle, editTextText;
     private TextView chooseCommunityTextView;
@@ -50,12 +50,14 @@ public class TextPostFragment extends Fragment {
         chooseCommunityTextView = v.findViewById(R.id.chooseSubredditTextView);
         chooseCommunityArrowImageView = v.findViewById(R.id.chooseSubredditArrow);
         imageViewSubredditPost = v.findViewById(R.id.imageViewSubredditPost);
+        closeBTN = v.findViewById(R.id.closeBTN);
         editTextTitle = v.findViewById(R.id.editTextTitleTextPost);
         editTextText = v.findViewById(R.id.editTextTextPost);
         textViewPost = v.findViewById(R.id.buttonPostText);
 
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
+        closeBTN.setOnClickListener(this::goBack);
         textViewPost.setOnClickListener(this::pushPost);
 
         return v;
@@ -80,6 +82,10 @@ public class TextPostFragment extends Fragment {
         TextPostFragmentDirections.ActionTextPostFragmentToSubRedditListFragment action =
                 TextPostFragmentDirections.actionTextPostFragmentToSubRedditListFragment("txt");
         navController.navigate(action);
+    }
+
+    public void goBack(View view) {
+        navController.navigate(R.id.action_textPostFragment_to_mainFragment);
     }
 
     public void pushPost(View view) {

@@ -73,10 +73,15 @@ public class ImagePostFragment extends Fragment {
         postBTN.setOnClickListener(this::pushPost);
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
+        closeBTN.setOnClickListener(this::goBack);
 
         camera = new Camera(getContext());
         // Inflate the layout for this fragment
         return v;
+    }
+
+    public void goBack(View view) {
+        navController.navigate(R.id.action_imagePostFragment_to_mainFragment);
     }
 
     @Override
