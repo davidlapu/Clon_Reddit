@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -17,6 +18,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.fragments.MainFragmentDirections;
 import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
@@ -65,6 +67,16 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
             commentButton = itemView.findViewById(R.id.commentButton);
             textViewText = itemView.findViewById(R.id.textViewTextPost);
+
+            commentButton.setOnClickListener(this::toComments);
+
+        }
+
+        private void toComments(View view) {
+            MainFragmentDirections.ActionMainFragmentToCommentPostFragment dir =
+                    MainFragmentDirections.actionMainFragmentToCommentPostFragment(getItem(getLayoutPosition()));
+
+            Navigation.findNavController(itemView).navigate(dir);
         }
 
         private void bind(Post post) {
@@ -91,7 +103,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             commentButton.setText(String.valueOf(post.getCommentsNum()));
 
 /*            for (int i = 0; i < 5; i++) {
-                DBUtils.uploadComment(post.getId(), new Comment("commenting on " + post.getTitle(), new User("Redditor" + String.valueOf(i))));
+                DBUtils.uploadComment(post.getId(), new Comment(post.getTitle(), new User("Redditor" + String.valueOf(i))));
             }*/
 
         }

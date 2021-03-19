@@ -3,6 +3,8 @@ package cat.itb.clonreddit.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,18 +36,22 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_post, parent, false);
+                .inflate(R.layout.item_comment, parent, false);
         return new ViewHolder(view);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textViewUserName, commentTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            textViewUserName = itemView.findViewById(R.id.textViewUserName);
+            commentTextView = itemView.findViewById(R.id.commentTextView);
         }
 
         public void bind(Comment c) {
-
+            textViewUserName.setText(c.getUser().getUserName());
+            commentTextView.setText(c.getText());
         }
     }
 }
