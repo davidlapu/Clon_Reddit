@@ -3,7 +3,7 @@ package cat.itb.clonreddit.models;
 public class Post {
     private String id;
     private User user;
-    private String subRedditID ,time, title, imgUrl;
+    private String subRedditID ,time, title, imgUrl, text = null;
     private int numAwards, upVotes, commentsNum;
 
     public Post() {
@@ -14,6 +14,17 @@ public class Post {
         this.time = time;
         this.title = title;
         this.imgUrl = imgUrl;
+        this.numAwards = numAwards;
+        this.upVotes = upVotes;
+        this.commentsNum = commentsNum;
+        this.subRedditID = subRedditId;
+    }
+
+    public Post(String subRedditId, User user, String time, String title, int numAwards, String text, int upVotes, int commentsNum) {
+        this.user = user;
+        this.time = time;
+        this.title = title;
+        this.text = text;
         this.numAwards = numAwards;
         this.upVotes = upVotes;
         this.commentsNum = commentsNum;
@@ -92,5 +103,13 @@ public class Post {
 
     public void setSubRedditID(String subRedditID) {
         this.subRedditID = subRedditID;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

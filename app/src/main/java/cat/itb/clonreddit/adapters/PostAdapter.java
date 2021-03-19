@@ -47,7 +47,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
 
     class PostViewHolder extends RecyclerView.ViewHolder {
         private final MaterialTextView textViewSubreddit, textViewSubtitle, textViewAwards,
-                textViewTitle, textViewUpVotes;
+                textViewTitle, textViewUpVotes, textViewText;
         private final MaterialButton commentButton;
         private final ShapeableImageView imageViewPost, imageViewSubreddit;
 
@@ -62,6 +62,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             imageViewPost = itemView.findViewById(R.id.imageViewPost);
             imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
             commentButton = itemView.findViewById(R.id.commentButton);
+            textViewText = itemView.findViewById(R.id.textViewTextPost);
         }
 
         private void bind(Post post) {
@@ -75,16 +76,17 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
                 }
             });
 
-            Picasso.with(context).load(post.getImgUrl()).into(imageViewPost);
+            if (post.getText() == null) {
+                Picasso.with(context).load(post.getImgUrl()).into(imageViewPost);
+            } else {
+                textViewText.setText(post.getText());
+            }
 
-            //textViewSubreddit.setText(String.format("r/%s", post.getSubReddit().getTitle()));
             textViewSubtitle.setText(context.getString(R.string.subtitle, post.getUser().getUserName(), post.getTime()));
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(Formater.format(post.getUpVotes()));
             commentButton.setText(String.valueOf(post.getCommentsNum()));
-            //imageViewPost.setImageResource(post.getImageId());
-           // imageViewSubreddit.setImageResource(post.getSubReddit().getImageId());
         }
 
 
