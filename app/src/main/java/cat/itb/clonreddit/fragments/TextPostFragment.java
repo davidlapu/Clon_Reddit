@@ -26,7 +26,7 @@ import cat.itb.clonreddit.models.SubReddit;
 
 public class TextPostFragment extends Fragment {
     private NavController navController;
-    private ImageView chooseCommunityArrowImageView;
+    private ImageView chooseCommunityArrowImageView, closeBTN;
     private ShapeableImageView imageViewSubredditPost;
     private TextView chooseCommunityTextView;
     private SubReddit subReddit;
@@ -46,9 +46,11 @@ public class TextPostFragment extends Fragment {
         chooseCommunityTextView = v.findViewById(R.id.chooseSubredditTextView);
         chooseCommunityArrowImageView = v.findViewById(R.id.chooseSubredditArrow);
         imageViewSubredditPost = v.findViewById(R.id.imageViewSubredditPost);
+        closeBTN = v.findViewById(R.id.closeBTN);
 
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
+        closeBTN.setOnClickListener(this::goBack);
         return v;
     }
 
@@ -71,5 +73,9 @@ public class TextPostFragment extends Fragment {
         TextPostFragmentDirections.ActionTextPostFragmentToSubRedditListFragment action =
                 TextPostFragmentDirections.actionTextPostFragmentToSubRedditListFragment("txt");
         navController.navigate(action);
+    }
+
+    public void goBack(View view) {
+        navController.navigate(R.id.action_textPostFragment_to_mainFragment);
     }
 }
