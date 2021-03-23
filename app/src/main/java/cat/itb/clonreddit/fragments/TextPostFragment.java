@@ -57,7 +57,7 @@ public class TextPostFragment extends Fragment {
 
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
-        closeBTN.setOnClickListener(this::goBack);
+        closeBTN.setOnClickListener(this::toMainFragment);
         textViewPost.setOnClickListener(this::pushPost);
 
         return v;
@@ -84,7 +84,11 @@ public class TextPostFragment extends Fragment {
         navController.navigate(action);
     }
 
-    public void goBack(View view) {
+    public void toMainFragment(View view) {
+        toMainFragment();
+    }
+
+    public void toMainFragment() {
         navController.navigate(R.id.action_textPostFragment_to_mainFragment);
     }
 
@@ -98,6 +102,8 @@ public class TextPostFragment extends Fragment {
                     0, text , 0, 0);
 
             DBUtils.uploadPost(p);
+
+            toMainFragment();
 
         }catch (Exception e){
             Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();

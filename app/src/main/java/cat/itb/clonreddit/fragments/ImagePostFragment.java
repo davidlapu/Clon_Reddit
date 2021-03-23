@@ -73,14 +73,18 @@ public class ImagePostFragment extends Fragment {
         postBTN.setOnClickListener(this::pushPost);
         chooseCommunityTextView.setOnClickListener(this::chooseCommunityFragment);
         chooseCommunityArrowImageView.setOnClickListener(this::chooseCommunityFragment);
-        closeBTN.setOnClickListener(this::goBack);
+        closeBTN.setOnClickListener(this::toMainFragment);
 
         camera = new Camera(getContext());
         // Inflate the layout for this fragment
         return v;
     }
 
-    public void goBack(View view) {
+    public void toMainFragment(View view) {
+        toMainFragment();
+    }
+
+    public void toMainFragment() {
         navController.navigate(R.id.action_imagePostFragment_to_mainFragment);
     }
 
@@ -121,6 +125,7 @@ public class ImagePostFragment extends Fragment {
                         0, 0, 0));
 
                 Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
+                toMainFragment();
 
             });
         }catch (Exception e){
