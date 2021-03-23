@@ -153,5 +153,9 @@
     <fragment
         android:id="@+id/commentPostFragment"
         android:name="cat.itb.clonreddit.fragments.CommentPostFragment"
-        android:label="CommentPostFragment" />
+        android:label="CommentPostFragment" >
+        <argument
+            android:name="post"
+            app:argType="cat.itb.clonreddit.models.Post" />
+    </fragment>
 </navigation>
