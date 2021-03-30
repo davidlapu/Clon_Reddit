@@ -15,6 +15,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
@@ -100,7 +104,20 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(Formater.format(post.getUpVotes()));
-            commentButton.setText(String.valueOf(post.getCommentsNum()));
+
+
+            DBUtils.getReferenceComment().child(post.getId()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    commentButton.setText(String.valueOf((int) snapshot.getChildrenCount()));
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
 
 /*            for (int i = 0; i < 5; i++) {
                 DBUtils.uploadComment(post.getId(), new Comment(post.getTitle(), new User("Redditor" + String.valueOf(i))));
