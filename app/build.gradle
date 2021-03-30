@@ -69,6 +69,4 @@ dependencies {
 
     //Android Paging Libray
     implementation 'androidx.paging:paging-runtime:2.1.2'
-
-
 }

@@ -1,14 +1,22 @@
 package cat.itb.clonreddit.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -43,6 +51,8 @@ public class MainFragment extends Fragment {
     private ImageView imageContents;
     private PostAdapter adapter;
     private RecyclerView recyclerView;
+    private MaterialTextView navUsername;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,30 @@ public class MainFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         mStorageRef = FirebaseStorage.getInstance().getReference();
     }
+
+
+    /*++++ CARGA EL USERNAME DEL USUARIO EN EL DRAWER ++++*/
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String username = user.getDisplayName();
+            if (username == null || username.isEmpty()) {
+                navUsername.setText("No username bru"); //TODO Cambiar
+            } else {
+                navUsername.setText(username);
+            }
+        } else {
+            navUsername.setText("No username bru");
+        }
+    }
+    /*++++ CARGA EL USERNAME DEL USUARIO EN EL DRAWER ++++*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,19 +101,27 @@ public class MainFragment extends Fragment {
         //TODO bug no se muestra cuando se habre por primera vez
         NavigationView navigationView = v.findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
-        MaterialTextView navUsername = headerView.findViewById(R.id.nameUserDrawer);
+        navUsername = headerView.findViewById(R.id.nameUserDrawer);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String username = user.getDisplayName();
-            if (username == null || username.isEmpty()) {
-                navUsername.setText("No username bru"); //TODO Cambiar
-            } else {
-                navUsername.setText(username);
+
+
+
+       /*+++++++ LOG OUT +++++++*/
+        ImageButton logOutButton = v.findViewById(R.id.logOutButton);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null){
+                    FirebaseAuth.getInstance().signOut();;
+
+                    navController.navigate(R.id.action_mainFragment_to_homeScreenFragment);
+                }else{
+                    Toast.makeText(getContext(), "NO HAY NADIE LOGEADO", Toast.LENGTH_SHORT).show();
+                }
             }
-        } else {
-            navUsername.setText("No username bru");
-        }
+        });
+        /*+++++++ LOG OUT +++++++*/
 
 
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
@@ -109,6 +151,9 @@ public class MainFragment extends Fragment {
         return v;
     }
 
+
+
+
     public void filtrarRecycler(String query) {
         FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
                 .setQuery(DBUtils.getReferencePost().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), Post.class).build();
@@ -116,6 +161,10 @@ public class MainFragment extends Fragment {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+
+
+
+
 
     private boolean bottomMenu(MenuItem menuItem) {
         final int itemId = menuItem.getItemId();
@@ -142,11 +191,19 @@ public class MainFragment extends Fragment {
         }
     }
 
+
+
+
+
     private void pocheador(int imageId) {
         contents.setVisibility(View.GONE);
         imageContents.setImageResource(imageId);
         imageContents.setVisibility(View.VISIBLE);
     }
+
+
+
+
 
 
     private void setUpRecycler(RecyclerView recyclerView) {
@@ -170,6 +227,10 @@ public class MainFragment extends Fragment {
         adapter = new PostAdapter(options, requireContext());
         recyclerView.setAdapter(adapter);
     }
+
+
+
+
 
     @Override
     public void onStart() {

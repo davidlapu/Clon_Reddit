@@ -117,11 +117,10 @@ public class RegisterFragment extends Fragment {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(requireActivity(), task -> {
                         if (task.isSuccessful()) {
-                            navController.navigate(R.id.action_registerFragment_to_mainFragment);
-
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest
                                     .Builder().setDisplayName(editTextUserName.getText().toString()).build();
                             mAuth.getCurrentUser().updateProfile(profileUpdates);
+                            navController.navigate(R.id.action_registerFragment_to_mainFragment);
                         } else {
 //                            Toast.makeText(getContext(), "Authentication failed.",
 //                                    Toast.LENGTH_SHORT).show();

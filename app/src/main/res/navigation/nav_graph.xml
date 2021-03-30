@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_mainFragment_to_commentPostFragment"
             app:destination="@id/commentPostFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"

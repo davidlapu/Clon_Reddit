@@ -35,7 +35,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.util.List;
+import java.util.Objects;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.utils.DBUtils;
@@ -46,7 +50,6 @@ public class HomeScreenFragment extends Fragment {
     private Button emailButton;
     private MaterialButton gButton, appleButton;
     private NavController navController;
-
     private int GOOGLE_SIGN_IN = 100;
 
 
@@ -154,8 +157,14 @@ public class HomeScreenFragment extends Fragment {
     }
 
 
-
-
+    @Override
+    public void onStart() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null){
+            navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
+        }
+        super.onStart();
+    }
 
     @Override
     public void onResume() {

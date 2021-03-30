@@ -32,9 +32,9 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageButton
-                android:id="@+id/drawerNightModeButton"
+                android:id="@+id/logOutButton"
                 style="@style/postButton"
-                android:src="@drawable/ic_baseline_nightlight_round_24"
+                android:src="@drawable/ic_baseline_logout_24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
