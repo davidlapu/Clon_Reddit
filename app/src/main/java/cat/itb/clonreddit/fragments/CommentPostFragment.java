@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.paging.DatabasePagingOptions;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.Query;
 
 import cat.itb.clonreddit.R;
@@ -25,11 +28,13 @@ public class CommentPostFragment extends Fragment {
     private RecyclerView recycler;
     private CommentAdapter adapter;
     private Post post;
+    private MaterialButton buttonCreateComment;
+    private NavController navController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        navController = NavHostFragment.findNavController(this);
     }
 
     @Override
@@ -37,6 +42,7 @@ public class CommentPostFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_comment_post, container, false);
         // Inflate the layout for this fragment
         recycler = v.findViewById(R.id.recyclerComments);
+        buttonCreateComment= v.findViewById(R.id.addCommentButton);
         return v;
     }
 
@@ -46,6 +52,12 @@ public class CommentPostFragment extends Fragment {
 
         post = CommentPostFragmentArgs.fromBundle(getArguments()).getPost();
         setUpRecycler();
+        buttonCreateComment.setOnClickListener(v -> {
+            CommentPostFragmentDirections.ActionCommentPostFragmentToCreateCommentFragment a =
+            CommentPostFragmentDirections.actionCommentPostFragmentToCreateCommentFragment(post.getTitle(), post.getId());
+
+            navController.navigate(a);
+        });
     }
 
     private void setUpRecycler() {

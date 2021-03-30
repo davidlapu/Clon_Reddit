@@ -1,18 +1,23 @@
 package cat.itb.clonreddit.models;
 
-import java.util.Date;
-
 public class Comment {
     private String id, text;
     private User user;
-    private Date date;
+    private long date;
     private int upVotes;
 
+
+    public Comment(String text, User user, long date) {
+        this.text = text;
+        this.user = user;
+        this.date = date;
+        this.upVotes = 0;
+    }
 
     public Comment(String text, User user) {
         this.text = text;
         this.user = user;
-        this.date = new Date();
+        this.date = System.currentTimeMillis();
         this.upVotes = 0;
     }
 
@@ -35,11 +40,11 @@ public class Comment {
         this.user = user;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

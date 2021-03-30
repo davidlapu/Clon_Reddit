@@ -157,5 +157,20 @@
         <argument
             android:name="post"
             app:argType="cat.itb.clonreddit.models.Post" />
+        <action
+            android:id="@+id/action_commentPostFragment_to_createCommentFragment"
+            app:destination="@id/createCommentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createCommentFragment"
+        android:name="cat.itb.clonreddit.fragments.CreateCommentFragment"
+        android:label="fragment_create_comment"
+        tools:layout="@layout/fragment_create_comment" >
+        <argument
+            android:name="Title"
+            app:argType="string" />
+        <argument
+            android:name="postId"
+            app:argType="string" />
     </fragment>
 </navigation>

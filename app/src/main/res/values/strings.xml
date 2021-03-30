@@ -78,4 +78,6 @@
     <string name="comments">Comments</string>
 
     <string name="all_required_fields">All required fields have to be filled</string>
+    <string name="your_comment">Your comment</string>
+    <string name="add_comment">Add comment</string>
 </resources>
