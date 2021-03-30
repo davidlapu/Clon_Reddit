@@ -111,27 +111,41 @@ public class ImagePostFragment extends Fragment {
     }
 
     public void pushPost(View view) {
-        try {
-            Task<Uri> task = DBUtils.subirImagen(camera.comprimirImagen(url));
+        if (allRequiredCamps()) {
+            try {
+                Task<Uri> task = DBUtils.subirImagen(camera.comprimirImagen(url));
 
-            task.addOnCompleteListener(task1 -> {
-                Uri downloadUri = task1.getResult();
-                urlFoto = downloadUri.toString();
+                task.addOnCompleteListener(task1 -> {
+                    Uri downloadUri = task1.getResult();
+                    urlFoto = downloadUri.toString();
 
-                String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-                String title = titlePostEditText.getText().toString();
+                    String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                    String title = titlePostEditText.getText().toString();
 
-                DBUtils.uploadPost(new Post(subReddit.getId(), new User(username), "0m", title, urlFoto,
-                        0, 0, 0));
+                    DBUtils.uploadPost(new Post(subReddit.getId(), new User(username), "0m", title, urlFoto,
+                            0, 0, 0));
 
-                Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
-                toMainFragment();
+                    //TODO Mover texto a strings
+                    Toast.makeText(getContext(), "Imagen subida", Toast.LENGTH_SHORT).show();
+                    toMainFragment();
 
-            });
-        }catch (Exception e){
-            Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                //TODO Mover texto a strings
+                Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getContext(), R.string.all_required_fields, Toast.LENGTH_LONG).show();
         }
+    }
 
+    private boolean allRequiredCamps() {
+        boolean allGood = true;
+
+        if (subReddit == null) allGood = false;
+        else if (titlePostEditText.getText().toString().isEmpty()) allGood = false;
+
+        return allGood;
     }
 
     public void takePicture(View view) {

@@ -93,21 +93,32 @@ public class TextPostFragment extends Fragment {
     }
 
     public void pushPost(View view) {
-        try {
-            String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-            String title = editTextTitle.getText().toString();
-            String text = editTextText.getText().toString();
+        if (allRequiredCamps()) {
+            try {
+                String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                String title = editTextTitle.getText().toString();
+                String text = editTextText.getText().toString();
 
-            Post p = new Post(subReddit.getId(), new User(username), "0m", title,
-                    0, text , 0, 0);
+                Post p = new Post(subReddit.getId(), new User(username), "0m", title,
+                        0, text , 0, 0);
 
-            DBUtils.uploadPost(p);
+                DBUtils.uploadPost(p);
 
-            toMainFragment();
+                toMainFragment();
 
-        }catch (Exception e){
-            Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                //TODO Mover texto a strings
+                Toast.makeText(getContext(), "IMPOSIBLE SUBIR POST SIN IMAGEN", Toast.LENGTH_SHORT).show();
+            }
         }
+    }
 
+    private boolean allRequiredCamps() {
+        boolean allGood = true;
+
+        if (subReddit == null) allGood = false;
+        else if (editTextTitle.getText().toString().isEmpty()) allGood = false;
+
+        return allGood;
     }
 }
