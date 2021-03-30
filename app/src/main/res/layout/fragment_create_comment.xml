@@ -63,14 +63,6 @@
         android:layout_height="1.5dp"/>
 
 
-    <View
-        android:id="@+id/lineGrey"
-        style="@style/LineStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postLayout" />
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
