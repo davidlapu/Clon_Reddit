@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.paging.DatabasePagingOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
@@ -152,6 +149,17 @@ public class CommentPostFragment extends Fragment {
     public void onStart() {
         super.onStart();
         adapter.startListening();
+
+        /*
+                DBUtils.getReferencePost().child(post.getId()).child("commentsNum").get().addOnSuccessListener(
+                dataSnapshot -> {
+                    int n = dataSnapshot.getValue(int.class);
+
+                    if (commentButton != null) commentButton.setText(String.valueOf(n));
+
+                }
+        );
+        */
     }
 
     @Override

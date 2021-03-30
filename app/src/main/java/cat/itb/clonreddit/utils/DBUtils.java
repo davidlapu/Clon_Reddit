@@ -95,12 +95,26 @@ public class DBUtils {
         return subRedditReference.child(id).get();
     }
 
+    public static void addCommentNum(String postId) {
+        getPost(postId).addOnSuccessListener(dataSnapshot -> {
+            int n = dataSnapshot.getValue(Post.class).getCommentsNum();
+            n = n + 1;
+
+            postReference.child(postId).child("commentsNum").setValue(n);
+        });
+    }
+
+    public static Task<com.google.firebase.database.DataSnapshot> getPost(String id) {
+        return postReference.child(id).get();
+    }
+
     public static void uploadComment(String postId, Comment comment) {
         DatabaseReference currentRef = commentReference.child(postId);
 
         String key = currentRef.push().getKey();
         comment.setId(key);
         currentRef.child(key).setValue(comment);
+        addCommentNum(postId);
     }
 
 
