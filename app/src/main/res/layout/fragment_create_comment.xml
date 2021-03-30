@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TextPostFragment"
+    tools:context=".fragments.CreateCommentFragment"
     android:background="@color/itemsBg">
 
 
@@ -16,8 +16,7 @@
         android:background="@color/itemsBg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -32,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="@string/image_post"
+            android:text="@string/add_comment"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/closeBTN"
@@ -42,7 +41,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/postBTN"
+            android:id="@+id/buttonPostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/post"
@@ -51,8 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingEnd="15dp"
-            tools:ignore="RtlSymmetry" />
+            android:paddingRight="15dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -62,55 +60,8 @@
         app:layout_constraintEnd_toStartOf="@+id/materialTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        android:layout_height="1.5dp"
-        tools:ignore="UnknownIdInLayout" />
+        android:layout_height="1.5dp"/>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/postLayout"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/itemsBg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineBlack">
-
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewSubredditPost"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/cicrcle_buttons"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/circleImageView"
-            tools:src="@drawable/communityiconprogrammerhumor" />
-
-
-        <TextView
-            android:id="@+id/chooseSubredditTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/choose_a_community"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <ImageView
-            android:id="@+id/chooseSubredditArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_expand_more_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chooseSubredditTextView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/lineGrey"
@@ -128,21 +79,22 @@
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineGrey">
+        app:layout_constraintTop_toTopOf="@+id/lineBlack">
 
 
-        <EditText
-            android:id="@+id/titlePostEditText"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewTitleComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:background="@color/itemsBg"
-            android:hint="@string/an_interesting_title"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:layout_marginEnd="12dp"
+            android:background="@color/itemsBg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,40 +108,16 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:backgroundTint="@color/itemsBg"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/lineGreyBottom"
-        app:layout_constraintEnd_toEndOf="parent"
+    <EditText
+        android:id="@+id/editTextTextComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineGrey2">
-
-        <ImageView
-            android:id="@+id/addBTN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_add_circle_24" />
-
-        <ImageView
-            android:id="@+id/imageViewPost"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/cardview_border"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lineGrey2" />
-
-    </androidx.cardview.widget.CardView>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/lineGrey2"
+        android:background="@color/itemsBg"
+        android:padding="12dp"
+        android:hint="@string/your_comment"
+        android:textSize="14sp"/>
 
 
     <View
@@ -221,6 +149,8 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
