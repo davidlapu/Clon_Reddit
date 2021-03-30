@@ -50,9 +50,9 @@
             app:layout_constraintStart_toEndOf="@+id/closeBTN"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circleImageView"
-            android:src="@drawable/communityiconprogrammerhumor" />
+            tools:src="@drawable/communityiconprogrammerhumor" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNameSubreddit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPostTopBar"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Comunidad del ojete"
+            tools:text="Comunidad del ojete"
             />
 
 
@@ -103,7 +103,13 @@
             android:layout_height="0dp"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <include
+                android:id="@+id/postLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/item_post"/>
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/spinnerBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +124,7 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/communityiconprogrammerhumor"
+                    tools:src="@drawable/communityiconprogrammerhumor"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/circleImageView" />
@@ -129,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="r/something"
+                    tools:text="r/something"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -139,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="adsfasdf asdfasd "
+                    tools:text="adsfasdf asdfasd "
                     app:layout_constraintStart_toEndOf="@+id/imageViewSubredditPost"
                     app:layout_constraintTop_toBottomOf="@+id/textViewSubredditNamePost" />
 
@@ -149,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="12 Awards"
+                    tools:text="12 Awards"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewSubredditPost" />
 
@@ -159,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="An interesting title"
+                    tools:text="An interesting title"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/post1"
+                    tools:src="@drawable/post1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitlePost" />
@@ -192,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="4,2k"
+                    tools:text="4,2k"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/upVoteButton"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
@@ -210,7 +216,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/commentButton"
                     style="@style/postMaterialButton"
-                    android:text="23"
+                    tools:text="23"
                     app:icon="@drawable/ic_baseline_chat_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/postShareButton"
@@ -237,7 +243,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -246,7 +252,7 @@
                 android:background="@color/bg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerBar">
+                app:layout_constraintTop_toBottomOf="@+id/postLayout">
 
 
                 <TextView

@@ -68,7 +68,7 @@
         style="@style/LineStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerBar" />
+        app:layout_constraintTop_toBottomOf="@+id/postLayout" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

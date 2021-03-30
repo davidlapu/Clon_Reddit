@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,20 +16,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.paging.DatabasePagingOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.adapters.CommentAdapter;
 import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.SubReddit;
 import cat.itb.clonreddit.utils.DBUtils;
+import cat.itb.clonreddit.utils.Formater;
 
 public class CommentPostFragment extends Fragment {
     private RecyclerView recycler;
     private CommentAdapter adapter;
     private Post post;
     private MaterialButton buttonCreateComment;
+    private MaterialTextView textViewNameSubreddit;
     private NavController navController;
 
     @Override
@@ -43,6 +53,8 @@ public class CommentPostFragment extends Fragment {
         // Inflate the layout for this fragment
         recycler = v.findViewById(R.id.recyclerComments);
         buttonCreateComment= v.findViewById(R.id.addCommentButton);
+        textViewNameSubreddit = v.findViewById(R.id.textViewNameSubreddit);
+
         return v;
     }
 
@@ -51,13 +63,59 @@ public class CommentPostFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         post = CommentPostFragmentArgs.fromBundle(getArguments()).getPost();
+        bindPost();
         setUpRecycler();
+
         buttonCreateComment.setOnClickListener(v -> {
             CommentPostFragmentDirections.ActionCommentPostFragmentToCreateCommentFragment a =
             CommentPostFragmentDirections.actionCommentPostFragmentToCreateCommentFragment(post.getTitle(), post.getId());
 
             navController.navigate(a);
         });
+    }
+
+    private void bindPost() {
+        MaterialTextView textViewSubreddit, textViewSubtitle, textViewAwards,
+                textViewTitle, textViewUpVotes, textViewText;
+        MaterialButton commentButton;
+        ShapeableImageView imageViewPost, imageViewSubreddit;
+
+        View itemView = getView();
+
+        textViewSubreddit = itemView.findViewById(R.id.textViewSubredditNamePost);
+        textViewSubtitle = itemView.findViewById(R.id.textViewSubtitlePost);
+        textViewAwards = itemView.findViewById(R.id.textViewAwardsPost);
+        textViewTitle = itemView.findViewById(R.id.textViewTitlePost);
+        textViewUpVotes = itemView.findViewById(R.id.textViewUpVotePost);
+        imageViewPost = itemView.findViewById(R.id.imageViewPost);
+        imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
+        commentButton = itemView.findViewById(R.id.commentButton);
+        textViewText = itemView.findViewById(R.id.textViewTextPost);
+
+        Task<com.google.firebase.database.DataSnapshot> taskPost = DBUtils.getSubreddit(post.getSubRedditID());
+        taskPost.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                SubReddit s = task.getResult().getValue(SubReddit.class);
+
+                Picasso.with(getContext()).load(s.getImgUrl()).into(imageViewSubreddit);
+
+                String title = String.format("r/%s", s.getTitle());
+                textViewSubreddit.setText(title);
+                textViewNameSubreddit.setText(title);
+            }
+        });
+
+        if (post.getText() == null) {
+            Picasso.with(getContext()).load(post.getImgUrl()).into(imageViewPost);
+        } else {
+            textViewText.setText(post.getText());
+        }
+
+        textViewSubtitle.setText(getContext().getString(R.string.subtitle, post.getUser().getUserName(), post.getTime()));
+        textViewAwards.setText(getContext().getString(R.string.awards, post.getNumAwards()));
+        textViewTitle.setText(post.getTitle());
+        textViewUpVotes.setText(Formater.format(post.getUpVotes()));
+        commentButton.setText(String.valueOf(post.getCommentsNum()));
     }
 
     private void setUpRecycler() {
