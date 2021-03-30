@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,8 @@ public class CommentPostFragment extends Fragment {
     private MaterialButton buttonCreateComment;
     private MaterialTextView textViewNameSubreddit;
     private NavController navController;
+    private ShapeableImageView imageViewSubredditPostTopBar;
+    private ImageView closeBTN;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,8 +57,15 @@ public class CommentPostFragment extends Fragment {
         recycler = v.findViewById(R.id.recyclerComments);
         buttonCreateComment= v.findViewById(R.id.addCommentButton);
         textViewNameSubreddit = v.findViewById(R.id.textViewNameSubreddit);
+        imageViewSubredditPostTopBar = v.findViewById(R.id.imageViewSubredditPostTopBar);
+        closeBTN = v.findViewById(R.id.closeBTN);
+        closeBTN.setOnClickListener(this::closeButton);
 
         return v;
+    }
+
+    private void closeButton(View view) {
+        navController.navigate(R.id.action_commentPostFragment_to_mainFragment);
     }
 
     @Override
@@ -98,6 +108,7 @@ public class CommentPostFragment extends Fragment {
                 SubReddit s = task.getResult().getValue(SubReddit.class);
 
                 Picasso.with(getContext()).load(s.getImgUrl()).into(imageViewSubreddit);
+                Picasso.with(getContext()).load(s.getImgUrl()).into(imageViewSubredditPostTopBar);
 
                 String title = String.format("r/%s", s.getTitle());
                 textViewSubreddit.setText(title);

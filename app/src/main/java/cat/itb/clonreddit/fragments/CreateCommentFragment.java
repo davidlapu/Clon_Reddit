@@ -47,6 +47,7 @@ public class CreateCommentFragment extends Fragment {
         textViewTitle = v.findViewById(R.id.textViewTitleComment);
         ediTextComment = v.findViewById(R.id.editTextTextComment);
         buttonPost = v.findViewById(R.id.buttonPostText);
+        v.findViewById(R.id.closeBTN).setOnClickListener(v1 -> navController.popBackStack());
 
         return v;
     }

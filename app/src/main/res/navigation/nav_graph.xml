@@ -163,6 +163,9 @@
         <action
             android:id="@+id/action_commentPostFragment_to_createCommentFragment"
             app:destination="@id/createCommentFragment" />
+        <action
+            android:id="@+id/action_commentPostFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/createCommentFragment"
