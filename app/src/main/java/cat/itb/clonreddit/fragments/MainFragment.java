@@ -113,7 +113,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null){
-                    FirebaseAuth.getInstance().signOut();;
+                    FirebaseAuth.getInstance().signOut();
 
                     navController.navigate(R.id.action_mainFragment_to_homeScreenFragment);
                 }else{
@@ -170,8 +170,15 @@ public class MainFragment extends Fragment {
         final int itemId = menuItem.getItemId();
         if (itemId == R.id.post) {
             searchView.clearFocus();
-            BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-            bottomSheetFragment.show(getParentFragmentManager(), "bottomSheet");
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null){
+                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                bottomSheetFragment.show(getParentFragmentManager(), "bottomSheet");
+            }else{
+                BottomSheetFragmentNoLogIn bottomSheetFragmentNoLogIn = new BottomSheetFragmentNoLogIn();
+                bottomSheetFragmentNoLogIn.show(getParentFragmentManager(), "bottomSheet");
+            }
+
             return true;
         } else if (itemId == R.id.browse) {
             pocheador(R.drawable.suscriptions);

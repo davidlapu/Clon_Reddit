@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Objects;
 
 import cat.itb.clonreddit.R;
+import cat.itb.clonreddit.utils.AuthWithGoogle;
 import cat.itb.clonreddit.utils.DBUtils;
 
 public class HomeScreenFragment extends Fragment {
@@ -57,15 +58,6 @@ public class HomeScreenFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
-
-
-//
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestEmail()
-//                .build();
-//
-//
-//        Object mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
     }
 
     @Override
@@ -188,39 +180,7 @@ public class HomeScreenFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GOOGLE_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            GoogleSignInAccount g = null;
-            try {
-                g = task.getResult(ApiException.class);
-
-                if (g != null) {
-                    AuthCredential credential = GoogleAuthProvider.getCredential(g.getIdToken(),null);
-                    GoogleSignInAccount finalG = g;
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                navController.navigate(R.id.action_homeScreenFragment_to_mainFragment);
-                            } else {
-                                showAlert("Esta cuenta de usuario no existe");
-                            }
-                        }
-                    });
-                }
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
-
+            AuthWithGoogle.authWithGoogle(data,navController, R.id.action_homeScreenFragment_to_mainFragment);
         }
-    }
-
-
-    public void showAlert(String text) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Error");
-        builder.setMessage(text);
-        builder.setPositiveButton("Aceptar",null);
-        AlertDialog al = builder.create();
-        al.show();
     }
 }
