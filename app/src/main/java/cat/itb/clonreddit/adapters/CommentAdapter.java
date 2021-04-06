@@ -64,9 +64,7 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
             textViewUserName.setText(c.getUser().getUserName());
             commentTextView.setText(c.getText());
             textViewUpVotePost.setText(String.valueOf(c.getUpVotes()));
-
-            //FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl()
-
+            
             String picture = c.getUser().getPictureUri();
             if (picture != null) {
                 Picasso.with(context).load(picture).into(imageViewUser);
