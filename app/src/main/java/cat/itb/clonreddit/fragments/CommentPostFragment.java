@@ -28,6 +28,7 @@ import cat.itb.clonreddit.adapters.CommentAdapter;
 import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
+import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.DBUtils;
 import cat.itb.clonreddit.utils.Formater;
 
@@ -79,6 +80,14 @@ public class CommentPostFragment extends Fragment {
 
             navController.navigate(a);
         });
+
+        //createPlaceholderComments();
+    }
+
+    private void createPlaceholderComments() {
+        for (int i = 0; i < post.getCommentsNum(); i++) {
+            DBUtils.uploadComment(post.getId(), new Comment(post.getTitle(), new User("Redditor" + String.valueOf(i))));
+        }
     }
 
     private void bindPost() {

@@ -32,6 +32,7 @@ import cat.itb.clonreddit.utils.Formater;
 
 public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostViewHolder> {
     private final Context context;
+    private final boolean COUNT_COMMENTS = false;
 
 
     public PostAdapter(@NonNull FirebaseRecyclerOptions<Post> options, Context context) {
@@ -104,22 +105,22 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             textViewAwards.setText(context.getString(R.string.awards, post.getNumAwards()));
             textViewTitle.setText(post.getTitle());
             textViewUpVotes.setText(Formater.format(post.getUpVotes()));
+            commentButton.setText(String.valueOf(post.getCommentsNum()));
 
+            if (COUNT_COMMENTS) {
+                DBUtils.getReferenceComment().child(post.getId()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        commentButton.setText(String.valueOf((int) snapshot.getChildrenCount()));
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-            DBUtils.getReferenceComment().child(post.getId()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    commentButton.setText(String.valueOf((int) snapshot.getChildrenCount()));
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
 
-                }
-            });
-
-
-
-/*            for (int i = 0; i < 5; i++) {
+/*            for (int i = 0; i < post.getCommentsNum(); i++) {
                 DBUtils.uploadComment(post.getId(), new Comment(post.getTitle(), new User("Redditor" + String.valueOf(i))));
             }*/
 
