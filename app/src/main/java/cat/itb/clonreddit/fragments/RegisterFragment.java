@@ -1,6 +1,7 @@
 package cat.itb.clonreddit.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -12,18 +13,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.utils.AddListenerOnTextChange;
+import cat.itb.clonreddit.utils.AuthWithGoogle;
 
 public class RegisterFragment extends Fragment {
     private TextView policyTextView;
@@ -32,6 +47,7 @@ public class RegisterFragment extends Fragment {
     private NavController navController;
     private FirebaseAuth mAuth;
     private TextInputLayout emailInputLayout, passwordInputLayout, userNameInputLayout;
+    private int GOOGLE_SIGN_IN = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,9 +96,22 @@ public class RegisterFragment extends Fragment {
 
         closeForm.setOnClickListener(this::toBackScreen);
         textViewLogin.setOnClickListener(this::toLogin);
-        buttonGoogle.setOnClickListener(this::toMainScreen);
+
         continueBTN.setOnClickListener(this::continueClicked);
         appleButton.setOnClickListener(this::toMainScreen);
+        buttonGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+
+                GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(getContext(), googleSignInOptions);
+                googleSignInClient.signOut();
+
+                startActivityForResult(googleSignInClient.getSignInIntent(), GOOGLE_SIGN_IN);
+            }
+        });
         return v;
     }
 
@@ -149,4 +178,12 @@ public class RegisterFragment extends Fragment {
     }
 
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GOOGLE_SIGN_IN) {
+            AuthWithGoogle.authWithGoogle(data,navController, R.id.action_registerFragment_to_mainFragment);
+        }
+    }
 }

@@ -47,7 +47,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     private void exit(View view) {
         dismiss();
-
     }
 
     private void toPostTextFragment(View view){

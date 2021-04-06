@@ -81,4 +81,5 @@
     <string name="your_comment">Your comment</string>
     <string name="add_comment">Add comment</string>
     <string name="add_a_coment">Add a coment</string>
+    <string name="create_an_account_to_continue">Create an account to continue</string>
 </resources>

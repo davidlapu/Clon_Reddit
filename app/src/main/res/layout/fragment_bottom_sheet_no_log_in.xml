@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/searchview"
+    tools:context=".fragments.BottomSheetFragmentNoLogIn"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/create_an_account_to_continue"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/policyUserTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingEnd="60dp"
+        android:paddingStart="60dp"
+        android:text="@string/privacyText"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/googleButtonBottomSheetNoLogIn"
+        style="@style/BlueButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/continueGoogle"
+        app:icon="@drawable/google_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="@color/itemDrawerBG"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/appleButtonBottomSheetNoLogIn"
+        style="@style/BlueButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/continueApple"
+        app:icon="@drawable/apple_icon"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="@color/itemDrawerBG"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/emailButtonBottomSheetNoLogIn"
+        style="@style/BlueButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/continueEmail"
+        app:icon="@drawable/ic_baseline_email_24_alien"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="@color/itemDrawerBG"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBoxRegisterForm"
+        style="@style/Theme.ClonReddit.CheckForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/acceptCheckBoxForm"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/redditorHomeScreen"
+            style="@style/Theme.ClonReddit.RedditorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/redditor"
+            android:textStyle="normal" android:textSize="15sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/loginButtonBottomSheetNoLogIn"
+            style="@style/Theme.ClonReddit.RedditorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/login"
+            android:textColor="@color/alien"
+            android:textSize="15sp"
+             />
+
+    </LinearLayout>
+
+</LinearLayout>
