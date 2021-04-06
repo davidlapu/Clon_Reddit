@@ -67,9 +67,9 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
 
             //FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl()
 
-            Uri uri = c.getUser().getPictureUri();
-            if (uri != null) {
-                Picasso.with(context).load(uri).into(imageViewUser);
+            String picture = c.getUser().getPictureUri();
+            if (picture != null) {
+                Picasso.with(context).load(picture).into(imageViewUser);
             }
 
         }

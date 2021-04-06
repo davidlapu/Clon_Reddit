@@ -72,7 +72,7 @@ public class CreateCommentFragment extends Fragment {
         if(!text.isEmpty()) {
             FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
             User currentUser = new User(u.getDisplayName());
-            currentUser.setPictureUri(u.getPhotoUrl());
+            currentUser.setPictureUri(u.getPhotoUrl().toString());
             Comment comment = new Comment(text, currentUser);
 
             DBUtils.uploadComment(postId, comment);
