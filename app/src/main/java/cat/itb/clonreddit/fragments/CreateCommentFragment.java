@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Comment;
@@ -69,7 +70,9 @@ public class CreateCommentFragment extends Fragment {
     private void postClicked(View view) {
         String text = ediTextComment.getText().toString();
         if(!text.isEmpty()) {
-            User currentUser = new User(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
+            User currentUser = new User(u.getDisplayName());
+            currentUser.setPictureUri(u.getPhotoUrl());
             Comment comment = new Comment(text, currentUser);
 
             DBUtils.uploadComment(postId, comment);

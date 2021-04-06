@@ -1,9 +1,12 @@
 package cat.itb.clonreddit.models;
 
+import android.net.Uri;
+
 public class User {
     private String id;
     private String userName;
     private String email;
+    private Uri pictureUri;
 
     public User(String id, String userName, String email) {
         this.id = id;
@@ -41,5 +44,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Uri getPictureUri() {
+        return pictureUri;
+    }
+
+    public void setPictureUri(Uri pictureUri) {
+        this.pictureUri = pictureUri;
     }
 }

@@ -148,7 +148,7 @@ public class CommentPostFragment extends Fragment {
                 .setQuery(baseQuery, config, Comment.class)
                 .build();
 
-        adapter = new CommentAdapter(options);
+        adapter = new CommentAdapter(options, requireContext());
 
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
