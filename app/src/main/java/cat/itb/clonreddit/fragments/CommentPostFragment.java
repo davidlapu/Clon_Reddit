@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
@@ -75,10 +77,17 @@ public class CommentPostFragment extends Fragment {
         setUpRecycler();
 
         buttonCreateComment.setOnClickListener(v -> {
-            CommentPostFragmentDirections.ActionCommentPostFragmentToCreateCommentFragment a =
-            CommentPostFragmentDirections.actionCommentPostFragmentToCreateCommentFragment(post.getTitle(), post.getId());
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null){
+                CommentPostFragmentDirections.ActionCommentPostFragmentToCreateCommentFragment a =
+                        CommentPostFragmentDirections.actionCommentPostFragmentToCreateCommentFragment(post.getTitle(), post.getId());
 
-            navController.navigate(a);
+                navController.navigate(a);
+            }else{
+                BottomSheetFragmentNoLogIn bottomSheetFragmentNoLogIn = new BottomSheetFragmentNoLogIn("com");
+                bottomSheetFragmentNoLogIn.show(getParentFragmentManager(), "bottomSheet");
+            }
+
         });
 
         //createPlaceholderComments();

@@ -3,10 +3,7 @@ package cat.itb.clonreddit.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -19,18 +16,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.utils.AuthWithGoogle;
@@ -40,6 +29,12 @@ public class BottomSheetFragmentNoLogIn extends BottomSheetDialogFragment {
     private MaterialButton appleButton;
     private NavController navController;
     private final int GOOGLE_SIGN_IN = 100;
+    private final String origin;
+
+    public BottomSheetFragmentNoLogIn(String origin) {
+        this.origin = origin;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,12 +86,22 @@ public class BottomSheetFragmentNoLogIn extends BottomSheetDialogFragment {
     }
 
     public void goToLogInForm(View view) {
-        navController.navigate(R.id.action_mainFragment_to_loginFragment);
+        if (origin.equals("main")) navController.navigate(R.id.action_mainFragment_to_loginFragment);
+        else navController.navigate(R.id.action_commentPostFragment_to_loginFragment);
         dismiss();
     }
 
     public void goToRegisterForm(View view) {
-        navController.navigate(R.id.action_mainFragment_to_registerFragment);
+        if (origin.equals("main")) navController.navigate(R.id.action_mainFragment_to_registerFragment);
+        else {
+            CommentPostFragmentDirections.ActionCommentPostFragmentToRegisterFragment dir =
+            CommentPostFragmentDirections.actionCommentPostFragmentToRegisterFragment();
+
+            dir.setDest("comment");
+
+            navController.navigate(dir);
+            //navController.navigate(R.id.action_commentPostFragment_to_registerFragment);
+        }
         dismiss();
     }
 

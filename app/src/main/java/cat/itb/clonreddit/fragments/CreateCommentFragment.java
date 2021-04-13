@@ -1,5 +1,6 @@
 package cat.itb.clonreddit.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -68,11 +69,23 @@ public class CreateCommentFragment extends Fragment {
     }
 
     private void postClicked(View view) {
+        String photoUrl;
+
         String text = ediTextComment.getText().toString();
         if(!text.isEmpty()) {
             FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
             User currentUser = new User(u.getDisplayName());
-            currentUser.setPictureUri(u.getPhotoUrl().toString());
+
+
+            Uri photoUri = u.getPhotoUrl();
+
+            if (photoUri == null) {
+                photoUrl = "https://styles.redditmedia.com/t5_185atu/styles/profileIcon_snoo1154b8cb-c9d6-4d9c-8e7f-d75b041827ae-headshot.png?width=256&height=256&crop=256:256,smart&s=136f561bb38b698950406f42b7a1bb90b8c83d26";
+            } else {
+                photoUrl = photoUri.toString();
+            }
+            currentUser.setPictureUri(photoUrl);
+
             Comment comment = new Comment(text, currentUser);
 
             DBUtils.uploadComment(postId, comment);

@@ -11,29 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import cat.itb.clonreddit.R;
@@ -48,6 +39,7 @@ public class RegisterFragment extends Fragment {
     private FirebaseAuth mAuth;
     private TextInputLayout emailInputLayout, passwordInputLayout, userNameInputLayout;
     private int GOOGLE_SIGN_IN = 100;
+    private String dest = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,12 +107,23 @@ public class RegisterFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dest = RegisterFragmentArgs.fromBundle(getArguments()).getDest();
+    }
+
     private void continueClicked(View view) {
         createUser(editTextEmail.getText().toString(), editTextPass.getText().toString());
     }
 
+    private void toMainScreen() {
+        if (dest.equals("comment")) navController.popBackStack();
+        else navController.navigate(R.id.action_registerFragment_to_mainFragment);
+    }
+
     private void toMainScreen(View view) {
-        navController.navigate(R.id.action_registerFragment_to_mainFragment);
+        toMainScreen();
     }
 
     private void toLogin(View view) {
@@ -149,7 +152,7 @@ public class RegisterFragment extends Fragment {
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest
                                     .Builder().setDisplayName(editTextUserName.getText().toString()).build();
                             mAuth.getCurrentUser().updateProfile(profileUpdates);
-                            navController.navigate(R.id.action_registerFragment_to_mainFragment);
+                            toMainScreen();
                         } else {
 //                            Toast.makeText(getContext(), "Authentication failed.",
 //                                    Toast.LENGTH_SHORT).show();

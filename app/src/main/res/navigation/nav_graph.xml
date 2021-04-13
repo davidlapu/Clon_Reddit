@@ -48,6 +48,11 @@
         <action
             android:id="@+id/action_registerFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
+        <argument
+            android:name="dest"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="main" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -172,6 +177,12 @@
         <action
             android:id="@+id/action_commentPostFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_commentPostFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_commentPostFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/createCommentFragment"
