@@ -51,6 +51,8 @@ public class SubRedditListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
 
+
+          //Filtra la lista de subReddits
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -68,6 +70,11 @@ public class SubRedditListFragment extends Fragment {
         return v;
     }
 
+    /**
+     * RecyclerWiew con subreddits
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -83,6 +90,11 @@ public class SubRedditListFragment extends Fragment {
         this.dest = dest;
     }
 
+
+    /**
+     * Método que filtra la lista de subReddits a través de un String que recibe como parámetro
+     * @param query String para filtrar.
+     */
     public void filtrarRecycler(String query) {
         FirebaseRecyclerOptions<SubReddit> options = new FirebaseRecyclerOptions.Builder<SubReddit>()
                 .setQuery(DBUtils.getReferenceSubReddit().orderByChild("title").startAt(query).endAt(query + "\uf8ff"), SubReddit.class).build();

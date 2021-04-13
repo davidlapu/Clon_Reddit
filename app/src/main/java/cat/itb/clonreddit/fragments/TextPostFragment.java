@@ -63,6 +63,7 @@ public class TextPostFragment extends Fragment {
         return v;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -78,20 +79,35 @@ public class TextPostFragment extends Fragment {
 
     }
 
+    /**
+     * Método que hace la navegacion del fragment actual al fragmen SubRedditListFragment
+     * @param view
+     */
     private void chooseCommunityFragment(View view) {
         TextPostFragmentDirections.ActionTextPostFragmentToSubRedditListFragment action =
                 TextPostFragmentDirections.actionTextPostFragmentToSubRedditListFragment("txt");
         navController.navigate(action);
     }
 
+
     public void toMainFragment(View view) {
         toMainFragment();
     }
 
+    /**
+     * Método que hace la navegación del fragment actual al MainFragment
+     */
     public void toMainFragment() {
         navController.navigate(R.id.action_textPostFragment_to_mainFragment);
     }
 
+
+
+
+    /**
+     * Sube el post a Firebase
+     * @param view
+     */
     public void pushPost(View view) {
         if (allRequiredCamps()) {
             try {
@@ -113,6 +129,10 @@ public class TextPostFragment extends Fragment {
         }
     }
 
+    /**
+     * Comprueba que todos los campos requeridos del formulario están rellenados.
+     * @return boolean
+     */
     private boolean allRequiredCamps() {
         boolean allGood = true;
 
