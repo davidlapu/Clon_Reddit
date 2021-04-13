@@ -95,9 +95,9 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
                 }
             });
 
-            if (post.getText() == null) {
+            if (post.getImgUrl() != null) {
                 Picasso.with(context).load(post.getImgUrl()).into(imageViewPost);
-            } else {
+            } else if (post.getText() != null){
                 textViewText.setText(post.getText());
             }
 
