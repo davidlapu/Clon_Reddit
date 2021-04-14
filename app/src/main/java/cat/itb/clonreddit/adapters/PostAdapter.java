@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -59,6 +60,7 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
                 textViewTitle, textViewUpVotes, textViewText;
         private final MaterialButton commentButton;
         private final ShapeableImageView imageViewPost, imageViewSubreddit;
+        private final ImageButton upVoteButton, downVoteButton;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +74,8 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
             imageViewSubreddit = itemView.findViewById(R.id.imageViewSubredditPost);
             commentButton = itemView.findViewById(R.id.commentButton);
             textViewText = itemView.findViewById(R.id.textViewTextPost);
+            upVoteButton = itemView.findViewById(R.id.upVoteButton);
+            downVoteButton = itemView.findViewById(R.id.downVoteButton);
 
             commentButton.setOnClickListener(this::toComments);
 
@@ -123,6 +127,27 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PostV
 /*            for (int i = 0; i < post.getCommentsNum(); i++) {
                 DBUtils.uploadComment(post.getId(), new Comment(post.getTitle(), new User("Redditor" + String.valueOf(i))));
             }*/
+
+            upVoteButton.setOnClickListener(v -> {
+                upVoteButton.setEnabled(false);
+                downVoteButton.setEnabled(true);
+                post.setUpVotes(post.getUpVotes() + 1);
+
+                //textViewUpVotes.setText(Formater.format(post.getUpVotes()));
+                DBUtils.savePost(post);
+                
+                upVoteButton.setEnabled(false);
+            });
+
+            downVoteButton.setOnClickListener(v -> {
+                downVoteButton.setEnabled(false);
+                upVoteButton.setEnabled(true);
+                post.setUpVotes(post.getUpVotes() - 1);
+
+                //textViewUpVotes.setText(Formater.format(post.getUpVotes()));
+                DBUtils.savePost(post);
+                downVoteButton.setEnabled(false);
+            });
 
         }
 

@@ -84,6 +84,10 @@ public class DBUtils {
         postReference.child(key).setValue(post);
     }
 
+    public static void savePost(Post post) {
+        postReference.child(post.getId()).setValue(post);
+    }
+
     public static String uploadSubreddit(SubReddit subReddit) {
         String key = subRedditReference.push().getKey();
         subReddit.setId(key);
