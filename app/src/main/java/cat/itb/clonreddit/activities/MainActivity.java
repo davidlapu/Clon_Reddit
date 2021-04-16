@@ -13,5 +13,9 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_ClonReddit);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
     }
 }
