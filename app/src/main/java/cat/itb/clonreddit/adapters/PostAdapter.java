@@ -18,16 +18,13 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.fragments.MainFragmentDirections;
-import cat.itb.clonreddit.models.Comment;
 import cat.itb.clonreddit.models.Post;
 import cat.itb.clonreddit.models.SubReddit;
-import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.DBUtils;
 import cat.itb.clonreddit.utils.Formater;
 

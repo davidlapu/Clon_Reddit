@@ -1,12 +1,10 @@
 package cat.itb.clonreddit.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +15,10 @@ import com.firebase.ui.database.paging.FirebaseRecyclerPagingAdapter;
 import com.firebase.ui.database.paging.LoadingState;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.models.Comment;
-import cat.itb.clonreddit.utils.DBUtils;
 
 public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, CommentAdapter.ViewHolder> {
     private final Context context;
