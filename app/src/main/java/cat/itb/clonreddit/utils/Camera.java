@@ -12,6 +12,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+
 import id.zelory.compressor.Compressor;
 
 public class Camera {

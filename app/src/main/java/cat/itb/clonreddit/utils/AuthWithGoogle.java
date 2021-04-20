@@ -1,11 +1,8 @@
 package cat.itb.clonreddit.utils;
 
-import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
