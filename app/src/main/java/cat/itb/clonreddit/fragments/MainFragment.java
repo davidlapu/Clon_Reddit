@@ -33,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import cat.itb.clonreddit.R;
 import cat.itb.clonreddit.adapters.PostAdapter;
 import cat.itb.clonreddit.models.Post;
+import cat.itb.clonreddit.models.User;
 import cat.itb.clonreddit.utils.DBUtils;
 
 
@@ -210,19 +211,10 @@ public class MainFragment extends Fragment {
 
 
     private void setUpRecycler(RecyclerView recyclerView) {
-        //List<Post> postList = new ArrayList<>();
-
-//        String catsAreLiquid = ConexionBBDD.uploadSubreddit(new SubReddit("catsareliquid", "https://a.thumbs.redditmedia.com/zjIY1aqa9GNrDzhGFcgXCmALalbZkNpD0FeYNjBQUX8.png"));
-//        String programmerHumor = ConexionBBDD.uploadSubreddit(new SubReddit("ProgrammerHumor", "https://styles.redditmedia.com/t5_2tex6/styles/communityIcon_u89jf60zv7p41.png"));
-//        String hentaimemes = ConexionBBDD.uploadSubreddit(new SubReddit("Hentaimemes", "https://styles.redditmedia.com/t5_9wzjb/styles/communityIcon_mdpc33x2blf51.png"));
-//        ConexionBBDD.uploadPost(new Post(programmerHumor, new User("jevoy6737"), "8h", "It hurts", "https://static.boredpanda.com/blog/wp-content/uploads/2019/03/image-5c90517716638__700.jpg",
-//                20, 113, 435));
+/*        DBUtils.uploadPost(new Post("-MW--YgVorRGpajcRNoj", new User("onlyforjazzmemes"), "8h", "version 8.0", "https://i.redd.it/w2nwivnbtjt61.jpg",
+                20, 113, 0));*/
 /*        ConexionBBDD.uploadPost(new Post("-MW--YgVorRGpajcRNok", new User("DeveloperNightshade"), "10h", "Hmm, fuck it", "https://i.redd.it/q2uhlnvdkhn61.jpg",
                 24, 3800, 456));*/
-
-        //postList.add();
-        //postList.add(new Post(catsAreLiquid, "LilDiomede", "3h", "Meowlk", 0, R.drawable.post3, 183, 6));
-        //postList.add(new Post(hentaimemes, "namx2u", "4h", "tbh I hate that too..", 4, R.drawable.post4, 4800, 59));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>()
