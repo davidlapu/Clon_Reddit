@@ -72,12 +72,12 @@ public class MainFragment extends Fragment {
         if (user != null) {
             String username = user.getDisplayName();
             if (username == null || username.isEmpty()) {
-                navUsername.setText("No username bru"); //TODO Cambiar
+                navUsername.setText(R.string.no_user);
             } else {
                 navUsername.setText(username);
             }
         } else {
-            navUsername.setText("No username bru");
+            navUsername.setText(R.string.no_user);
         }
     }
     /*++++ CARGA EL USERNAME DEL USUARIO EN EL DRAWER ++++*/
@@ -95,7 +95,6 @@ public class MainFragment extends Fragment {
         contents = v.findViewById(R.id.mainFragmentContents);
         imageContents = v.findViewById(R.id.imageContent);
 
-        //TODO bug no se muestra cuando se habre por primera vez
         NavigationView navigationView = v.findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
         navUsername = headerView.findViewById(R.id.nameUserDrawer);
