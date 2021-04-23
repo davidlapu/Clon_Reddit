@@ -9,8 +9,14 @@ import org.junit.runner.RunWith;
 
 import cat.itb.clonreddit.activities.MainActivity;
 
+import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsClosed;
+import static com.schibsted.spain.barista.assertion.BaristaDrawerAssertions.assertDrawerIsOpen;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.closeDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaDrawerInteractions.openDrawer;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationTest {
@@ -38,8 +44,31 @@ public class NavigationTest {
     }
 
     @Test
-    public void goToCommentSectionOfAPost() {
-        /*onView(withId(R.id.recyclerViewMain)).perform((1,
-                onView(withId(R.id.commentButton))));*/
+    public void openDrawerLayoutAndCloseIt() {
+        assertDrawerIsClosed();
+        openDrawer();
+        assertDrawerIsOpen();
+        closeDrawer();
+        assertDrawerIsClosed();
+    }
+
+    @Test
+    public void goToCommentSectionOfAPostAndCreateACommentFragment() {
+        sleep(1500);
+        clickListItemChild(R.id.recyclerViewMain, 0, R.id.commentButton);
+        assertDisplayed(R.id.fragmentLayoutCommentPost);
+
+        clickOn(R.id.addCommentButton);
+        assertDisplayed(R.id.fragmentLayoutCreateComment);
+    }
+
+    @Test
+    public void testBottomMenu() {
+        clickOn(R.id.browse);
+        clickOn(R.id.chat);
+        clickOn(R.id.inbox);
+        clickOn(R.id.home);
+        assertDisplayed(R.id.recyclerViewMain);
+
     }
 }
