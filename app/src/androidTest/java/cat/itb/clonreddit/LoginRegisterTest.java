@@ -61,6 +61,19 @@ public class LoginRegisterTest {
         logout();
     }
 
+    public void onlyLogin() {
+        onView(withId(R.id.loginHomeScreen)).perform(click());
+        onView(withId(R.id.usernameEditText)).perform(typeText(EMAIL_LOGIN), closeSoftKeyboard());
+        onView(withId(R.id.passwordEditText)).perform(typeText(PASS), closeSoftKeyboard());
+        onView(withId(R.id.continueBTN)).perform(click());
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void logout() {
         onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());

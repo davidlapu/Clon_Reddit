@@ -7,22 +7,35 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.action.ViewActions.click;
-
 import cat.itb.clonreddit.activities.MainActivity;
+
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationTest {
+    private final LoginRegisterTest loginRegisterTest = new LoginRegisterTest();
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
+
+    public void setUp() {
+        loginRegisterTest.onlyLogin();
+    }
+
+    @Test
+    public void goToPostTextFragment() {
+        clickOn(R.id.post);
+        clickOn(R.id.imageView4);
+        assertDisplayed(R.id.fragmentTextPost);
+    }
+
+    @Test
+    public void goToPostImageFragmentAndSelectASubrredit() {
+        clickOn(R.id.post);
+        clickOn(R.id.imageView2);
+        clickOn(R.id.chooseSubredditArrow);
+        assertDisplayed(R.id.fragmentLayoutChoseCommunity);
+    }
 
     @Test
     public void goToCommentSectionOfAPost() {
