@@ -2,7 +2,7 @@ package cat.itb.clonreddit.models;
 
 import java.io.Serializable;
 
-//TODO Poner parcelable
+
 public class Post implements Serializable {
     private String id;
     private User user;

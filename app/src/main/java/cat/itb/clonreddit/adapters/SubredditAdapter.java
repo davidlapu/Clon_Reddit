@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -18,7 +16,6 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
-import cat.itb.clonreddit.fragments.ImagePostFragmentArgs;
 import cat.itb.clonreddit.fragments.SubRedditListFragmentDirections;
 import cat.itb.clonreddit.models.SubReddit;
 

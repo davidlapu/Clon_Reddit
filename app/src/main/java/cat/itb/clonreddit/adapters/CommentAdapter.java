@@ -1,10 +1,10 @@
 package cat.itb.clonreddit.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +15,6 @@ import com.firebase.ui.database.paging.FirebaseRecyclerPagingAdapter;
 import com.firebase.ui.database.paging.LoadingState;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.clonreddit.R;
@@ -51,6 +50,7 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
         private final TextView textViewUserName, commentTextView;
         private final MaterialTextView textViewUpVotePost;
         private final ShapeableImageView imageViewUser;
+        private final ImageButton upVoteButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +58,7 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
             commentTextView = itemView.findViewById(R.id.commentTextView);
             textViewUpVotePost = itemView.findViewById(R.id.textViewUpVotePost);
             imageViewUser = itemView.findViewById(R.id.imageViewUser);
+            upVoteButton = itemView.findViewById(R.id.upVoteButton);
         }
 
         public void bind(Comment c) {
@@ -70,6 +71,12 @@ public class CommentAdapter extends FirebaseRecyclerPagingAdapter<Comment, Comme
                 Picasso.with(context).load(picture).into(imageViewUser);
             }
 
+/*            upVoteButton.setOnClickListener(v -> {
+                c.setUpVotes(c.getUpVotes() + 1);
+
+                textViewUpVotePost.setText(c.getUpVotes());
+                DBUtils.uploadComment(c,);
+            });*/
         }
     }
 }
