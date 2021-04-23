@@ -43,11 +43,17 @@ public class LoginRegisterTest {
         onView(withId(R.id.continueBTN)).perform(click());
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         onView(withId(R.id.drawerLayout)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void logOut(){
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
+        onView(withId(R.id.logOutButton)).perform(click());
     }
 
 
@@ -67,9 +73,5 @@ public class LoginRegisterTest {
     }
 
 
-    @Test
-    public void logOut(){
-        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
-        onView(withId(R.id.logOutButton)).perform(click());
-    }
+
 }
