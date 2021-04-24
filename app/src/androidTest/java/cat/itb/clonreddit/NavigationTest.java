@@ -20,9 +20,17 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
 import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
+/**
+ * Activity 3
+ * Another important aspect of testing is the navigation through the different fragments / activities of the application.
+ * Create a new test class called "NavigationTest" that tests the different navigation flows that the app can have.
+ * For each one, create a different test function with meaningful names so that when you read them it is perfectly
+ * understood that each of them is being tested. If your application has many navigation flows, make a maximum of 5 test functions.
+ *
+ * PARA SU CORRECTO FUNCIONAMIENTO EJECUTAR EN ORDEN. ES POR EL TEMA DE PERSISTENCIA DE CUENTAS DE MAIL
+ */
 @RunWith(AndroidJUnit4.class)
 public class NavigationTest {
-    private final String USER_TO_BE_TYPED = "admin";
     private final String PASS_TO_BE_TYPED = "123456789";
 
     private final String EMAIL_LOGIN_TO_BE_TYPED = "logintest@gmail.com";
@@ -59,6 +67,8 @@ public class NavigationTest {
         sleep(1000);
         onView(withId(R.id.imagePostFragment)).check(matches(isDisplayed()));
     }
+
+
 
     @Test
     public void MainFragment_to_ImagePostFragment_to_SubRedditListFragment_back_to_ImagePostFragment_back_to_MainFragment_logOut(){

@@ -19,6 +19,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
+/**
+ * Activity 2
+ * I want you to create a test for the login process and another for the registration process,
+ * checking that all the fields of each fragment / activity work correctly and that the process
+ * is completed on the main screen of the application. Create a new test class called “LoginRegisterTest” and a test function
+ * for each process.
+ *
+ *
+ * PARA SU CORRECTO FUNCIONAMIENTO EJECUTAR EN ORDEN. ES POR EL TEMA DE PERSISTENCIA DE CUENTAS DE MAIL
+ */
 @RunWith(AndroidJUnit4.class)
 public class LoginRegisterTest {
     private final String EMAIL_TO_BE_TYPED = System.currentTimeMillis() + "admin@gmail.com";

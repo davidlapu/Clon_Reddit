@@ -22,9 +22,19 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
 import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
+/**
+ * Activity 5
+ * Finally, we will return to the use cases that you defined in activity 1 and we will implement each of them
+ * as a different test function. First of all create a new test class called "UseCaseTest".
+ * For each use case, create a test function where you constantly check the interactions expected
+ * from the user and how the application should react to those interactions.
+ * Make sure that the names of the functions are meaningful and that by reading them you can understand
+ * what is being tested in each case.
+ */
 @RunWith(AndroidJUnit4.class)
 public class UseCaseTest {
     private final String TEST_TEXT = "Dani";
@@ -34,6 +44,24 @@ public class UseCaseTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule = new ActivityScenarioRule<>(MainActivity.class);
+
+
+    /**
+     * Activity 4
+     * We are going to do a test to a RecyclerView of your application, the one you prefer
+     * (preferably one that when you click you can see the detail of the element).
+     * The test function must click on a specific position in your RecyclerView (the one you choose) and once clicked,
+     * check that the corresponding activity/fragment is displayed and that the information it contains is as expected.
+     */
+    @Test
+    public void click_recycler_and_check_if_all_is_in_order(){
+        sleep(1000);
+        clickListItemChild(R.id.recyclerViewMain, 0, R.id.commentButton);
+        onView(withId(R.id.commentPostFragment)).check(matches(isDisplayed()));
+        onView(withId(R.id.textViewTitlePost)).check(matches(withText("Dani no me pone las ideses")));
+        sleep(2000);
+    }
+
 
 
     @Test
