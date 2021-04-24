@@ -3,6 +3,9 @@ package cat.itb.clonreddit;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.schibsted.spain.barista.internal.failurehandler.BaristaException;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,8 +27,12 @@ public class NavigationTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
+    @Before
     public void setUp() {
-        loginRegisterTest.onlyLogin();
+        try {
+            assertDisplayed(R.id.homeScreenFragment);
+            loginRegisterTest.onlyLogin();
+        } catch (BaristaException ignored) {}
     }
 
     @Test
@@ -39,6 +46,7 @@ public class NavigationTest {
     public void goToPostImageFragmentAndSelectASubrredit() {
         clickOn(R.id.post);
         clickOn(R.id.imageView2);
+        assertDisplayed(R.id.fragmentLayoutImagePost);
         clickOn(R.id.chooseSubredditArrow);
         assertDisplayed(R.id.fragmentLayoutChoseCommunity);
     }
@@ -64,11 +72,15 @@ public class NavigationTest {
 
     @Test
     public void testBottomMenu() {
+        sleep(1000);
+        assertDisplayed(R.id.recyclerViewMain);
         clickOn(R.id.browse);
+        assertDisplayed(R.id.imageContent);
         clickOn(R.id.chat);
+        assertDisplayed(R.id.imageContent);
         clickOn(R.id.inbox);
+        assertDisplayed(R.id.imageContent);
         clickOn(R.id.home);
         assertDisplayed(R.id.recyclerViewMain);
-
     }
 }
