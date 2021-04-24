@@ -36,8 +36,6 @@ public class UseCaseTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule = new ActivityScenarioRule<>(MainActivity.class);
 
 
-
-
     @Test
     public void filtrar_recyclerView(){
         onView(withId(R.id.searchView)).perform(click());
@@ -78,14 +76,6 @@ public class UseCaseTest {
         onView(withId(R.id.buttonPostText)).perform(click());
         sleep(1000);
         onView(withId(R.id.commentPostFragment)).check(matches(isDisplayed()));
-
-    }
-
-
-    @Test
-    public void logOut(){
-        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
-        onView(withId(R.id.logOutButton)).perform(click());
     }
 
 
@@ -94,6 +84,13 @@ public class UseCaseTest {
     public void give_a_Like(){
         clickListItemChild(R.id.recyclerViewMain, 0, R.id.upVoteButton);
         sleep(2000);
+    }
+
+
+    @Test
+    public void logOut(){
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
+        onView(withId(R.id.logOutButton)).perform(click());
     }
 
 

@@ -17,6 +17,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
 @RunWith(AndroidJUnit4.class)
 public class LoginRegisterTest {
@@ -39,12 +40,7 @@ public class LoginRegisterTest {
         onView(withId(R.id.usernameEditText)).perform(typeText(USER_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordEditText)).perform(typeText(PASS_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.continueBTN)).perform(click());
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.drawerLayout)).check(matches(isDisplayed()));
     }
 
@@ -62,11 +58,7 @@ public class LoginRegisterTest {
         onView(withId(R.id.usernameEditText)).perform(typeText(EMAIL_LOGIN_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordEditText)).perform(typeText(PASS_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.continueBTN)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.drawerLayout)).check(matches(isDisplayed()));
     }
 

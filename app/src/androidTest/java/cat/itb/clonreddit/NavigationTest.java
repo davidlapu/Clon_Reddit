@@ -17,6 +17,8 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild;
+import static com.schibsted.spain.barista.interaction.BaristaSleepInteractions.sleep;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationTest {
@@ -30,15 +32,13 @@ public class NavigationTest {
 
 
     @Test
-    public void MainFragment_to_TextPostFragment(){
-        onView(withId(R.id.post)).perform(click());
-        onView(withId(R.id.imageView4)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.textPostFragment)).check(matches(isDisplayed()));
+    public void MainFragment_to_createCommentFragment(){
+        sleep(1000);
+        clickListItemChild(R.id.recyclerViewMain, 0, R.id.commentButton);
+        onView(withId(R.id.commentPostFragment)).check(matches(isDisplayed()));
+        sleep(1000);
+        onView(withId(R.id.addCommentButton)).perform(click());
+        onView(withId(R.id.createCommentFragment)).check(matches(isDisplayed()));
     }
 
 
@@ -46,11 +46,7 @@ public class NavigationTest {
     public void MainFragment_to_TextPostFragment_to_SubRedditListFragment(){
         onView(withId(R.id.post)).perform(click());
         onView(withId(R.id.imageView4)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.textPostFragment)).check(matches(isDisplayed()));
         onView(withId(R.id.chooseSubredditTextView)).perform(click());
         onView(withId(R.id.subRedditListFragment)).check(matches(isDisplayed()));
@@ -60,11 +56,7 @@ public class NavigationTest {
     public void MainFragment_to_ImagePostFragment(){
         onView(withId(R.id.post)).perform(click());
         onView(withId(R.id.imageView2)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.imagePostFragment)).check(matches(isDisplayed()));
     }
 
@@ -72,11 +64,7 @@ public class NavigationTest {
     public void MainFragment_to_ImagePostFragment_to_SubRedditListFragment_back_to_ImagePostFragment_back_to_MainFragment_logOut(){
         onView(withId(R.id.post)).perform(click());
         onView(withId(R.id.imageView2)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.imagePostFragment)).check(matches(isDisplayed()));
         onView(withId(R.id.chooseSubredditTextView)).perform(click());
         onView(withId(R.id.subRedditListFragment)).check(matches(isDisplayed()));
@@ -97,19 +85,11 @@ public class NavigationTest {
         onView(withId(R.id.usernameEditText)).perform(typeText(EMAIL_LOGIN_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordEditText)).perform(typeText(PASS_TO_BE_TYPED), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.continueBTN)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.drawerLayout)).check(matches(isDisplayed()));
         onView(withId(R.id.post)).perform(click());
         onView(withId(R.id.imageView2)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000);
         onView(withId(R.id.imagePostFragment)).check(matches(isDisplayed()));
         onView(withId(R.id.chooseSubredditTextView)).perform(click());
         onView(withId(R.id.subRedditListFragment)).check(matches(isDisplayed()));
